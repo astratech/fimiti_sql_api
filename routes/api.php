@@ -27,6 +27,12 @@ Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v
 	Route::get('tokens', 'v1\AccessController@index');
 	Route::post('tokens/create', 'v1\AccessController@create');
 
+	Route::get('zones', 'v1\ZonesController@index');
+	Route::post('zones', 'v1\ZonesController@create');
+	Route::post('zones/{id}', 'v1\ZonesController@update');
+	Route::post('zones/regions/delete/{zone_id}', 'v1\ZonesController@delete_region');
+	Route::post('zones/delete/{id}', 'v1\ZonesController@delete');
+
 	Route::get('staffs/', 'v1\StaffController@index');
 	Route::post('staffs/create', 'v1\StaffController@create');
 	Route::post('staffs/search/', 'v1\StaffController@search');

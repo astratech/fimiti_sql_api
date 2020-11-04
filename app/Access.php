@@ -13,9 +13,6 @@ class Access extends Model{
     
     public $incrementing = true;
 
- //    public function user(){
-	// 	return $this->belongsTo('App\User', 'username', 'username');
-	// }
 	public function getAuthIdentifier(){
 		# code...
 	}
