@@ -75,7 +75,7 @@ var dispatch_orders = {
 		vat_price: String;
 		other_price: String;
 	},
-	rider: {
+	rider_info: {
 		name: String,
 		mobile: String,
 	},
@@ -87,8 +87,6 @@ var dispatch_orders = {
 	}
 	updated_at,
 	created_at,
-
-
 }
 
 var orders = {
