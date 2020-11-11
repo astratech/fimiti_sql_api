@@ -71,11 +71,11 @@ class ZonesController extends Controller{
     */
 	public function show($id){
 		$data = Zones::find($id);
-		if(is_null($data)){
-			return ["success"=>false, "response"=>"record not found"];
+		if($data){
+			return ["success"=>true, "response"=>$data];
 		}
 		else{
-			return ["success"=>true, "response"=>$data];
+			return ["success"=>false, "response"=>"record not found"];
 		}
 	}
 
