@@ -27,17 +27,7 @@ class UserController extends Controller{
      * @return JSON
     */
     public function show($username){
-    	$user = Users::where("username", $username)->first();
-    	if(is_null($user)){
-    		return ["success"=>false, "response"=>"user not found"];
-    	}
-    	else{
-    		return ["success"=>truw, "response"=>$user];
-    	}
-    }
-
-    public function demo(Request $request){
-
+    	
     }
 
     /**
@@ -52,40 +42,7 @@ class UserController extends Controller{
      * @return json - user data
     */
     public function create(Request $request){
-    	// dd($request->all());
-    	
-    	$validator = Validator::make($request->all(), [
-           'email' => 'required|email|unique:users',
-           'username' => 'required|string|unique:users',
-           'fullname' => 'required|string',
-           'mobile' => 'required|numeric',
-           'password' => 'required|string',
-           'account_type' => 'required|string',
-       	]);
-        
-       	if($validator->fails()) {
-       		return ["success"=>false, "response"=>$validator->messages()->first()];
-       	}
-       	else{
-       		$request->merge([ 
-                'password' => Site::encode_password($request->password), 
-            ]);
-
-       		$data = Site::fil_request($request->all(), "password");
-       		// dd($data);
-       		// exit();
-    		$r = Users::create($data);
-
-    		$r_data = [
-    			"email"=>$r->email,
-    			"username"=>$r->username,
-    			"fullname"=>$r->fullname,
-    			"mobile"=>$r->mobile,
-    			"account_type"=>$r->account_type,
-    		];
-
-        	return ["success"=>true, "response"=>$r_data];
-       	}
+    	// dd($request->all());	
     }
 
     /**
@@ -101,49 +58,10 @@ class UserController extends Controller{
     */
     public function update(Request $request, $id){
     	
-    	$validator = Validator::make($request->all(), [
-           'email' => 'email|unique:users',
-           'username' => 'string|unique:users',
-           'fullname' => 'string',
-           'mobile' => 'numeric',
-           'password' => 'string',
-           'account_type' => 'string',
-       	]);
-        
-       	if($validator->fails()) {
-       		return ["success"=>false, "response"=>$validator->messages()->first()];
-       	}
-       	else{
-       		$request->merge([ 
-                'password' => Site::encode_password($request->password), 
-            ]);
-
-       		$data = Site::fil_request($request->all(), "password");
-       		// dd($data);
-       		// exit();
-    		$r = Users::create($data);
-
-    		$r_data = [
-    			"email"=>$r->email,
-    			"username"=>$r->username,
-    			"fullname"=>$r->fullname,
-    			"mobile"=>$r->mobile,
-    			"account_type"=>$r->account_type,
-    		];
-
-        	return ["success"=>true, "response"=>$r_data];
-       	}
-
-        $p = Users::findOrFail($id);
-        $p->update($request->all());
-
-        return $p;
+    
     }
 
     public function delete(Request $request, $id){
-        $p = Users::findOrFail($id);
-        $p->delete();
-
-        return 204;
+      
     }
 }
