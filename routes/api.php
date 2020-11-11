@@ -35,6 +35,12 @@ Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v
 
 	Route::get('orders/dispatch', 'v1\DispatchOrdersController@index');
 	Route::post('orders/dispatch', 'v1\DispatchOrdersController@create');
+
+	Route::get('customers', 'v1\CustomerController@index');
+	Route::post('customers', 'v1\CustomerController@create');
+	Route::post('customers/{id}', 'v1\CustomerController@update');
+	Route::post('customers/delete/{id}', 'v1\CustomerController@delete');
+
 	
 });
 

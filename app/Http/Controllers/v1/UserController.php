@@ -10,14 +10,12 @@ namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-Use App\Users;
 Use App\Site;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller{
 
 	public function index(){
-        return Users::all();
     }
 
  	/**
@@ -42,7 +40,8 @@ class UserController extends Controller{
      * @return json - user data
     */
     public function create(Request $request){
-    	// dd($request->all());	
+
+    
     }
 
     /**
@@ -58,10 +57,10 @@ class UserController extends Controller{
     */
     public function update(Request $request, $id){
     	
-    
+      
     }
 
     public function delete(Request $request, $id){
-      
+    
     }
 }
