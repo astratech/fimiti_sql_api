@@ -13,11 +13,13 @@ use Illuminate\Http\Request;
 Use App\DispatchOrders;
 Use App\Site;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\DispatchOrdersResources;
 
 class DispatchOrdersController extends Controller{
 
 	public function index(){
-		$r = DispatchOrders::orderBy("id", "desc")->get();
+		// $r = DispatchOrders::orderBy("id", "desc")->get();
+		$r = DispatchOrdersResources::collection(DispatchOrders::all());
 		return ["success"=>true, "response"=>$r];
 	}
 
@@ -75,12 +77,12 @@ class DispatchOrdersController extends Controller{
      * @return JSON
     */
 	public function show($id){
-		$data = Zones::find($id);
+		$data = DispatchOrders::find($id);
 		if(is_null($data)){
 			return ["success"=>false, "response"=>"record not found"];
 		}
 		else{
-			return ["success"=>true, "response"=>$data];
+			return ["success"=>true, "response"=>$data->pickup_info];
 		}
 	}
 

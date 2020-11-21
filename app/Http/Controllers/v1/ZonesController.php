@@ -13,11 +13,13 @@ use Illuminate\Http\Request;
 Use App\Zones;
 Use App\Site;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\ZonesResource;
 
 class ZonesController extends Controller{
 
 	public function index(){
 		$r = Zones::orderBy("id", "desc")->get();
+		$r = ZonesResource::collection($r);
 		return ["success"=>true, "response"=>$r];
 	}
 

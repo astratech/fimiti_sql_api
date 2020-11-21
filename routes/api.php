@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v1'], function() {
 // Route::group(['middleware' => 'cors', 'prefix' => 'v1'], function() {
 	Route::any('test', 'v1\TestController@index');
+
 	Route::get('tokens', 'v1\AccessController@index');
 	Route::post('tokens/create', 'v1\AccessController@create');
 
@@ -35,6 +36,7 @@ Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v
 
 	Route::get('orders/dispatch', 'v1\DispatchOrdersController@index');
 	Route::post('orders/dispatch', 'v1\DispatchOrdersController@create');
+	Route::get('orders/dispatch/{id}', 'v1\DispatchOrdersController@show');
 	
 });
 
