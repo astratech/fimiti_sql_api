@@ -16,6 +16,7 @@ class ZonesResource extends JsonResource
     {
         $r = [
             'id'=>$this->id,
+            'name'=>$this->name,
             'regions'=>json_decode($this->regions),
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,

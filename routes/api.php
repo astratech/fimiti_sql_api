@@ -28,6 +28,8 @@ Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v
 	Route::get('tokens', 'v1\AccessController@index');
 	Route::post('tokens/create', 'v1\AccessController@create');
 
+	Route::get('list/regions/all', 'v1\ZonesController@list_all_regions');
+
 	Route::get('zones', 'v1\ZonesController@index');
 	Route::post('zones', 'v1\ZonesController@create');
 	Route::post('zones/{id}', 'v1\ZonesController@update');

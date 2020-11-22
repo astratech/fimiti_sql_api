@@ -23,6 +23,18 @@ class ZonesController extends Controller{
 		return ["success"=>true, "response"=>$r];
 	}
 
+	public function list_all_regions(){
+		$regions = [];
+		$r = Zones::orderBy("id", "desc")->get();
+		foreach ($r as $key => $value) {
+			$x = json_decode($value->regions);
+			foreach ($x as $z) {
+				array_push($regions, $z);
+			}
+		}
+		return ["success"=>true, "response"=>$regions];
+	}
+
 	/**
      * Create record
      *
