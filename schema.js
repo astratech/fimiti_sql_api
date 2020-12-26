@@ -80,7 +80,7 @@ var dispatch_orders = {
 		mobile: String,
 	},
 	payment_info:{
-		method: String,
+		method: Enum ['cash','transfer','atm'],
 		confirmed: true|false,
 		date_paid,
 		date_confirmed

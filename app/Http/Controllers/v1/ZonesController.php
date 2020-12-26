@@ -190,4 +190,22 @@ class ZonesController extends Controller{
 			return ["success"=>false, "response"=>"record not found"];
 		}
 	}
+
+	public function find_via_region_name($region){
+		$region = Site::fil_text($region);
+		$zone = null;
+
+		$r = Zones::orderBy("id", "desc")->get();
+		foreach($r as $key => $value) {
+			$x = json_decode($value->regions);
+			foreach ($x as $z) {
+				if($region == $z){
+					$zone = $value->name;
+					break;
+				}
+			}
+		}
+
+		return ["success"=>true, "response"=>$zone];
+	}
 }

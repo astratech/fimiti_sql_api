@@ -36,6 +36,13 @@ Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v
 	Route::post('zones/regions/delete/{zone_id}', 'v1\ZonesController@delete_region');
 	Route::post('zones/delete/{id}', 'v1\ZonesController@delete');
 
+	Route::post('customers/register', 'v1\CustomerController@register');
+
+
+	Route::get('find/zone/via/region/{region}', 'v1\ZonesController@find_via_region_name');
+
+	Route::post('calculate/fee', 'v1\PriceController@calculate_fee');
+
 	Route::get('orders/dispatch', 'v1\DispatchOrdersController@index');
 	Route::post('orders/dispatch', 'v1\DispatchOrdersController@create');
 	Route::get('orders/dispatch/{id}', 'v1\DispatchOrdersController@show');
