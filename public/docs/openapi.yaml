@@ -1,0 +1,924 @@
+openapi: 3.0.3
+info:
+    title: Laravel
+    description: 'Fimiti Logistics API'
+    version: 1.0.0
+servers:
+    -
+        url: 'http://localhost'
+paths:
+    /api/v1/customers/register:
+        post:
+            summary: 'Create Customer Record'
+            description: 'This endpoint allows you to create customer'
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: '200'
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    success: true
+                                    response: { username: flamezbaba, fullname: 'sangosanya segun', email: flamezbaba@gmail.com, mobile: '08093894657', created_at: '2020-12-26 08:21:17', updated_at: '2020-12-26 08:21:17' }
+                                properties:
+                                    success: { type: boolean, example: true }
+                                    response: { type: object, example: { username: flamezbaba, fullname: 'sangosanya segun', email: flamezbaba@gmail.com, mobile: '08093894657', created_at: '2020-12-26 08:21:17', updated_at: '2020-12-26 08:21:17' } }
+            tags:
+                - Customers
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                username:
+                                    type: string
+                                    description: 'the customer username'
+                                    example: placeat
+                                fullname:
+                                    type: string
+                                    description: 'the customer fullname'
+                                    example: ea
+                                mobile:
+                                    type: number
+                                    description: ''
+                                    example: 1323741.40689
+                                email:
+                                    type: string
+                                    description: ''
+                                    example: eum
+                                password:
+                                    type: string
+                                    description: ''
+                                    example: qui
+                            required:
+                                - username
+                                - fullname
+                                - mobile
+                                - email
+                                - password
+    /api/v1/test:
+        get:
+            summary: ''
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    success: true
+                                    response: [{ id: 1, name: 'flamez 1', api_token: IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8, created_at: '2020-10-16T10:08:07.000000Z', updated_at: '2020-10-16T10:08:07.000000Z' }]
+                                properties:
+                                    success: { type: boolean, example: true }
+                                    response: { type: array, example: [{ id: 1, name: 'flamez 1', api_token: IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8, created_at: '2020-10-16T10:08:07.000000Z', updated_at: '2020-10-16T10:08:07.000000Z' }], items: { type: object } }
+            tags:
+                - Endpoints
+    /api/v1/tokens:
+        get:
+            summary: ''
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    success: true
+                                    response: [{ id: 1, name: 'flamez 1', api_token: IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8, created_at: '2020-10-16T10:08:07.000000Z', updated_at: '2020-10-16T10:08:07.000000Z' }]
+                                properties:
+                                    success: { type: boolean, example: true }
+                                    response: { type: array, example: [{ id: 1, name: 'flamez 1', api_token: IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8, created_at: '2020-10-16T10:08:07.000000Z', updated_at: '2020-10-16T10:08:07.000000Z' }], items: { type: object } }
+            tags:
+                - Endpoints
+    /api/v1/tokens/create:
+        post:
+            summary: ''
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses: {  }
+            tags:
+                - Endpoints
+    /api/v1/list/regions/all:
+        get:
+            summary: ''
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    success: true
+                                    response: [moniya, dugbe, ogunpa, aleshinloye, eleyele, jericho, nihort, bodija, secretariat, agodi, ikolaba, sango, u.i, mokola, samonda, apete, ijokodo, agbaje, yemetu, 'total garden', gate, orita-bashorun]
+                                properties:
+                                    success: { type: boolean, example: true }
+                                    response: { type: array, example: [moniya, dugbe, ogunpa, aleshinloye, eleyele, jericho, nihort, bodija, secretariat, agodi, ikolaba, sango, u.i, mokola, samonda, apete, ijokodo, agbaje, yemetu, 'total garden', gate, orita-bashorun], items: { type: string } }
+            tags:
+                - Endpoints
+    /api/v1/zones:
+        get:
+            summary: ''
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    success: true
+                                    response: [{ id: 11, name: 'zone 10', regions: [moniya], created_at: '2020-11-09 09:37:02', updated_at: '2020-11-09 09:41:16' }, { id: 10, name: 'zone 2', regions: [dugbe, ogunpa, aleshinloye, eleyele, jericho, nihort], created_at: '2020-11-04 03:29:22', updated_at: '2020-11-04 03:29:22' }, { id: 9, name: 'zone 1', regions: [bodija, secretariat, agodi, ikolaba, sango, u.i, mokola, samonda, apete, ijokodo, agbaje, yemetu, 'total garden', gate, orita-bashorun], created_at: '2020-11-04 03:28:31', updated_at: '2020-11-04 03:28:31' }]
+                                properties:
+                                    success: { type: boolean, example: true }
+                                    response: { type: array, example: [{ id: 11, name: 'zone 10', regions: [moniya], created_at: '2020-11-09 09:37:02', updated_at: '2020-11-09 09:41:16' }, { id: 10, name: 'zone 2', regions: [dugbe, ogunpa, aleshinloye, eleyele, jericho, nihort], created_at: '2020-11-04 03:29:22', updated_at: '2020-11-04 03:29:22' }, { id: 9, name: 'zone 1', regions: [bodija, secretariat, agodi, ikolaba, sango, u.i, mokola, samonda, apete, ijokodo, agbaje, yemetu, 'total garden', gate, orita-bashorun], created_at: '2020-11-04 03:28:31', updated_at: '2020-11-04 03:28:31' }], items: { type: object } }
+            tags:
+                - Endpoints
+        post:
+            summary: 'Create record'
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses: {  }
+            tags:
+                - Endpoints
+    '/api/v1/zones/{id}':
+        post:
+            summary: 'update single record'
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses: {  }
+            tags:
+                - Endpoints
+        parameters:
+            -
+                in: path
+                name: id
+                description: ''
+                example: assumenda
+                required: true
+                schema:
+                    type: string
+    '/api/v1/zones/regions/delete/{zone_id}':
+        post:
+            summary: 'update product category record - to add new category'
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses: {  }
+            tags:
+                - Endpoints
+        parameters:
+            -
+                in: path
+                name: zone_id
+                description: ''
+                example: quaerat
+                required: true
+                schema:
+                    type: string
+    '/api/v1/zones/delete/{id}':
+        post:
+            summary: 'delete single record'
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses: {  }
+            tags:
+                - Endpoints
+        parameters:
+            -
+                in: path
+                name: id
+                description: ''
+                example: accusamus
+                required: true
+                schema:
+                    type: string
+    '/api/v1/find/zone/via/region/{region}':
+        get:
+            summary: ''
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    success: true
+                                    response: null
+                                properties:
+                                    success: { type: boolean, example: true }
+                                    response: { type: string, example: null }
+            tags:
+                - Endpoints
+        parameters:
+            -
+                in: path
+                name: region
+                description: ''
+                example: at
+                required: true
+                schema:
+                    type: string
+    /api/v1/calculate/fee:
+        post:
+            summary: 'Calculate Fee'
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses: {  }
+            tags:
+                - Endpoints
+    /api/v1/orders/dispatch:
+        get:
+            summary: ''
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    success: true
+                                    response: [{ pickup_info: { zone: zone1, location: apata }, delivery_info: { zone: 'zone 3', location: bodija } }, { pickup_info: null, delivery_info: { zone: 'zone 3', location: bodija } }]
+                                properties:
+                                    success: { type: boolean, example: true }
+                                    response: { type: array, example: [{ pickup_info: { zone: zone1, location: apata }, delivery_info: { zone: 'zone 3', location: bodija } }, { pickup_info: null, delivery_info: { zone: 'zone 3', location: bodija } }], items: { type: object } }
+            tags:
+                - Endpoints
+        post:
+            summary: 'Create record'
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses: {  }
+            tags:
+                - Endpoints
+    '/api/v1/orders/dispatch/{id}':
+        get:
+            summary: 'Show single record'
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    success: false
+                                    response: 'record not found'
+                                properties:
+                                    success: { type: boolean, example: false }
+                                    response: { type: string, example: 'record not found' }
+            tags:
+                - Endpoints
+        parameters:
+            -
+                in: path
+                name: id
+                description: ''
+                example: error
+                required: true
+                schema:
+                    type: string
+    /api/test:
+        get:
+            summary: ''
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    success: true
+                                    response: [{ id: 1, name: 'flamez 1', api_token: IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8, created_at: '2020-10-16T10:08:07.000000Z', updated_at: '2020-10-16T10:08:07.000000Z' }]
+                                properties:
+                                    success: { type: boolean, example: true }
+                                    response: { type: array, example: [{ id: 1, name: 'flamez 1', api_token: IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8, created_at: '2020-10-16T10:08:07.000000Z', updated_at: '2020-10-16T10:08:07.000000Z' }], items: { type: object } }
+            tags:
+                - Endpoints
+    /api/failed:
+        get:
+            summary: ''
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    success: false
+                                    response: 'API Authentication Failed'
+                                properties:
+                                    success: { type: boolean, example: false }
+                                    response: { type: string, example: 'API Authentication Failed' }
+            tags:
+                - Endpoints
+    /:
+        get:
+            summary: ''
+            description: ''
+            parameters:
+                -
+                    in: query
+                    name: api_token
+                    description: 'Authentication key.'
+                    example: '{YOUR_AUTH_KEY}'
+                    required: true
+                    schema:
+                        type: string
+                        description: 'Authentication key.'
+                        example: '{YOUR_AUTH_KEY}'
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Api-Version
+                    description: ''
+                    example: v1
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        text/plain:
+                            schema:
+                                type: string
+                                example: "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\n        <title>Laravel</title>\n\n        <!-- Fonts -->\n        <link href=\"https://fonts.googleapis.com/css?family=Nunito:200,600\" rel=\"stylesheet\">\n\n        <!-- Styles -->\n        <style>\n            html, body {\n                background-color: #fff;\n                color: #636b6f;\n                font-family: 'Nunito', sans-serif;\n                font-weight: 200;\n                height: 100vh;\n                margin: 0;\n            }\n\n            .full-height {\n                height: 100vh;\n            }\n\n            .flex-center {\n                align-items: center;\n                display: flex;\n                justify-content: center;\n            }\n\n            .position-ref {\n                position: relative;\n            }\n\n            .top-right {\n                position: absolute;\n                right: 10px;\n                top: 18px;\n            }\n\n            .content {\n                text-align: center;\n            }\n\n            .title {\n                font-size: 84px;\n            }\n\n            .links > a {\n                color: #636b6f;\n                padding: 0 25px;\n                font-size: 13px;\n                font-weight: 600;\n                letter-spacing: .1rem;\n                text-decoration: none;\n                text-transform: uppercase;\n            }\n\n            .m-b-md {\n                margin-bottom: 30px;\n            }\n        </style>\n    </head>\n    <body>\n        <div class=\"flex-center position-ref full-height\">\n            \n            <div class=\"content\">\n                <div class=\"title m-b-md\">\n                    Laravel\n                </div>\n\n                <div class=\"links\">\n                    <a href=\"https://laravel.com/docs\">Docs</a>\n                    <a href=\"https://laracasts.com\">Laracasts</a>\n                    <a href=\"https://laravel-news.com\">News</a>\n                    <a href=\"https://blog.laravel.com\">Blog</a>\n                    <a href=\"https://nova.laravel.com\">Nova</a>\n                    <a href=\"https://forge.laravel.com\">Forge</a>\n                    <a href=\"https://vapor.laravel.com\">Vapor</a>\n                    <a href=\"https://github.com/laravel/laravel\">GitHub</a>\n                </div>\n            </div>\n        </div>\n    </body>\n</html>\n"
+            tags:
+                - Endpoints
+components:
+    securitySchemes:
+        default:
+            type: apiKey
+            name: api_token
+            in: query
+            description: ''
+security:
+    -
+        default: []

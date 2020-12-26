@@ -34,13 +34,13 @@ class CustomerController extends Controller{
      * This endpoint allows you to create customer
      *
      * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
-     * @queryParam username string required
-     * @queryParam fullname string require
-     * @queryParam mobile number required
-     * @queryParam email string required
-     * @queryParam password string required
+     * @bodyParam username string required the customer username
+     * @bodyParam fullname string required the customer fullname
+     * @bodyParam mobile number required
+     * @bodyParam email string required
+     * @bodyParam password string required
      *
-     * @return JSON Resource
+     * @responseFile storage/responses/customers.register.post.json
     */
     public function register(Request $request){
 		$validator = Validator::make($request->all(), [

@@ -1,0 +1,1504 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Laravel Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css" media="screen" />
+        <link rel="stylesheet" href="css/print.css" media="print" />
+        <script src="js/all.js"></script>
+
+        <link rel="stylesheet" href="css/highlight-darcula.css" media="" />
+        <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body class="" data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+<a href="#" id="nav-button">
+      <span>
+        NAV
+            <img src="images/navbar.png" alt="-image" class=""/>
+      </span>
+</a>
+<div class="tocify-wrapper">
+                <div class="lang-selector">
+                            <a href="#" data-language-name="bash">bash</a>
+                            <a href="#" data-language-name="javascript">javascript</a>
+                    </div>
+        <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+
+    <ul id="toc">
+    </ul>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="./collection.json">View Postman collection</a></li>
+                            <li><a href="./openapi.yaml">View OpenAPI (Swagger) spec</a></li>
+                            <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
+                    </ul>
+            <ul class="toc-footer" id="last-updated">
+            <li>Last updated: December 26 2020</li>
+        </ul>
+</div>
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1>Introduction</h1>
+<p>Fimiti Logistics API</p>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+<script>
+    var baseUrl = "http://localhost";
+</script>
+<script src="js/tryitout-2.4.2.js"></script>
+<blockquote>
+<p>Base URL</p>
+</blockquote>
+<pre><code class="language-yaml">http://localhost</code></pre><h1>Authenticating requests</h1>
+<p>To authenticate requests, include a query parameter <strong><code>api_token</code></strong> in the request.</p>
+<p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
+<p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p><h1>Customers</h1>
+<p>APIs for managing users</p>
+<h2>Create Customer Record</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>This endpoint allows you to create customer</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/customers/register?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"username":"placeat","fullname":"ea","mobile":1323741.40689,"email":"eum","password":"qui"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/customers/register"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "username": "placeat",
+    "fullname": "ea",
+    "mobile": 1323741.40689,
+    "email": "eum",
+    "password": "qui"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": {
+        "username": "flamezbaba",
+        "fullname": "sangosanya segun",
+        "email": "flamezbaba@gmail.com",
+        "mobile": "08093894657",
+        "created_at": "2020-12-26 08:21:17",
+        "updated_at": "2020-12-26 08:21:17"
+    }
+}</code></pre>
+<div id="execution-results-POSTapi-v1-customers-register" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-customers-register"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-customers-register"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-customers-register" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-customers-register"></code></pre>
+</div>
+<form id="form-POSTapi-v1-customers-register" data-method="POST" data-path="api/v1/customers/register" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-customers-register', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-customers-register" onclick="tryItOut('POSTapi-v1-customers-register');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-customers-register" onclick="cancelTryOut('POSTapi-v1-customers-register');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-customers-register" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/customers/register</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-customers-register" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>username</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="username" data-endpoint="POSTapi-v1-customers-register" data-component="body" required  hidden>
+<br>
+the customer username</p>
+<p>
+<b><code>fullname</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="fullname" data-endpoint="POSTapi-v1-customers-register" data-component="body" required  hidden>
+<br>
+the customer fullname</p>
+<p>
+<b><code>mobile</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
+<input type="number" name="mobile" data-endpoint="POSTapi-v1-customers-register" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="email" data-endpoint="POSTapi-v1-customers-register" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="password" data-endpoint="POSTapi-v1-customers-register" data-component="body" required  hidden>
+<br>
+</p>
+
+</form><h1>Endpoints</h1>
+<h2>api/v1/test</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/test?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/test"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": [
+        {
+            "id": 1,
+            "name": "flamez 1",
+            "api_token": "IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8",
+            "created_at": "2020-10-16T10:08:07.000000Z",
+            "updated_at": "2020-10-16T10:08:07.000000Z"
+        }
+    ]
+}</code></pre>
+<div id="execution-results-GETapi-v1-test" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-test"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-test"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-test" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-test"></code></pre>
+</div>
+<form id="form-GETapi-v1-test" data-method="GET" data-path="api/v1/test" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-test', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-test" onclick="tryItOut('GETapi-v1-test');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-test" onclick="cancelTryOut('GETapi-v1-test');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-test" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/test</code></b>
+</p>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/test</code></b>
+</p>
+<p>
+<small class="badge badge-darkblue">PUT</small>
+ <b><code>api/v1/test</code></b>
+</p>
+<p>
+<small class="badge badge-purple">PATCH</small>
+ <b><code>api/v1/test</code></b>
+</p>
+<p>
+<small class="badge badge-red">DELETE</small>
+ <b><code>api/v1/test</code></b>
+</p>
+<p>
+<small class="badge badge-grey">OPTIONS</small>
+ <b><code>api/v1/test</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-test" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>api/v1/tokens</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/tokens?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/tokens"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": [
+        {
+            "id": 1,
+            "name": "flamez 1",
+            "api_token": "IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8",
+            "created_at": "2020-10-16T10:08:07.000000Z",
+            "updated_at": "2020-10-16T10:08:07.000000Z"
+        }
+    ]
+}</code></pre>
+<div id="execution-results-GETapi-v1-tokens" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-tokens"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-tokens"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-tokens" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-tokens"></code></pre>
+</div>
+<form id="form-GETapi-v1-tokens" data-method="GET" data-path="api/v1/tokens" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-tokens', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-tokens" onclick="tryItOut('GETapi-v1-tokens');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-tokens" onclick="cancelTryOut('GETapi-v1-tokens');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-tokens" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/tokens</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-tokens" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>api/v1/tokens/create</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/tokens/create?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/tokens/create"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-tokens-create" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-tokens-create"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-tokens-create"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-tokens-create" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-tokens-create"></code></pre>
+</div>
+<form id="form-POSTapi-v1-tokens-create" data-method="POST" data-path="api/v1/tokens/create" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-tokens-create', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-tokens-create" onclick="tryItOut('POSTapi-v1-tokens-create');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-tokens-create" onclick="cancelTryOut('POSTapi-v1-tokens-create');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-tokens-create" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/tokens/create</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-tokens-create" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>api/v1/list/regions/all</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/list/regions/all?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/list/regions/all"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": [
+        "moniya",
+        "dugbe",
+        "ogunpa",
+        "aleshinloye",
+        "eleyele",
+        "jericho",
+        "nihort",
+        "bodija",
+        "secretariat",
+        "agodi",
+        "ikolaba",
+        "sango",
+        "u.i",
+        "mokola",
+        "samonda",
+        "apete",
+        "ijokodo",
+        "agbaje",
+        "yemetu",
+        "total garden",
+        "gate",
+        "orita-bashorun"
+    ]
+}</code></pre>
+<div id="execution-results-GETapi-v1-list-regions-all" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-list-regions-all"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-list-regions-all"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-list-regions-all" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-list-regions-all"></code></pre>
+</div>
+<form id="form-GETapi-v1-list-regions-all" data-method="GET" data-path="api/v1/list/regions/all" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-list-regions-all', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-list-regions-all" onclick="tryItOut('GETapi-v1-list-regions-all');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-list-regions-all" onclick="cancelTryOut('GETapi-v1-list-regions-all');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-list-regions-all" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/list/regions/all</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-list-regions-all" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>api/v1/zones</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/zones"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": [
+        {
+            "id": 11,
+            "name": "zone 10",
+            "regions": [
+                "moniya"
+            ],
+            "created_at": "2020-11-09 09:37:02",
+            "updated_at": "2020-11-09 09:41:16"
+        },
+        {
+            "id": 10,
+            "name": "zone 2",
+            "regions": [
+                "dugbe",
+                "ogunpa",
+                "aleshinloye",
+                "eleyele",
+                "jericho",
+                "nihort"
+            ],
+            "created_at": "2020-11-04 03:29:22",
+            "updated_at": "2020-11-04 03:29:22"
+        },
+        {
+            "id": 9,
+            "name": "zone 1",
+            "regions": [
+                "bodija",
+                "secretariat",
+                "agodi",
+                "ikolaba",
+                "sango",
+                "u.i",
+                "mokola",
+                "samonda",
+                "apete",
+                "ijokodo",
+                "agbaje",
+                "yemetu",
+                "total garden",
+                "gate",
+                "orita-bashorun"
+            ],
+            "created_at": "2020-11-04 03:28:31",
+            "updated_at": "2020-11-04 03:28:31"
+        }
+    ]
+}</code></pre>
+<div id="execution-results-GETapi-v1-zones" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-zones"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-zones"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-zones" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-zones"></code></pre>
+</div>
+<form id="form-GETapi-v1-zones" data-method="GET" data-path="api/v1/zones" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-zones', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-zones" onclick="tryItOut('GETapi-v1-zones');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-zones" onclick="cancelTryOut('GETapi-v1-zones');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-zones" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/zones</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-zones" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>Create record</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/zones"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-zones" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-zones" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-zones"></code></pre>
+</div>
+<form id="form-POSTapi-v1-zones" data-method="POST" data-path="api/v1/zones" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones" onclick="tryItOut('POSTapi-v1-zones');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones" onclick="cancelTryOut('POSTapi-v1-zones');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/zones</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>update single record</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/zones/assumenda?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/zones/assumenda"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-zones--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones--id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-zones--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-zones--id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-zones--id-" data-method="POST" data-path="api/v1/zones/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones--id-" onclick="tryItOut('POSTapi-v1-zones--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones--id-" onclick="cancelTryOut('POSTapi-v1-zones--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/zones/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-zones--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>update product category record - to add new category</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/zones/regions/delete/quaerat?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/zones/regions/delete/quaerat"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-zones-regions-delete--zone_id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones-regions-delete--zone_id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones-regions-delete--zone_id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-zones-regions-delete--zone_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-zones-regions-delete--zone_id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-zones-regions-delete--zone_id-" data-method="POST" data-path="api/v1/zones/regions/delete/{zone_id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones-regions-delete--zone_id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones-regions-delete--zone_id-" onclick="tryItOut('POSTapi-v1-zones-regions-delete--zone_id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones-regions-delete--zone_id-" onclick="cancelTryOut('POSTapi-v1-zones-regions-delete--zone_id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones-regions-delete--zone_id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/zones/regions/delete/{zone_id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>zone_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="zone_id" data-endpoint="POSTapi-v1-zones-regions-delete--zone_id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones-regions-delete--zone_id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>delete single record</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/zones/delete/accusamus?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/zones/delete/accusamus"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-zones-delete--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones-delete--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones-delete--id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-zones-delete--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-zones-delete--id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-zones-delete--id-" data-method="POST" data-path="api/v1/zones/delete/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones-delete--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones-delete--id-" onclick="tryItOut('POSTapi-v1-zones-delete--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones-delete--id-" onclick="cancelTryOut('POSTapi-v1-zones-delete--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones-delete--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/zones/delete/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-zones-delete--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones-delete--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>api/v1/find/zone/via/region/{region}</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/find/zone/via/region/at?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/find/zone/via/region/at"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": null
+}</code></pre>
+<div id="execution-results-GETapi-v1-find-zone-via-region--region-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-find-zone-via-region--region-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-find-zone-via-region--region-"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-find-zone-via-region--region-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-find-zone-via-region--region-"></code></pre>
+</div>
+<form id="form-GETapi-v1-find-zone-via-region--region-" data-method="GET" data-path="api/v1/find/zone/via/region/{region}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-find-zone-via-region--region-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-find-zone-via-region--region-" onclick="tryItOut('GETapi-v1-find-zone-via-region--region-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-find-zone-via-region--region-" onclick="cancelTryOut('GETapi-v1-find-zone-via-region--region-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-find-zone-via-region--region-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/find/zone/via/region/{region}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>region</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="region" data-endpoint="GETapi-v1-find-zone-via-region--region-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-find-zone-via-region--region-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>Calculate Fee</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/calculate/fee?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/calculate/fee"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-calculate-fee" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-calculate-fee"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-calculate-fee"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-calculate-fee" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-calculate-fee"></code></pre>
+</div>
+<form id="form-POSTapi-v1-calculate-fee" data-method="POST" data-path="api/v1/calculate/fee" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-calculate-fee', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-calculate-fee" onclick="tryItOut('POSTapi-v1-calculate-fee');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-calculate-fee" onclick="cancelTryOut('POSTapi-v1-calculate-fee');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-calculate-fee" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/calculate/fee</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-calculate-fee" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>api/v1/orders/dispatch</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/orders/dispatch?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/orders/dispatch"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": [
+        {
+            "pickup_info": {
+                "zone": "zone1",
+                "location": "apata"
+            },
+            "delivery_info": {
+                "zone": "zone 3",
+                "location": "bodija"
+            }
+        },
+        {
+            "pickup_info": null,
+            "delivery_info": {
+                "zone": "zone 3",
+                "location": "bodija"
+            }
+        }
+    ]
+}</code></pre>
+<div id="execution-results-GETapi-v1-orders-dispatch" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-orders-dispatch"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-orders-dispatch"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-orders-dispatch" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-orders-dispatch"></code></pre>
+</div>
+<form id="form-GETapi-v1-orders-dispatch" data-method="GET" data-path="api/v1/orders/dispatch" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-orders-dispatch', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-orders-dispatch" onclick="tryItOut('GETapi-v1-orders-dispatch');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-orders-dispatch" onclick="cancelTryOut('GETapi-v1-orders-dispatch');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-orders-dispatch" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/orders/dispatch</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-orders-dispatch" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>Create record</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/orders/dispatch?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/orders/dispatch"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-orders-dispatch" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-orders-dispatch"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-orders-dispatch"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-orders-dispatch" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-orders-dispatch"></code></pre>
+</div>
+<form id="form-POSTapi-v1-orders-dispatch" data-method="POST" data-path="api/v1/orders/dispatch" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-orders-dispatch', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-orders-dispatch" onclick="tryItOut('POSTapi-v1-orders-dispatch');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-orders-dispatch" onclick="cancelTryOut('POSTapi-v1-orders-dispatch');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-orders-dispatch" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/orders/dispatch</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-orders-dispatch" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>Show single record</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/orders/dispatch/error?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/orders/dispatch/error"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "response": "record not found"
+}</code></pre>
+<div id="execution-results-GETapi-v1-orders-dispatch--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-orders-dispatch--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-orders-dispatch--id-"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-orders-dispatch--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-orders-dispatch--id-"></code></pre>
+</div>
+<form id="form-GETapi-v1-orders-dispatch--id-" data-method="GET" data-path="api/v1/orders/dispatch/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-orders-dispatch--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-orders-dispatch--id-" onclick="tryItOut('GETapi-v1-orders-dispatch--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-orders-dispatch--id-" onclick="cancelTryOut('GETapi-v1-orders-dispatch--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-orders-dispatch--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/orders/dispatch/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="GETapi-v1-orders-dispatch--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-orders-dispatch--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>api/test</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/test?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/test"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": [
+        {
+            "id": 1,
+            "name": "flamez 1",
+            "api_token": "IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8",
+            "created_at": "2020-10-16T10:08:07.000000Z",
+            "updated_at": "2020-10-16T10:08:07.000000Z"
+        }
+    ]
+}</code></pre>
+<div id="execution-results-GETapi-test" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-test"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-test"></code></pre>
+</div>
+<div id="execution-error-GETapi-test" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-test"></code></pre>
+</div>
+<form id="form-GETapi-test" data-method="GET" data-path="api/test" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-test', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-test" onclick="tryItOut('GETapi-test');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-test" onclick="cancelTryOut('GETapi-test');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-test" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/test</code></b>
+</p>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/test</code></b>
+</p>
+<p>
+<small class="badge badge-darkblue">PUT</small>
+ <b><code>api/test</code></b>
+</p>
+<p>
+<small class="badge badge-purple">PATCH</small>
+ <b><code>api/test</code></b>
+</p>
+<p>
+<small class="badge badge-red">DELETE</small>
+ <b><code>api/test</code></b>
+</p>
+<p>
+<small class="badge badge-grey">OPTIONS</small>
+ <b><code>api/test</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-test" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>api/failed</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/failed?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/failed"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "response": "API Authentication Failed"
+}</code></pre>
+<div id="execution-results-GETapi-failed" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-failed"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-failed"></code></pre>
+</div>
+<div id="execution-error-GETapi-failed" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-failed"></code></pre>
+</div>
+<form id="form-GETapi-failed" data-method="GET" data-path="api/failed" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-failed', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-failed" onclick="tryItOut('GETapi-failed');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-failed" onclick="cancelTryOut('GETapi-failed');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-failed" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/failed</code></b>
+</p>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/failed</code></b>
+</p>
+<p>
+<small class="badge badge-darkblue">PUT</small>
+ <b><code>api/failed</code></b>
+</p>
+<p>
+<small class="badge badge-purple">PATCH</small>
+ <b><code>api/failed</code></b>
+</p>
+<p>
+<small class="badge badge-red">DELETE</small>
+ <b><code>api/failed</code></b>
+</p>
+<p>
+<small class="badge badge-grey">OPTIONS</small>
+ <b><code>api/failed</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-failed" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>/</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+        &lt;title&gt;Laravel&lt;/title&gt;
+
+        &lt;!-- Fonts --&gt;
+        &lt;link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"&gt;
+
+        &lt;!-- Styles --&gt;
+        &lt;style&gt;
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links &gt; a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class="flex-center position-ref full-height"&gt;
+
+            &lt;div class="content"&gt;
+                &lt;div class="title m-b-md"&gt;
+                    Laravel
+                &lt;/div&gt;
+
+                &lt;div class="links"&gt;
+                    &lt;a href="https://laravel.com/docs"&gt;Docs&lt;/a&gt;
+                    &lt;a href="https://laracasts.com"&gt;Laracasts&lt;/a&gt;
+                    &lt;a href="https://laravel-news.com"&gt;News&lt;/a&gt;
+                    &lt;a href="https://blog.laravel.com"&gt;Blog&lt;/a&gt;
+                    &lt;a href="https://nova.laravel.com"&gt;Nova&lt;/a&gt;
+                    &lt;a href="https://forge.laravel.com"&gt;Forge&lt;/a&gt;
+                    &lt;a href="https://vapor.laravel.com"&gt;Vapor&lt;/a&gt;
+                    &lt;a href="https://github.com/laravel/laravel"&gt;GitHub&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<div id="execution-results-GET-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-"></code></pre>
+</div>
+<div id="execution-error-GET-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-"></code></pre>
+</div>
+<form id="form-GET-" data-method="GET" data-path="/" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GET-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GET-" onclick="tryItOut('GET-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GET-" onclick="cancelTryOut('GET-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GET-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>/</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GET-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+            </div>
+</div>
+<script>
+    $(function () {
+        var languages = ["bash","javascript"];
+        setupLanguages(languages);
+    });
+</script>
+</body>
+</html>
