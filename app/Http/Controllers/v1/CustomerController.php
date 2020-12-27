@@ -20,13 +20,9 @@ use App\Http\Resources\CustomersResource;
 /**
  * @group Customers
  *
- * APIs for managing users
+ * APIs for managing customers
 */
 class CustomerController extends Controller{
-
-	public function index(){
-		
-	}
 
 	/**
      * Create Customer Record
@@ -84,7 +80,8 @@ class CustomerController extends Controller{
 				"mobile" => $request->mobile,
 				"email" => $request->email,
 				"password" => $request->password,
-				"token" => Str::random(60)
+				"token" => Str::random(60),
+				"api_token" => Site::get_api_token_user($request->api_token)->name
 			];
 
 			$r = Customers::create($data);
@@ -94,9 +91,18 @@ class CustomerController extends Controller{
 		
 	}
 
-	public function login(Request $request){
+	/**
+     * Customer Login
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam mobile number required
+     * @bodyParam password string required
+     *
+     * @responseFile storage/responses/customers.register.post.json
+    */
+    public function login(Request $request){
 		$validator = Validator::make($request->all(), [
-			'email' => 'required|email',
+			'mobile' => 'required|string',
 			'password' => 'required|string',
 		]);
 
@@ -105,86 +111,42 @@ class CustomerController extends Controller{
 		}
 		else{
 
-			$admin = Admin::where([
-                'email' => strtolower($request->email), 
-                'password' => $request->password])->first();
+			$request->merge([
+				"mobile"=>Site::fil_num($request->mobile),
+				"password"=>Site::encode_password($request->password),
+			]);
 
-			if($admin){
-				$token = Str::random(60);
+			$customer = Customers::where(["mobile" => $request->mobile, "password" => $request->password])->first();
 
-				$data = [
-					"token" => $token
-				];
-
-				$admin->update($data);
-
-				return ["success"=>true, "response"=>$token];
-			}
-			else{
-				return ["success"=>false, "response"=>"wrong login details"];
-			}
-
-		}
-
-		
-	}
-
-	public function check(Request $request){
-		$validator = Validator::make($request->all(), [
-			'jwt' => 'required|string',
-		]);
-
-		if($validator->fails()) {
-			return ["success"=>false, "response"=>$validator->messages()->first()];
-		}
-		else{
-
-			$admin = Admin::where("token", $request->jwt)->first();
-
-			if($admin){
-				return ["success"=>true, "response"=>$admin];
-			}
-			else{
-				return ["success"=>false, "response"=>"wrong login details"];
-			}
-
-		}
-		
-	}
-
-	public function staff(Request $request){
-		$validator = Validator::make($request->all(), [
-			'code' => 'required|numeric',
-		]);
-
-		if($validator->fails()) {
-			return ["success"=>false, "response"=>$validator->messages()->first()];
-		}
-		else{
-
-			$admin = Staff::where("pin_code", $request->code)->first();
-
-			if($admin){
-				$token = Str::random(60);
+			if($customer){
+				$t = Str::random(60);
 
 				$data = [
-					"token" => $token
+					"token" => $t,
+					"api_token" => Site::get_api_token_user($request->api_token)->name
 				];
 
-				$admin->update($data);
-				return ["success"=>true, "response"=>$token];
+				$r = $customer->update($data);
+				return ["success"=>true, "response"=> new CustomersResource($customer)];				
 			}
 			else{
-				return ["success"=>false, "response"=>"wrong login details"];
+				return ["success"=>false, "response"=>"invalid login"];
 			}
-
-		}
-		
+		}	
 	}
 
-	public function check_staff(Request $request){
+
+	/**
+     * Customer Validate Login Via Token(JWT)
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam token number required
+     *
+     * @responseFile storage/responses/customers.register.post.json
+    */
+	public function validate_login(Request $request){
 		$validator = Validator::make($request->all(), [
-			'jwt' => 'required|string',
+			'token' => 'required|string',
 		]);
 
 		if($validator->fails()) {
@@ -192,18 +154,29 @@ class CustomerController extends Controller{
 		}
 		else{
 
-			$admin = Staff::where("token", $request->jwt)->first();
+			$c = Customers::where("token", $request->token)->first();
 
-			if($admin){
-				return ["success"=>true, "response"=>$admin];
+			if($c){
+				return ["success"=>true, "response"=> new CustomersResource($c)];
 			}
 			else{
-				return ["success"=>false, "response"=>"wrong login details"];
+				return ["success"=>false, "response"=>"user not logged in"];
 			}
 
 		}
 		
 	}
 
+	/**
+     * All Customer List
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     *
+     * @responseFile storage/responses/customers.register.post.json
+    */
+    public function all_customers(Request $request){
+		$r = CustomersResource::collection(Customers::all());
+		return ["success"=>true, "response"=>$r];
+	}
 	
 }

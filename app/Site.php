@@ -113,4 +113,24 @@ class Site extends Model{
         }
     }
 
+    public static function get_api_token_user($token){
+        $r = DB::select("SELECT * FROM api_access WHERE api_token='$token'");
+        $output = [];
+        if(count($r) > 0){
+            foreach ($r as $value) {
+                $output = $value;
+            }
+        }
+        else{
+             foreach(Schema::getColumnListing("api_access") as $d => $value) {
+                $output[$value] = null;
+            }
+
+            $output = json_encode($output);
+            $output = json_decode($output);
+        }
+
+        return $output; 
+    }
+
 }

@@ -37,6 +37,9 @@ Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v
 	Route::post('zones/delete/{id}', 'v1\ZonesController@delete');
 
 	Route::post('customers/register', 'v1\CustomerController@register');
+	Route::post('customers/login', 'v1\CustomerController@login');
+	Route::post('customers/validate_login', 'v1\CustomerController@validate_login');
+	Route::get('customers/all', 'v1\CustomerController@all_customers');
 
 
 	Route::get('find/zone/via/region/{region}', 'v1\ZonesController@find_via_region_name');

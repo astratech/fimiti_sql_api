@@ -19,6 +19,8 @@ class CustomersResource extends JsonResource
             'fullname'=>$this->fullname,
             'email'=>$this->email,
             'mobile'=>$this->mobile,
+            'token'=>$this->token,
+            'avatar'=>$this->avatar,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];
