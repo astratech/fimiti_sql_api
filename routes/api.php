@@ -40,6 +40,12 @@ Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v
 	Route::post('customers/login', 'v1\CustomerController@login');
 	Route::post('customers/validate_login', 'v1\CustomerController@validate_login');
 	Route::get('customers/all', 'v1\CustomerController@all_customers');
+	Route::post('customers/update/password/{id}', 'v1\CustomerController@change_password');
+	Route::post('customers/update/email/{id}', 'v1\CustomerController@change_email');
+	Route::post('customers/update/mobile/{id}', 'v1\CustomerController@change_mobile');
+	Route::post('customers/wallet/fund/{id}', 'v1\CustomerController@fund_wallet');
+
+	Route::get('ppp/decode/{password}', 'v1\CustomerController@decode_password');
 
 
 	Route::get('find/zone/via/region/{region}', 'v1\ZonesController@find_via_region_name');

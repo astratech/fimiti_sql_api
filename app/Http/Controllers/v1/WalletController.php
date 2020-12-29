@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Customer Controller for Fimiti
+ * Wallet Controller for Fimiti
  * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
  * @version 1.0
 **/
@@ -19,11 +19,11 @@ use App\Http\Resources\CustomersResource;
 
 
 /**
- * @group Customers
+ * @group Wallet
  *
- * APIs for managing customers
+ * APIs for managing customer wallet
 */
-class CustomerController extends Controller{
+class WalletController extends Controller{
 
 	/**
      * Create Customer Record
@@ -39,54 +39,49 @@ class CustomerController extends Controller{
      *
      * @responseFile storage/responses/customers.register.post.json
     */
-    public function register(Request $request){
+    public function fund(Request $request){
 		$validator = Validator::make($request->all(), [
-			'username' => 'required|string',
-			'fullname' => 'required|string',
-			'mobile' => 'required|string',
-			'email' => 'required|email',
-			'password' => 'required|string',
+			'user_id' => 'required|string',
+			'amount' => 'required|string',
+			'payment_mode' => 'required|string',
 		]);
 
 		if($validator->fails()) {
 			return ["success"=>false, "response"=>$validator->messages()->first()];
 		}
 		else{
+			$customer = Customers::find($user_id);
+			if($customer){
+				$request->merge([
+					"amount"=>Site::fil_num($request->amount),
+					"user_id"=>Site::fil_num($request->user_id),
+				]);
 
-			$request->merge([
-				"fullname"=>Site::fil_text($request->fullname),
-				"username"=>Site::fil_string($request->username),
-				"mobile"=>Site::fil_num($request->mobile),
-				"email"=>Site::fil_email($request->email),
-				"password"=>Site::encode_password($request->password),
-			]);
+				$bal_before = $customer->wallet_balance;
+				$bal_after = $customer->wallet_balance + $request->amount;
 
-			if(Customers::where("mobile", $request->mobile)->first()){
-				return ["success"=>false, "response"=>"Phone Number $request->mobile already exist"];
+				$data = [
+					"user_id" => $request->user_id,
+					"amount" => $request->amount,
+					"payment_mode" => $request->payment_mode,
+					"bal_before" => $bal_before,
+					"bal_after" => $bal_after,
+					"api_token" => Site::get_api_token_user($request->api_token)->name
+				];
+
+				$customer->wallet_balance = $bal_after;
+				$customer->save();
+
+				Wallet::create($data);
+				return ["success"=>true, "response"=> $customer->wallet_balance];
+			}
+			else{
+				return ["success"=>false, "response"=>"user not found")];
 			}
 
-			if(Customers::where("email", $request->email)->first()){
-				return ["success"=>false, "response"=>"Email $request->email already exist"];
-			}
+			
 
-			if(Customers::where("username", $request->username)->first()){
-				return ["success"=>false, "response"=>"Username $request->username already exist"];
-			}
-
-			$token = Str::random(60);
-
-			$data = [
-				"fullname" => $request->fullname,
-				"username" => $request->username,
-				"mobile" => $request->mobile,
-				"email" => $request->email,
-				"password" => $request->password,
-				"token" => Str::random(60),
-				"api_token" => Site::get_api_token_user($request->api_token)->name
-			];
-
-			$r = Customers::create($data);
-			return ["success"=>true, "response"=> new CustomersResource($r)];
+			
 		}
 
 		
@@ -300,55 +295,6 @@ class CustomerController extends Controller{
 		
 		return ["success"=>true, "response"=> Site::decode_password($password)];
 
-	}
-
-	public function fund_wallet($id, Request $request){
-		$validator = Validator::make($request->all(), [
-			'amount' => 'required|string',
-			'payment_mode' => 'required|string',
-		]);
-
-		if($validator->fails()) {
-			return ["success"=>false, "response"=>$validator->messages()->first()];
-		}
-		else{
-			$customer = Customers::find($id);
-			if($customer){
-				$request->merge([
-					"amount"=>Site::fil_num($request->amount),
-					"payment_mode"=>Site::fil_string($request->payment_mode),
-				]);
-
-				$bal_before = $customer->wallet_balance;
-				$bal_after = $customer->wallet_balance + $request->amount;
-
-				$data = [
-					"user_id" => $id,
-					"amount" => $request->amount,
-					"payment_mode" => $request->payment_mode,
-					"bal_before" => $bal_before,
-					"bal_after" => $bal_after,
-					"type" => "credit",
-					"api_token" => Site::get_api_token_user($request->api_token)->name
-				];
-
-				Wallet::create($data);
-
-				$customer->wallet_balance = $bal_after;
-				$customer->save();
-				
-				return ["success"=>true, "response"=> $customer->wallet_balance];
-			}
-			else{
-				return ["success"=>false, "response"=>"user not found"];
-			}
-
-			
-
-			
-		}
-
-		
 	}
 
 	/**
