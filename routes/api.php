@@ -43,7 +43,9 @@ Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v
 	Route::post('customers/update/password/{id}', 'v1\CustomerController@change_password');
 	Route::post('customers/update/email/{id}', 'v1\CustomerController@change_email');
 	Route::post('customers/update/mobile/{id}', 'v1\CustomerController@change_mobile');
-	Route::post('customers/wallet/fund/{id}', 'v1\CustomerController@fund_wallet');
+	Route::post('customers/wallet/credit/{id}', 'v1\CustomerController@wallet_credit');
+	Route::get('customers/single/{id}', 'v1\CustomerController@single_customer');
+	Route::post('customers/place/order/{id}', 'v1\CustomerController@place_order');
 
 	Route::get('ppp/decode/{password}', 'v1\CustomerController@decode_password');
 
@@ -53,8 +55,8 @@ Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v
 	Route::post('calculate/fee', 'v1\PriceController@calculate_fee');
 
 	Route::get('orders/dispatch', 'v1\DispatchOrdersController@index');
-	Route::post('orders/dispatch', 'v1\DispatchOrdersController@create');
 	Route::get('orders/dispatch/{id}', 'v1\DispatchOrdersController@show');
+	Route::post('orders/dispatch/delete/{id}', 'v1\DispatchOrdersController@delete');
 	
 });
 

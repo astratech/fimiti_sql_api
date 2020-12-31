@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 Use App\Customers;
 Use App\Wallet;
+Use App\DispatchOrders;
 Use App\Site;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -296,16 +297,30 @@ class CustomerController extends Controller{
 		
 	}
 
+	public function single_customer($id ,Request $request){
+		
+		$c = Customers::find($id);
+
+		if($c){
+			return ["success"=>true, "response"=> new CustomersResource($c)];
+		}
+		else{
+			return ["success"=>false, "response"=>"record not found"];
+		}
+		
+	}
+
 	public function decode_password($password ,Request $request){
 		
 		return ["success"=>true, "response"=> Site::decode_password($password)];
 
 	}
 
-	public function fund_wallet($id, Request $request){
+	public function wallet_credit($id, Request $request){
 		$validator = Validator::make($request->all(), [
 			'amount' => 'required|string',
 			'payment_mode' => 'required|string',
+			'trans_num' => 'required|string',
 		]);
 
 		if($validator->fails()) {
@@ -317,6 +332,7 @@ class CustomerController extends Controller{
 				$request->merge([
 					"amount"=>Site::fil_num($request->amount),
 					"payment_mode"=>Site::fil_string($request->payment_mode),
+					"trans_num"=>Site::fil_string($request->trans_num),
 				]);
 
 				$bal_before = $customer->wallet_balance;
@@ -326,6 +342,7 @@ class CustomerController extends Controller{
 					"user_id" => $id,
 					"amount" => $request->amount,
 					"payment_mode" => $request->payment_mode,
+					"trans_num" => $request->trans_num,
 					"bal_before" => $bal_before,
 					"bal_after" => $bal_after,
 					"type" => "credit",
@@ -337,7 +354,7 @@ class CustomerController extends Controller{
 				$customer->wallet_balance = $bal_after;
 				$customer->save();
 				
-				return ["success"=>true, "response"=> $customer->wallet_balance];
+				return ["success"=>true, "response"=> new CustomersResource($customer)];
 			}
 			else{
 				return ["success"=>false, "response"=>"user not found"];
@@ -348,6 +365,140 @@ class CustomerController extends Controller{
 			
 		}
 
+		
+	}
+
+	public function place_order($id, Request $request){
+
+		$validator = Validator::make($request->all(), [
+			'courier' => 'string|required',
+			'pickup_info' => 'json|required',
+			'delivery_info' => 'json|required',
+			'package_info' => 'json',
+			'timeline' => 'json',
+			'pricing' => 'json|required',
+			'rider_info' => 'json',
+			'payment_info' => 'json|required',
+		]);
+
+		// return ["success"=>false, "response"=>$request->all()];
+		// dd($request->delivery_info);
+
+
+		if($validator->fails()) {
+			return ["success"=>false, "response"=>$validator->messages()->first()];
+		}
+		else{
+			$data = [
+				"user_id" => $id,
+				"courier" => $request->courier,
+				"pickup_info" => is_null($request->pickup_info) ? null : $request->pickup_info,
+				"delivery_info" => is_null($request->delivery_info) ? null : $request->delivery_info,
+				"package_info" => is_null($request->package_info) ? null : $request->package_info,
+				"timeline" => is_null($request->timeline) ? null : $request->timeline,
+				"pricing" => is_null($request->pricing) ? null : $request->pricing,
+				"rider_info" => is_null($request->rider_info) ? null : $request->rider_info,
+				"payment_info" => is_null($request->payment_info) ? null : $request->payment_info,
+			];
+			$r = DispatchOrders::create($data);
+			return ["success"=>true, "response"=>$r];
+			
+		}
+		
+	}
+
+	public function pay_via_wallet($id, Request $request){
+
+		$validator = Validator::make($request->all(), [
+			'order_id' => 'string|required',
+			'total_amount' => 'numeric|required',
+			'ref' => 'string|required',
+			'payment_mode' => 'string|required',
+		]);
+
+
+		if($validator->fails()) {
+			return ["success"=>false, "response"=>$validator->messages()->first()];
+		}
+		else{
+			$customer = Customers::find($id);
+			$order = DispatchOrders::find($request->order_id);
+			if($customer){
+				$request->merge([
+					"order_id"=>Site::fil_num($request->order_id),
+					"total_amount"=>Site::fil_num($request->total_amount),
+					"ref"=>Site::fil_string($request->ref),
+					"payment_mode"=>Site::fil_string($request->payment_mode),
+				]);
+
+				$bal_before = $customer->wallet_balance;
+				$bal_after = $customer->wallet_balance - $request->amount;
+
+				if($amount > $bal_before){
+					return ["success"=>false, "response"=>"insufficient balance"];
+				}
+
+				
+
+				try {
+				    \DB::beginTransaction();
+
+				    // remove amount from balance
+					$data = [
+						"user_id" => $id,
+						"amount" => $request->amount,
+						"payment_mode" => $request->payment_mode,
+						"trans_num" => $request->trans_num,
+						"bal_before" => $bal_before,
+						"bal_after" => $bal_after,
+						"type" => "debit",
+						"api_token" => Site::get_api_token_user($request->api_token)->name
+					];
+
+				    Wallet::create($data);
+
+				    // update order records
+
+
+				    // update user balance
+				    $customer->wallet_balance = $bal_after;
+					$customer->save();
+
+				    \DB::commit();
+
+				} catch (Throwable $e) {
+				    \DB::rollback();
+				}
+
+
+				
+
+				
+
+				
+			}
+			else{
+				return ["success"=>false, "response"=>"user not found"];
+			}
+			
+
+			// update order
+
+			$data = [
+				"user_id" => $id,
+				"courier" => $request->courier,
+				"pickup_info" => is_null($request->pickup_info) ? null : $request->pickup_info,
+				"delivery_info" => is_null($request->delivery_info) ? null : $request->delivery_info,
+				"package_info" => is_null($request->package_info) ? null : $request->package_info,
+				"timeline" => is_null($request->timeline) ? null : $request->timeline,
+				"pricing" => is_null($request->pricing) ? null : $request->pricing,
+				"rider_info" => is_null($request->rider_info) ? null : $request->rider_info,
+				"payment_info" => is_null($request->payment_info) ? null : $request->payment_info,
+			];
+			$r = DispatchOrders::create($data);
+			return ["success"=>true, "response"=>$r];
+			
+		}
 		
 	}
 

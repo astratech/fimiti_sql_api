@@ -43,7 +43,7 @@ var dispatch_orders = {
 	user_id,
 	courier: String,
 	pickup_info: {
-		location: String,
+		region: String,
 		zone: String,
 		address: String,
 		fullname: String,
@@ -51,7 +51,7 @@ var dispatch_orders = {
 		email: String,
 	},
 	delivery_info: {
-		location: String,
+		region: String,
 		zone: String,
 		address: String,
 		fullname: String,
@@ -80,7 +80,7 @@ var dispatch_orders = {
 		mobile: String,
 	},
 	payment_info:{
-		method: Enum ['cash','transfer','atm'],
+		method: Enum ['cash','transfer','atm', 'wallet'],
 		confirmed: true|false,
 		date_paid,
 		date_confirmed
