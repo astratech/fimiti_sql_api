@@ -133,4 +133,14 @@ class Site extends Model{
         return $output; 
     }
 
+    public static function convert_db_json_to_array($json){
+        $r = json_decode(json_encode(json_decode($json)), true);
+        return $r; 
+    }
+
+    public static function convert_db_array_to_json($arr){
+        $r = json_encode(json_decode(json_encode($arr)), true);
+        return $r; 
+    }
+
 }

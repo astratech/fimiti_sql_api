@@ -69,11 +69,9 @@ var dispatch_orders = {
 		delivered: Date;
 	},
 	pricing: {
-		route_price: String;
-		courier_price: String;
-		dimension_price: String;
-		vat_price: String;
-		other_price: String;
+		price: String,
+		promo_code: String,
+		promo_amount: String,
 	},
 	rider_info: {
 		name: String,
@@ -89,48 +87,20 @@ var dispatch_orders = {
 	created_at,
 }
 
-var orders = {
-	username: String,
-	service: String,
-	courier: String,
-	vendor_id: _Id,
-	pickup_info: {
-		location: String,
-		zone: String,
-		address: String,
-		fullname: String,
-		mobile: String,
-		email: String,
-	},
-	delivery_info: {
-		location: String,
-		zone: String,
-		address: String,
-		fullname: String,
-		mobile: String,
-		email: String,
-	},
-	package_info: {
-		type: String,
-		dimension: String,
-		quantity: String,
-	},
-	timeline: {
-		created: Date;
-		moved: Date;
-		delivered: Date;
-	},
-	pricing: {
-		route_price: String;
-		courier_price: String;
-		dimension_price: String;
-		vat_price: String;
-		other_price: String;
-	},
-	rider: {
-		name: String,
-		mobile: String,
-	},
+
+var riders = {
+	name : String,
+	active: String,
+	rating: String,
 	updated_at,
 	created_at,
 };
+
+var riders_movement = {
+	rider_id: String,
+	location: String,
+	pickup_zone: String,
+	delivery_zone: String,
+	updated_at,
+	created_at,
+}

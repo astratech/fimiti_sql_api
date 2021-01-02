@@ -17,6 +17,7 @@ Use App\Site;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Http\Resources\CustomersResource;
+use App\Http\Resources\DispatchOrdersResources;
 
 
 /**
@@ -389,8 +390,15 @@ class CustomerController extends Controller{
 			return ["success"=>false, "response"=>$validator->messages()->first()];
 		}
 		else{
+			// generate order ref
+			$ref = "FMT".rand(100000,999999);
+			if(count(DispatchOrders::where("ref",$ref)->get()) > 0){
+				$ref = "FMT".rand(100000,999999);
+			}
+
 			$data = [
 				"user_id" => $id,
+				"ref" => $ref,
 				"courier" => $request->courier,
 				"pickup_info" => is_null($request->pickup_info) ? null : $request->pickup_info,
 				"delivery_info" => is_null($request->delivery_info) ? null : $request->delivery_info,
@@ -409,36 +417,44 @@ class CustomerController extends Controller{
 
 	public function pay_via_wallet($id, Request $request){
 
+		$request->merge([
+			"order_id"=>Site::fil_num($request->order_id),
+			"total_amount"=>Site::fil_num($request->total_amount),
+			"ref"=>Site::fil_string($request->ref),
+			"payment_mode"=>Site::fil_string($request->payment_mode),
+		]);
+
 		$validator = Validator::make($request->all(), [
-			'order_id' => 'string|required',
+			'order_id' => 'numeric|required',
 			'total_amount' => 'numeric|required',
 			'ref' => 'string|required',
 			'payment_mode' => 'string|required',
 		]);
 
 
+
 		if($validator->fails()) {
 			return ["success"=>false, "response"=>$validator->messages()->first()];
 		}
 		else{
+			$date = date("Y-m-d H:i:s");
+
 			$customer = Customers::find($id);
 			$order = DispatchOrders::find($request->order_id);
-			if($customer){
-				$request->merge([
-					"order_id"=>Site::fil_num($request->order_id),
-					"total_amount"=>Site::fil_num($request->total_amount),
-					"ref"=>Site::fil_string($request->ref),
-					"payment_mode"=>Site::fil_string($request->payment_mode),
-				]);
 
+			$payment_info = Site::convert_db_json_to_array($order->payment_info);
+			if($payment_info['confirmed'] == "true"){
+				return ["success"=>false, "response"=>"already paid for this order"];
+			}
+
+			if($customer AND $order){
+				
 				$bal_before = $customer->wallet_balance;
-				$bal_after = $customer->wallet_balance - $request->amount;
+				$bal_after = $customer->wallet_balance - $request->total_amount;
 
-				if($amount > $bal_before){
+				if($request->total_amount > $bal_before){
 					return ["success"=>false, "response"=>"insufficient balance"];
 				}
-
-				
 
 				try {
 				    \DB::beginTransaction();
@@ -446,7 +462,7 @@ class CustomerController extends Controller{
 				    // remove amount from balance
 					$data = [
 						"user_id" => $id,
-						"amount" => $request->amount,
+						"amount" => $request->total_amount,
 						"payment_mode" => $request->payment_mode,
 						"trans_num" => $request->trans_num,
 						"bal_before" => $bal_before,
@@ -458,6 +474,16 @@ class CustomerController extends Controller{
 				    Wallet::create($data);
 
 				    // update order records
+				    // update payment_info
+
+				    $payment_info = Site::convert_db_json_to_array($order->payment_info);
+				    $payment_info['confirmed'] = true;
+				    $payment_info['method'] = $request->payment_mode;
+				    $payment_info['date_paid'] = $date;
+				    $payment_info['date_confirmed'] = $date;
+
+				    $new_payment_info = Site::convert_db_array_to_json($payment_info);
+				    $order->update(["payment_info"=>$new_payment_info]);
 
 
 				    // update user balance
@@ -466,37 +492,16 @@ class CustomerController extends Controller{
 
 				    \DB::commit();
 
+				    return ["success"=>false, "response"=>new DispatchOrdersResources($order)];
+
 				} catch (Throwable $e) {
 				    \DB::rollback();
 				}
-
-
-				
-
-				
-
 				
 			}
 			else{
 				return ["success"=>false, "response"=>"user not found"];
 			}
-			
-
-			// update order
-
-			$data = [
-				"user_id" => $id,
-				"courier" => $request->courier,
-				"pickup_info" => is_null($request->pickup_info) ? null : $request->pickup_info,
-				"delivery_info" => is_null($request->delivery_info) ? null : $request->delivery_info,
-				"package_info" => is_null($request->package_info) ? null : $request->package_info,
-				"timeline" => is_null($request->timeline) ? null : $request->timeline,
-				"pricing" => is_null($request->pricing) ? null : $request->pricing,
-				"rider_info" => is_null($request->rider_info) ? null : $request->rider_info,
-				"payment_info" => is_null($request->payment_info) ? null : $request->payment_info,
-			];
-			$r = DispatchOrders::create($data);
-			return ["success"=>true, "response"=>$r];
 			
 		}
 		

@@ -15,8 +15,18 @@ class DispatchOrdersResources extends JsonResource
     public function toArray($request)
     {
         $r = [
+            'ref'=>$this->ref,
+            'user_id'=>$this->user_id,
+            'courier'=>$this->courier,
             'pickup_info'=>json_decode($this->pickup_info),
             'delivery_info'=>json_decode($this->delivery_info),
+            'package_info'=>json_decode($this->package_info),
+            'timeline'=>json_decode($this->timeline),
+            'pricing'=>json_decode($this->pricing),
+            'rider_info'=>json_decode($this->rider_info),
+            'payment_info'=>json_decode($this->payment_info),
+            'created_at' => (string) $this->created_at,
+            'updated_at' => (string) $this->updated_at,
         ];
         // return parent::toArray($request);
         return $r;
