@@ -92,6 +92,7 @@ var riders = {
 	name : String,
 	active: String,
 	rating: String,
+	avatar: String,
 	updated_at,
 	created_at,
 };
@@ -99,8 +100,8 @@ var riders = {
 var riders_movement = {
 	rider_id: String,
 	location: String,
-	pickup_zone: String,
-	delivery_zone: String,
+	zone: String,
+	region: String,
 	updated_at,
 	created_at,
 }

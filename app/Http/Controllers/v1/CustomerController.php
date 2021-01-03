@@ -298,6 +298,13 @@ class CustomerController extends Controller{
 		
 	}
 
+	/**
+     * Get Single Customer Record
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam id number required customer_id
+     *
+    */
 	public function single_customer($id ,Request $request){
 		
 		$c = Customers::find($id);
@@ -317,6 +324,15 @@ class CustomerController extends Controller{
 
 	}
 
+	/**
+     * Credit Customer Wallet
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam amount number required total amount to be credited
+     * @bodyParam payment_mode string required either ('cash','transfer','atm', 'wallet')
+     * @bodyParam trans_num string required
+     *
+    */
 	public function wallet_credit($id, Request $request){
 		$validator = Validator::make($request->all(), [
 			'amount' => 'required|string',
@@ -369,6 +385,20 @@ class CustomerController extends Controller{
 		
 	}
 
+	/**
+     * Record Order
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam courier string required total amount to be credited
+     * @bodyParam pickup_info json required refer to order json for full details
+     * @bodyParam delivery_info json required refer to order json for full details
+     * @bodyParam package_info json refer to order json for full details
+     * @bodyParam timeline json refer to order json for full details
+     * @bodyParam pricing json required refer to order json for full details
+     * @bodyParam rider_info json refer to order json for full details
+     * @bodyParam payment_info json required refer to order json for full details
+     *
+    */
 	public function place_order($id, Request $request){
 
 		$validator = Validator::make($request->all(), [
@@ -381,10 +411,6 @@ class CustomerController extends Controller{
 			'rider_info' => 'json',
 			'payment_info' => 'json|required',
 		]);
-
-		// return ["success"=>false, "response"=>$request->all()];
-		// dd($request->delivery_info);
-
 
 		if($validator->fails()) {
 			return ["success"=>false, "response"=>$validator->messages()->first()];
@@ -415,6 +441,18 @@ class CustomerController extends Controller{
 		
 	}
 
+
+	/**
+     * Debit Customer Wallet
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam order_id number required
+     * @bodyParam total_amount string required
+     * @bodyParam ref string required
+     * @bodyParam ref string required
+     * @bodyParam payment_mode string required default "wallet"
+     *
+    */
 	public function pay_via_wallet($id, Request $request){
 
 		$request->merge([
@@ -464,7 +502,7 @@ class CustomerController extends Controller{
 						"user_id" => $id,
 						"amount" => $request->total_amount,
 						"payment_mode" => $request->payment_mode,
-						"trans_num" => $request->trans_num,
+						"trans_num" => $request->ref,
 						"bal_before" => $bal_before,
 						"bal_after" => $bal_after,
 						"type" => "debit",
