@@ -15,14 +15,36 @@ Use App\Site;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\ZonesResource;
 
+
+/**
+ * @group Zones
+ *
+ * APIs for managing zones
+*/
 class ZonesController extends Controller{
 
+	/**
+     * List all zones
+     *
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     *
+    */
 	public function index(){
 		$r = Zones::orderBy("id", "desc")->get();
 		$r = ZonesResource::collection($r);
 		return ["success"=>true, "response"=>$r];
 	}
 
+
+
+	/**
+     * List all regions
+     *
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     *
+    */
 	public function list_all_regions(){
 		$regions = [];
 		$r = Zones::orderBy("id", "desc")->get();
@@ -36,12 +58,13 @@ class ZonesController extends Controller{
 	}
 
 	/**
-     * Create record
+     * Create Zone
      *
-     * @param  string 	$title
-     * @param  string 	$name
-     * @param  string 	$role
-     * @return JSON
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam name string required
+     * @bodyParam regions array required
+     *
     */
 	public function create(Request $request){
 		$validator = Validator::make($request->all(), [
@@ -78,10 +101,12 @@ class ZonesController extends Controller{
 	}
 
 	/**
-     * Show single record
+     * Zone record
      *
-     * @param  int 	$id
-     * @return JSON
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam id numeric required
+     *
     */
 	public function show($id){
 		$data = Zones::find($id);
@@ -93,13 +118,16 @@ class ZonesController extends Controller{
 		}
 	}
 
+	
+
 	/**
-     * update single record
+     * Update zone record
      *
-     * @param  int 		$id
-     * @param  string 	$name
-     * @param  int 	$price
-     * @return JSON
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam name string  required
+     * @bodyParam regions array  required
+     *
     */
 	public function update($id, Request $request){
 		$validator = Validator::make($request->all(), [
@@ -143,12 +171,12 @@ class ZonesController extends Controller{
 	}
 
 	/**
-     * update product category record - to add new category
+     * Delete region 
      *
-     * @param  int 		$id
-     * @param  array 	$catogeries
      *
-     * @return JSON
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam region string  required
+     *
     */
 	public function delete_region($zone_id, Request $request){
 		$validator = Validator::make($request->all(), [
@@ -175,10 +203,12 @@ class ZonesController extends Controller{
 	}
 
 	/**
-     * delete single record
+     * delete zone
      *
-     * @param  int 	$id
-     * @return JSON
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam id numeric  required
+     *
     */
 	public function delete($id){
 		$record = Zones::find($id);
@@ -191,6 +221,15 @@ class ZonesController extends Controller{
 		}
 	}
 
+
+	/**
+     * Find Zone via region name
+     *
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam region string  required
+     *
+    */
 	public function find_via_region_name($region){
 		$region = Site::fil_text($region);
 		$zone = null;

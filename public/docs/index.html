@@ -44,7 +44,7 @@
                             <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: December 26 2020</li>
+            <li>Last updated: January 8 2021</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -64,10 +64,10 @@ You can switch the language used with the tabs at the top right (or from the nav
 <p>Base URL</p>
 </blockquote>
 <pre><code class="language-yaml">http://localhost</code></pre><h1>Authenticating requests</h1>
-<p>To authenticate requests, include a query parameter <strong><code>api_token</code></strong> in the request.</p>
+<p>Authenticate requests to this API's endpoints by sending a query parameter <strong><code>api_token</code></strong> in the request.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p><h1>Customers</h1>
-<p>APIs for managing users</p>
+<p>APIs for managing customers</p>
 <h2>Create Customer Record</h2>
 <p><small class="badge badge-darkred">requires authentication</small></p>
 <p>This endpoint allows you to create customer</p>
@@ -79,7 +79,7 @@ You can switch the language used with the tabs at the top right (or from the nav
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"username":"placeat","fullname":"ea","mobile":1323741.40689,"email":"eum","password":"qui"}'
+    -d '{"username":"alias","fullname":"inventore","mobile":465.079168,"email":"provident","password":"modi"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://localhost/api/v1/customers/register"
@@ -98,11 +98,11 @@ let headers = {
 };
 
 let body = {
-    "username": "placeat",
-    "fullname": "ea",
-    "mobile": 1323741.40689,
-    "email": "eum",
-    "password": "qui"
+    "username": "alias",
+    "fullname": "inventore",
+    "mobile": 465.079168,
+    "email": "provident",
+    "password": "modi"
 }
 
 fetch(url, {
@@ -176,6 +176,2954 @@ the customer fullname</p>
 <br>
 </p>
 
+</form>
+<h2>Customer Login</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/customers/login?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"mobile":512.207293,"password":"eum"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/customers/login"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "mobile": 512.207293,
+    "password": "eum"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": {
+        "username": "flamezbaba",
+        "fullname": "sangosanya segun",
+        "email": "flamezbaba@gmail.com",
+        "mobile": "08093894657",
+        "created_at": "2020-12-26 08:21:17",
+        "updated_at": "2020-12-26 08:21:17"
+    }
+}</code></pre>
+<div id="execution-results-POSTapi-v1-customers-login" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-customers-login"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-customers-login"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-customers-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-customers-login"></code></pre>
+</div>
+<form id="form-POSTapi-v1-customers-login" data-method="POST" data-path="api/v1/customers/login" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-customers-login', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-customers-login" onclick="tryItOut('POSTapi-v1-customers-login');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-customers-login" onclick="cancelTryOut('POSTapi-v1-customers-login');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-customers-login" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/customers/login</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-customers-login" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>mobile</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
+<input type="number" name="mobile" data-endpoint="POSTapi-v1-customers-login" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="password" data-endpoint="POSTapi-v1-customers-login" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Customer Validate Login Via Token(JWT)</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/customers/validate_login?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"token":560092381.83397}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/customers/validate_login"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "token": 560092381.83397
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-customers-validate_login" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-customers-validate_login"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-customers-validate_login"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-customers-validate_login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-customers-validate_login"></code></pre>
+</div>
+<form id="form-POSTapi-v1-customers-validate_login" data-method="POST" data-path="api/v1/customers/validate_login" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-customers-validate_login', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-customers-validate_login" onclick="tryItOut('POSTapi-v1-customers-validate_login');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-customers-validate_login" onclick="cancelTryOut('POSTapi-v1-customers-validate_login');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-customers-validate_login" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/customers/validate_login</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-customers-validate_login" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>token</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
+<input type="number" name="token" data-endpoint="POSTapi-v1-customers-validate_login" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>All Customer List</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/customers/all?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/customers/all"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": [
+        {
+            "id": 10,
+            "username": "flamezbaba",
+            "fullname": "sangosanya segun",
+            "email": "flamezbaba@gmail.com",
+            "mobile": "123",
+            "token": "xmOoY50MKFqOG6E1qxoa3oo43MYZ8f3C9Ca3oxSoV7HKULZ77cZ4NUCcJvVb",
+            "avatar": null,
+            "wallet_balance": "1000",
+            "created_at": "2020-12-26 14:58:01",
+            "updated_at": "2020-12-28 20:18:54"
+        },
+        {
+            "id": 14,
+            "username": "fddff",
+            "fullname": "ffhdfhf",
+            "email": "fdfdf@dfhfh.vdf",
+            "mobile": "34443",
+            "token": "GePw14zQMESK79MAelf06hnwGMSTdwG7JTfpcVbH8tZcpVn1VQQQr2UBhwWO",
+            "avatar": null,
+            "wallet_balance": "0",
+            "created_at": "2020-12-27 07:28:01",
+            "updated_at": "2020-12-27 07:28:01"
+        },
+        {
+            "id": 15,
+            "username": "fdff",
+            "fullname": "fdf",
+            "email": "dsd@daft.com",
+            "mobile": "233",
+            "token": "dPrYFjeD65wlu6AlRLOcfuqtohJi3MyVMnYK5okXL6hY3kDqzZCb751dM74Z",
+            "avatar": null,
+            "wallet_balance": "0",
+            "created_at": "2020-12-27 08:35:33",
+            "updated_at": "2020-12-27 08:35:33"
+        },
+        {
+            "id": 20,
+            "username": "fdfdfd",
+            "fullname": "cvffd",
+            "email": "fff@ff.com",
+            "mobile": "1234",
+            "token": "rdoVyyOPD7MzNnLoM1CFgEUtsKohZJQg1sA6mIFdvVkoawlL74GKIltaJPYY",
+            "avatar": null,
+            "wallet_balance": "0",
+            "created_at": "2020-12-27 09:13:47",
+            "updated_at": "2020-12-27 09:13:47"
+        },
+        {
+            "id": 21,
+            "username": "soj",
+            "fullname": "soj",
+            "email": "soj@gmail.com",
+            "mobile": "1",
+            "token": "lGKnWyJw4QACtvcSJe4ZIMhnb6JHE5JRh2L73oHuWIWfpvvYiqcIMBq3Mk0U",
+            "avatar": null,
+            "wallet_balance": "27900",
+            "created_at": "2020-12-27 17:20:57",
+            "updated_at": "2021-01-07 12:23:14"
+        }
+    ]
+}</code></pre>
+<div id="execution-results-GETapi-v1-customers-all" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-customers-all"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-customers-all"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-customers-all" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-customers-all"></code></pre>
+</div>
+<form id="form-GETapi-v1-customers-all" data-method="GET" data-path="api/v1/customers/all" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-customers-all', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-customers-all" onclick="tryItOut('GETapi-v1-customers-all');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-customers-all" onclick="cancelTryOut('GETapi-v1-customers-all');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-customers-all" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/customers/all</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-customers-all" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>Change Customer Password</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/customers/update/password/culpa?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"old_password":"est","new_password":"beatae"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/customers/update/password/culpa"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "old_password": "est",
+    "new_password": "beatae"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-customers-update-password--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-customers-update-password--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-customers-update-password--id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-customers-update-password--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-customers-update-password--id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-customers-update-password--id-" data-method="POST" data-path="api/v1/customers/update/password/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-customers-update-password--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-customers-update-password--id-" onclick="tryItOut('POSTapi-v1-customers-update-password--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-customers-update-password--id-" onclick="cancelTryOut('POSTapi-v1-customers-update-password--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-customers-update-password--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/customers/update/password/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-customers-update-password--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-customers-update-password--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>old_password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="old_password" data-endpoint="POSTapi-v1-customers-update-password--id-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>new_password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="new_password" data-endpoint="POSTapi-v1-customers-update-password--id-" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Change Customer Email</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/customers/update/email/sed?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"email":"magni"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/customers/update/email/sed"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "email": "magni"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-customers-update-email--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-customers-update-email--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-customers-update-email--id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-customers-update-email--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-customers-update-email--id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-customers-update-email--id-" data-method="POST" data-path="api/v1/customers/update/email/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-customers-update-email--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-customers-update-email--id-" onclick="tryItOut('POSTapi-v1-customers-update-email--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-customers-update-email--id-" onclick="cancelTryOut('POSTapi-v1-customers-update-email--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-customers-update-email--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/customers/update/email/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-customers-update-email--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-customers-update-email--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="email" data-endpoint="POSTapi-v1-customers-update-email--id-" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Change Customer Phone Number</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/customers/update/mobile/fugit?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"mobile":"enim"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/customers/update/mobile/fugit"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "mobile": "enim"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-customers-update-mobile--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-customers-update-mobile--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-customers-update-mobile--id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-customers-update-mobile--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-customers-update-mobile--id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-customers-update-mobile--id-" data-method="POST" data-path="api/v1/customers/update/mobile/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-customers-update-mobile--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-customers-update-mobile--id-" onclick="tryItOut('POSTapi-v1-customers-update-mobile--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-customers-update-mobile--id-" onclick="cancelTryOut('POSTapi-v1-customers-update-mobile--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-customers-update-mobile--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/customers/update/mobile/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-customers-update-mobile--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-customers-update-mobile--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>mobile</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="mobile" data-endpoint="POSTapi-v1-customers-update-mobile--id-" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Credit Customer Wallet</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/customers/wallet/credit/et?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"amount":272598495.2402778,"payment_mode":"sequi","trans_num":"vel"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/customers/wallet/credit/et"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "amount": 272598495.2402778,
+    "payment_mode": "sequi",
+    "trans_num": "vel"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-customers-wallet-credit--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-customers-wallet-credit--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-customers-wallet-credit--id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-customers-wallet-credit--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-customers-wallet-credit--id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-customers-wallet-credit--id-" data-method="POST" data-path="api/v1/customers/wallet/credit/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-customers-wallet-credit--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-customers-wallet-credit--id-" onclick="tryItOut('POSTapi-v1-customers-wallet-credit--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-customers-wallet-credit--id-" onclick="cancelTryOut('POSTapi-v1-customers-wallet-credit--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-customers-wallet-credit--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/customers/wallet/credit/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-customers-wallet-credit--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-customers-wallet-credit--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>amount</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
+<input type="number" name="amount" data-endpoint="POSTapi-v1-customers-wallet-credit--id-" data-component="body" required  hidden>
+<br>
+total amount to be credited</p>
+<p>
+<b><code>payment_mode</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="payment_mode" data-endpoint="POSTapi-v1-customers-wallet-credit--id-" data-component="body" required  hidden>
+<br>
+either ('cash','transfer','atm', 'wallet')</p>
+<p>
+<b><code>trans_num</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="trans_num" data-endpoint="POSTapi-v1-customers-wallet-credit--id-" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Get Single Customer Record</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/customers/single/quas?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"id":0.16615}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/customers/single/quas"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "id": 0.16615
+}
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "response": "record not found"
+}</code></pre>
+<div id="execution-results-GETapi-v1-customers-single--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-customers-single--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-customers-single--id-"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-customers-single--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-customers-single--id-"></code></pre>
+</div>
+<form id="form-GETapi-v1-customers-single--id-" data-method="GET" data-path="api/v1/customers/single/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-customers-single--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-customers-single--id-" onclick="tryItOut('GETapi-v1-customers-single--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-customers-single--id-" onclick="cancelTryOut('GETapi-v1-customers-single--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-customers-single--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/customers/single/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="GETapi-v1-customers-single--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-customers-single--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
+<input type="number" name="id" data-endpoint="GETapi-v1-customers-single--id-" data-component="body" required  hidden>
+<br>
+customer_id</p>
+
+</form>
+<h2>Record Order</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/customers/place/order/qui?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"courier":"occaecati","pickup_info":"suscipit","delivery_info":"adipisci","package_info":"et","timeline":"officiis","pricing":"quia","rider_info":"quia","payment_info":"laboriosam"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/customers/place/order/qui"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "courier": "occaecati",
+    "pickup_info": "suscipit",
+    "delivery_info": "adipisci",
+    "package_info": "et",
+    "timeline": "officiis",
+    "pricing": "quia",
+    "rider_info": "quia",
+    "payment_info": "laboriosam"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-customers-place-order--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-customers-place-order--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-customers-place-order--id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-customers-place-order--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-customers-place-order--id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-customers-place-order--id-" data-method="POST" data-path="api/v1/customers/place/order/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-customers-place-order--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-customers-place-order--id-" onclick="tryItOut('POSTapi-v1-customers-place-order--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-customers-place-order--id-" onclick="cancelTryOut('POSTapi-v1-customers-place-order--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-customers-place-order--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/customers/place/order/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-customers-place-order--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-customers-place-order--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>courier</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="courier" data-endpoint="POSTapi-v1-customers-place-order--id-" data-component="body" required  hidden>
+<br>
+total amount to be credited</p>
+<p>
+<b><code>pickup_info</code></b>&nbsp;&nbsp;<small>json</small>  &nbsp;
+<input type="text" name="pickup_info" data-endpoint="POSTapi-v1-customers-place-order--id-" data-component="body" required  hidden>
+<br>
+refer to order json for full details</p>
+<p>
+<b><code>delivery_info</code></b>&nbsp;&nbsp;<small>json</small>  &nbsp;
+<input type="text" name="delivery_info" data-endpoint="POSTapi-v1-customers-place-order--id-" data-component="body" required  hidden>
+<br>
+refer to order json for full details</p>
+<p>
+<b><code>package_info</code></b>&nbsp;&nbsp;<small>json</small>     <i>optional</i> &nbsp;
+<input type="text" name="package_info" data-endpoint="POSTapi-v1-customers-place-order--id-" data-component="body"  hidden>
+<br>
+refer to order json for full details</p>
+<p>
+<b><code>timeline</code></b>&nbsp;&nbsp;<small>json</small>     <i>optional</i> &nbsp;
+<input type="text" name="timeline" data-endpoint="POSTapi-v1-customers-place-order--id-" data-component="body"  hidden>
+<br>
+refer to order json for full details</p>
+<p>
+<b><code>pricing</code></b>&nbsp;&nbsp;<small>json</small>  &nbsp;
+<input type="text" name="pricing" data-endpoint="POSTapi-v1-customers-place-order--id-" data-component="body" required  hidden>
+<br>
+refer to order json for full details</p>
+<p>
+<b><code>rider_info</code></b>&nbsp;&nbsp;<small>json</small>     <i>optional</i> &nbsp;
+<input type="text" name="rider_info" data-endpoint="POSTapi-v1-customers-place-order--id-" data-component="body"  hidden>
+<br>
+refer to order json for full details</p>
+<p>
+<b><code>payment_info</code></b>&nbsp;&nbsp;<small>json</small>  &nbsp;
+<input type="text" name="payment_info" data-endpoint="POSTapi-v1-customers-place-order--id-" data-component="body" required  hidden>
+<br>
+refer to order json for full details</p>
+
+</form>
+<h2>Debit Customer Wallet</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/customers/wallet/debit/accusamus?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"order_id":39775378,"total_amount":"dolorum","ref":"sit","payment_mode":"aliquam"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/customers/wallet/debit/accusamus"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "order_id": 39775378,
+    "total_amount": "dolorum",
+    "ref": "sit",
+    "payment_mode": "aliquam"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-customers-wallet-debit--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-customers-wallet-debit--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-customers-wallet-debit--id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-customers-wallet-debit--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-customers-wallet-debit--id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-customers-wallet-debit--id-" data-method="POST" data-path="api/v1/customers/wallet/debit/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-customers-wallet-debit--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-customers-wallet-debit--id-" onclick="tryItOut('POSTapi-v1-customers-wallet-debit--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-customers-wallet-debit--id-" onclick="cancelTryOut('POSTapi-v1-customers-wallet-debit--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-customers-wallet-debit--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/customers/wallet/debit/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-customers-wallet-debit--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-customers-wallet-debit--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>order_id</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
+<input type="number" name="order_id" data-endpoint="POSTapi-v1-customers-wallet-debit--id-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>total_amount</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="total_amount" data-endpoint="POSTapi-v1-customers-wallet-debit--id-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>ref</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="ref" data-endpoint="POSTapi-v1-customers-wallet-debit--id-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>payment_mode</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="payment_mode" data-endpoint="POSTapi-v1-customers-wallet-debit--id-" data-component="body" required  hidden>
+<br>
+default "wallet"</p>
+
+</form>
+<h2>api/v1/ppp/decode/{password}</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/ppp/decode/rerum?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/ppp/decode/rerum"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": ""
+}</code></pre>
+<div id="execution-results-GETapi-v1-ppp-decode--password-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-ppp-decode--password-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-ppp-decode--password-"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-ppp-decode--password-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-ppp-decode--password-"></code></pre>
+</div>
+<form id="form-GETapi-v1-ppp-decode--password-" data-method="GET" data-path="api/v1/ppp/decode/{password}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-ppp-decode--password-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-ppp-decode--password-" onclick="tryItOut('GETapi-v1-ppp-decode--password-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-ppp-decode--password-" onclick="cancelTryOut('GETapi-v1-ppp-decode--password-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-ppp-decode--password-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/ppp/decode/{password}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="password" data-endpoint="GETapi-v1-ppp-decode--password-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-ppp-decode--password-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form><h1>Dispatch Orders</h1>
+<p>APIs</p>
+<h2>All Dispatch Orders List</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/orders/dispatch?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/orders/dispatch"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": [
+        {
+            "id": 1,
+            "ref": null,
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-01 16:29:13",
+                "date_confirmed": "2021-01-01 16:29:13"
+            },
+            "created_at": "2021-01-01 16:16:44",
+            "updated_at": "2021-01-01 16:29:13"
+        },
+        {
+            "id": 2,
+            "ref": "FMT143764",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ikolaba",
+                "zone": "zone 1"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "550"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": "false"
+            },
+            "created_at": "2021-01-01 16:34:09",
+            "updated_at": "2021-01-01 16:34:09"
+        },
+        {
+            "id": 3,
+            "ref": "FMT149163",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ikolaba",
+                "zone": "zone 1"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "550",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-01 20:41:45",
+                "date_confirmed": "2021-01-01 20:41:45"
+            },
+            "created_at": "2021-01-01 19:45:39",
+            "updated_at": "2021-01-01 20:41:45"
+        },
+        {
+            "id": 6,
+            "ref": "FMT453553",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ikolaba",
+                "zone": "zone 1"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "550",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": "false"
+            },
+            "created_at": "2021-01-01 20:21:51",
+            "updated_at": "2021-01-01 20:21:51"
+        },
+        {
+            "id": 7,
+            "ref": "FMT689799",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ikolaba",
+                "zone": "zone 1"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "550",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-01 20:42:03",
+                "date_confirmed": "2021-01-01 20:42:03"
+            },
+            "created_at": "2021-01-01 20:26:32",
+            "updated_at": "2021-01-01 20:42:03"
+        },
+        {
+            "id": 8,
+            "ref": "FMT317091",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ikolaba",
+                "zone": "zone 1"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "550",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": "false"
+            },
+            "created_at": "2021-01-02 01:03:45",
+            "updated_at": "2021-01-02 01:03:45"
+        },
+        {
+            "id": 9,
+            "ref": "FMT184593",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "samonda",
+                "zone": "zone 1"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "550",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-02 01:37:47",
+                "date_confirmed": "2021-01-02 01:37:47"
+            },
+            "created_at": "2021-01-02 01:37:27",
+            "updated_at": "2021-01-02 01:37:47"
+        },
+        {
+            "id": 10,
+            "ref": "FMT556010",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "samonda",
+                "zone": "zone 1"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "550",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-02 01:54:59",
+                "date_confirmed": "2021-01-02 01:54:59"
+            },
+            "created_at": "2021-01-02 01:54:58",
+            "updated_at": "2021-01-02 01:54:59"
+        },
+        {
+            "id": 11,
+            "ref": "FMT813303",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "samonda",
+                "zone": "zone 1"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "550",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-02 01:57:02",
+                "date_confirmed": "2021-01-02 01:57:02"
+            },
+            "created_at": "2021-01-02 01:57:00",
+            "updated_at": "2021-01-02 01:57:02"
+        },
+        {
+            "id": 12,
+            "ref": "FMT323387",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "samonda",
+                "zone": "zone 1"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "550",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-02 01:57:58",
+                "date_confirmed": "2021-01-02 01:57:58"
+            },
+            "created_at": "2021-01-02 01:57:56",
+            "updated_at": "2021-01-02 01:57:58"
+        },
+        {
+            "id": 13,
+            "ref": "FMT154713",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-02 01:58:51",
+                "date_confirmed": "2021-01-02 01:58:51"
+            },
+            "created_at": "2021-01-02 01:58:49",
+            "updated_at": "2021-01-02 01:58:51"
+        },
+        {
+            "id": 14,
+            "ref": "FMT101954",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-02 01:59:28",
+                "date_confirmed": "2021-01-02 01:59:28"
+            },
+            "created_at": "2021-01-02 01:59:26",
+            "updated_at": "2021-01-02 01:59:28"
+        },
+        {
+            "id": 15,
+            "ref": "FMT455142",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-02 02:01:40",
+                "date_confirmed": "2021-01-02 02:01:40"
+            },
+            "created_at": "2021-01-02 02:01:39",
+            "updated_at": "2021-01-02 02:01:40"
+        },
+        {
+            "id": 16,
+            "ref": "FMT854301",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 08:06:09",
+                "date_confirmed": "2021-01-03 08:06:09"
+            },
+            "created_at": "2021-01-03 08:06:07",
+            "updated_at": "2021-01-03 08:06:09"
+        },
+        {
+            "id": 18,
+            "ref": "FMT591092",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 08:27:39",
+                "date_confirmed": "2021-01-03 08:27:39"
+            },
+            "created_at": "2021-01-03 08:27:35",
+            "updated_at": "2021-01-03 08:27:39"
+        },
+        {
+            "id": 19,
+            "ref": "FMT746973",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "eleyele",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 08:30:05",
+                "date_confirmed": "2021-01-03 08:30:05"
+            },
+            "created_at": "2021-01-03 08:30:00",
+            "updated_at": "2021-01-03 08:30:05"
+        },
+        {
+            "id": 20,
+            "ref": "FMT686314",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "eleyele",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:01:02",
+                "date_confirmed": "2021-01-03 20:01:02"
+            },
+            "created_at": "2021-01-03 08:50:38",
+            "updated_at": "2021-01-03 20:01:02"
+        },
+        {
+            "id": 21,
+            "ref": "FMT625883",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "eleyele",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:01:20",
+                "date_confirmed": "2021-01-03 20:01:20"
+            },
+            "created_at": "2021-01-03 20:01:17",
+            "updated_at": "2021-01-03 20:01:20"
+        },
+        {
+            "id": 22,
+            "ref": "FMT359695",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:01:56",
+                "date_confirmed": "2021-01-03 20:01:56"
+            },
+            "created_at": "2021-01-03 20:01:52",
+            "updated_at": "2021-01-03 20:01:56"
+        },
+        {
+            "id": 23,
+            "ref": "FMT564016",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:18:05",
+                "date_confirmed": "2021-01-03 20:18:05"
+            },
+            "created_at": "2021-01-03 20:18:01",
+            "updated_at": "2021-01-03 20:18:05"
+        },
+        {
+            "id": 24,
+            "ref": "FMT696713",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:20:33",
+                "date_confirmed": "2021-01-03 20:20:33"
+            },
+            "created_at": "2021-01-03 20:20:30",
+            "updated_at": "2021-01-03 20:20:33"
+        },
+        {
+            "id": 25,
+            "ref": "FMT146002",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:26:29",
+                "date_confirmed": "2021-01-03 20:26:29"
+            },
+            "created_at": "2021-01-03 20:26:26",
+            "updated_at": "2021-01-03 20:26:29"
+        },
+        {
+            "id": 26,
+            "ref": "FMT183816",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:37:20",
+                "date_confirmed": "2021-01-03 20:37:20"
+            },
+            "created_at": "2021-01-03 20:37:18",
+            "updated_at": "2021-01-03 20:37:20"
+        },
+        {
+            "id": 27,
+            "ref": "FMT706740",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:41:16",
+                "date_confirmed": "2021-01-03 20:41:16"
+            },
+            "created_at": "2021-01-03 20:41:12",
+            "updated_at": "2021-01-03 20:41:16"
+        },
+        {
+            "id": 28,
+            "ref": "FMT486474",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:43:47",
+                "date_confirmed": "2021-01-03 20:43:47"
+            },
+            "created_at": "2021-01-03 20:41:24",
+            "updated_at": "2021-01-03 20:43:47"
+        },
+        {
+            "id": 29,
+            "ref": "FMT920398",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:48:21",
+                "date_confirmed": "2021-01-03 20:48:21"
+            },
+            "created_at": "2021-01-03 20:47:49",
+            "updated_at": "2021-01-03 20:48:21"
+        },
+        {
+            "id": 30,
+            "ref": "FMT473552",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:49:27",
+                "date_confirmed": "2021-01-03 20:49:27"
+            },
+            "created_at": "2021-01-03 20:49:25",
+            "updated_at": "2021-01-03 20:49:27"
+        },
+        {
+            "id": 31,
+            "ref": "FMT909420",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:49:50",
+                "date_confirmed": "2021-01-03 20:49:50"
+            },
+            "created_at": "2021-01-03 20:49:48",
+            "updated_at": "2021-01-03 20:49:50"
+        },
+        {
+            "id": 32,
+            "ref": "FMT394649",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:50:15",
+                "date_confirmed": "2021-01-03 20:50:15"
+            },
+            "created_at": "2021-01-03 20:50:13",
+            "updated_at": "2021-01-03 20:50:15"
+        },
+        {
+            "id": 33,
+            "ref": "FMT587137",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:51:01",
+                "date_confirmed": "2021-01-03 20:51:01"
+            },
+            "created_at": "2021-01-03 20:50:59",
+            "updated_at": "2021-01-03 20:51:01"
+        },
+        {
+            "id": 34,
+            "ref": "FMT407344",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:51:27",
+                "date_confirmed": "2021-01-03 20:51:27"
+            },
+            "created_at": "2021-01-03 20:51:25",
+            "updated_at": "2021-01-03 20:51:27"
+        },
+        {
+            "id": 35,
+            "ref": "FMT995530",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:54:15",
+                "date_confirmed": "2021-01-03 20:54:15"
+            },
+            "created_at": "2021-01-03 20:54:12",
+            "updated_at": "2021-01-03 20:54:15"
+        },
+        {
+            "id": 36,
+            "ref": "FMT560334",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:54:51",
+                "date_confirmed": "2021-01-03 20:54:51"
+            },
+            "created_at": "2021-01-03 20:54:49",
+            "updated_at": "2021-01-03 20:54:51"
+        },
+        {
+            "id": 37,
+            "ref": "FMT491129",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-03 20:55:07",
+                "date_confirmed": "2021-01-03 20:55:07"
+            },
+            "created_at": "2021-01-03 20:55:05",
+            "updated_at": "2021-01-03 20:55:07"
+        },
+        {
+            "id": 38,
+            "ref": "FMT834375",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:24:39",
+                "date_confirmed": "2021-01-04 08:24:39"
+            },
+            "created_at": "2021-01-04 08:23:17",
+            "updated_at": "2021-01-04 08:24:39"
+        },
+        {
+            "id": 39,
+            "ref": "FMT434336",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:25:43",
+                "date_confirmed": "2021-01-04 08:25:43"
+            },
+            "created_at": "2021-01-04 08:25:40",
+            "updated_at": "2021-01-04 08:25:43"
+        },
+        {
+            "id": 40,
+            "ref": "FMT768236",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:26:05",
+                "date_confirmed": "2021-01-04 08:26:05"
+            },
+            "created_at": "2021-01-04 08:26:03",
+            "updated_at": "2021-01-04 08:26:05"
+        },
+        {
+            "id": 41,
+            "ref": "FMT794812",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:26:37",
+                "date_confirmed": "2021-01-04 08:26:37"
+            },
+            "created_at": "2021-01-04 08:26:33",
+            "updated_at": "2021-01-04 08:26:37"
+        },
+        {
+            "id": 42,
+            "ref": "FMT510121",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:27:48",
+                "date_confirmed": "2021-01-04 08:27:48"
+            },
+            "created_at": "2021-01-04 08:27:46",
+            "updated_at": "2021-01-04 08:27:48"
+        },
+        {
+            "id": 43,
+            "ref": "FMT273891",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:28:15",
+                "date_confirmed": "2021-01-04 08:28:15"
+            },
+            "created_at": "2021-01-04 08:28:12",
+            "updated_at": "2021-01-04 08:28:15"
+        },
+        {
+            "id": 44,
+            "ref": "FMT520008",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": "false"
+            },
+            "created_at": "2021-01-04 08:29:19",
+            "updated_at": "2021-01-04 08:29:19"
+        },
+        {
+            "id": 45,
+            "ref": "FMT459457",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:29:29",
+                "date_confirmed": "2021-01-04 08:29:29"
+            },
+            "created_at": "2021-01-04 08:29:27",
+            "updated_at": "2021-01-04 08:29:29"
+        },
+        {
+            "id": 46,
+            "ref": "FMT648595",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:30:31",
+                "date_confirmed": "2021-01-04 08:30:31"
+            },
+            "created_at": "2021-01-04 08:30:27",
+            "updated_at": "2021-01-04 08:30:31"
+        },
+        {
+            "id": 47,
+            "ref": "FMT726268",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:31:48",
+                "date_confirmed": "2021-01-04 08:31:48"
+            },
+            "created_at": "2021-01-04 08:31:45",
+            "updated_at": "2021-01-04 08:31:48"
+        },
+        {
+            "id": 48,
+            "ref": "FMT455349",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:37:39",
+                "date_confirmed": "2021-01-04 08:37:39"
+            },
+            "created_at": "2021-01-04 08:37:10",
+            "updated_at": "2021-01-04 08:37:39"
+        },
+        {
+            "id": 49,
+            "ref": "FMT227001",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:45:39",
+                "date_confirmed": "2021-01-04 08:45:39"
+            },
+            "created_at": "2021-01-04 08:45:37",
+            "updated_at": "2021-01-04 08:45:39"
+        },
+        {
+            "id": 50,
+            "ref": "FMT930624",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:48:03",
+                "date_confirmed": "2021-01-04 08:48:03"
+            },
+            "created_at": "2021-01-04 08:48:01",
+            "updated_at": "2021-01-04 08:48:03"
+        },
+        {
+            "id": 51,
+            "ref": "FMT578852",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:49:43",
+                "date_confirmed": "2021-01-04 08:49:43"
+            },
+            "created_at": "2021-01-04 08:49:40",
+            "updated_at": "2021-01-04 08:49:43"
+        },
+        {
+            "id": 52,
+            "ref": "FMT213819",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:50:44",
+                "date_confirmed": "2021-01-04 08:50:44"
+            },
+            "created_at": "2021-01-04 08:50:42",
+            "updated_at": "2021-01-04 08:50:44"
+        },
+        {
+            "id": 53,
+            "ref": "FMT895683",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:51:30",
+                "date_confirmed": "2021-01-04 08:51:30"
+            },
+            "created_at": "2021-01-04 08:51:26",
+            "updated_at": "2021-01-04 08:51:30"
+        },
+        {
+            "id": 54,
+            "ref": "FMT966780",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:51:54",
+                "date_confirmed": "2021-01-04 08:51:54"
+            },
+            "created_at": "2021-01-04 08:51:52",
+            "updated_at": "2021-01-04 08:51:54"
+        },
+        {
+            "id": 55,
+            "ref": "FMT835258",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:52:08",
+                "date_confirmed": "2021-01-04 08:52:08"
+            },
+            "created_at": "2021-01-04 08:52:06",
+            "updated_at": "2021-01-04 08:52:08"
+        },
+        {
+            "id": 56,
+            "ref": "FMT744850",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:52:22",
+                "date_confirmed": "2021-01-04 08:52:22"
+            },
+            "created_at": "2021-01-04 08:52:17",
+            "updated_at": "2021-01-04 08:52:22"
+        },
+        {
+            "id": 57,
+            "ref": "FMT141399",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:53:39",
+                "date_confirmed": "2021-01-04 08:53:39"
+            },
+            "created_at": "2021-01-04 08:53:37",
+            "updated_at": "2021-01-04 08:53:39"
+        },
+        {
+            "id": 58,
+            "ref": "FMT399032",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:54:16",
+                "date_confirmed": "2021-01-04 08:54:16"
+            },
+            "created_at": "2021-01-04 08:54:13",
+            "updated_at": "2021-01-04 08:54:16"
+        },
+        {
+            "id": 59,
+            "ref": "FMT696401",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 08:54:51",
+                "date_confirmed": "2021-01-04 08:54:51"
+            },
+            "created_at": "2021-01-04 08:54:49",
+            "updated_at": "2021-01-04 08:54:51"
+        },
+        {
+            "id": 60,
+            "ref": "FMT825476",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "moniya",
+                "zone": "zone 10"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "600",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 15:19:36",
+                "date_confirmed": "2021-01-04 15:19:36"
+            },
+            "created_at": "2021-01-04 15:19:21",
+            "updated_at": "2021-01-04 15:19:36"
+        },
+        {
+            "id": 61,
+            "ref": "FMT977768",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "secretariat",
+                "zone": "zone 1"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "550",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-04 17:33:40",
+                "date_confirmed": "2021-01-04 17:33:40"
+            },
+            "created_at": "2021-01-04 17:32:43",
+            "updated_at": "2021-01-04 17:33:40"
+        },
+        {
+            "id": 62,
+            "ref": "FMT480134",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-07 12:20:50",
+                "date_confirmed": "2021-01-07 12:20:50"
+            },
+            "created_at": "2021-01-07 12:20:47",
+            "updated_at": "2021-01-07 12:20:50"
+        }
+    ]
+}</code></pre>
+<div id="execution-results-GETapi-v1-orders-dispatch" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-orders-dispatch"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-orders-dispatch"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-orders-dispatch" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-orders-dispatch"></code></pre>
+</div>
+<form id="form-GETapi-v1-orders-dispatch" data-method="GET" data-path="api/v1/orders/dispatch" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-orders-dispatch', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-orders-dispatch" onclick="tryItOut('GETapi-v1-orders-dispatch');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-orders-dispatch" onclick="cancelTryOut('GETapi-v1-orders-dispatch');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-orders-dispatch" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/orders/dispatch</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-orders-dispatch" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>Single Dispatch Record</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/orders/dispatch/ducimus?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"id":30694588.979851}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/orders/dispatch/ducimus"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "id": 30694588.979851
+}
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "response": "record not found"
+}</code></pre>
+<div id="execution-results-GETapi-v1-orders-dispatch--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-orders-dispatch--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-orders-dispatch--id-"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-orders-dispatch--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-orders-dispatch--id-"></code></pre>
+</div>
+<form id="form-GETapi-v1-orders-dispatch--id-" data-method="GET" data-path="api/v1/orders/dispatch/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-orders-dispatch--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-orders-dispatch--id-" onclick="tryItOut('GETapi-v1-orders-dispatch--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-orders-dispatch--id-" onclick="cancelTryOut('GETapi-v1-orders-dispatch--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-orders-dispatch--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/orders/dispatch/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="GETapi-v1-orders-dispatch--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-orders-dispatch--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
+<input type="number" name="id" data-endpoint="GETapi-v1-orders-dispatch--id-" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Delete Dispatch Record</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/orders/dispatch/delete/esse?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"id":509026104.58308643}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/orders/dispatch/delete/esse"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "id": 509026104.58308643
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-orders-dispatch-delete--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-orders-dispatch-delete--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-orders-dispatch-delete--id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-orders-dispatch-delete--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-orders-dispatch-delete--id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-orders-dispatch-delete--id-" data-method="POST" data-path="api/v1/orders/dispatch/delete/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-orders-dispatch-delete--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-orders-dispatch-delete--id-" onclick="tryItOut('POSTapi-v1-orders-dispatch-delete--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-orders-dispatch-delete--id-" onclick="cancelTryOut('POSTapi-v1-orders-dispatch-delete--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-orders-dispatch-delete--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/orders/dispatch/delete/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-orders-dispatch-delete--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-orders-dispatch-delete--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
+<input type="number" name="id" data-endpoint="POSTapi-v1-orders-dispatch-delete--id-" data-component="body" required  hidden>
+<br>
+</p>
+
 </form><h1>Endpoints</h1>
 <h2>api/v1/test</h2>
 <p><small class="badge badge-darkred">requires authentication</small></p>
@@ -215,8 +3163,9 @@ fetch(url, {
     "response": [
         {
             "id": 1,
-            "name": "flamez 1",
+            "name": "flamez",
             "api_token": "IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8",
+            "access": "open",
             "created_at": "2020-10-16T10:08:07.000000Z",
             "updated_at": "2020-10-16T10:08:07.000000Z"
         }
@@ -306,8 +3255,9 @@ fetch(url, {
     "response": [
         {
             "id": 1,
-            "name": "flamez 1",
+            "name": "flamez",
             "api_token": "IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8",
+            "access": "open",
             "created_at": "2020-10-16T10:08:07.000000Z",
             "updated_at": "2020-10-16T10:08:07.000000Z"
         }
@@ -395,775 +3345,6 @@ fetch(url, {
 <br>
 Authentication key.</p>
 </form>
-<h2>api/v1/list/regions/all</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/list/regions/all?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/list/regions/all"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "success": true,
-    "response": [
-        "moniya",
-        "dugbe",
-        "ogunpa",
-        "aleshinloye",
-        "eleyele",
-        "jericho",
-        "nihort",
-        "bodija",
-        "secretariat",
-        "agodi",
-        "ikolaba",
-        "sango",
-        "u.i",
-        "mokola",
-        "samonda",
-        "apete",
-        "ijokodo",
-        "agbaje",
-        "yemetu",
-        "total garden",
-        "gate",
-        "orita-bashorun"
-    ]
-}</code></pre>
-<div id="execution-results-GETapi-v1-list-regions-all" hidden>
-    <blockquote>Received response<span id="execution-response-status-GETapi-v1-list-regions-all"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-list-regions-all"></code></pre>
-</div>
-<div id="execution-error-GETapi-v1-list-regions-all" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-list-regions-all"></code></pre>
-</div>
-<form id="form-GETapi-v1-list-regions-all" data-method="GET" data-path="api/v1/list/regions/all" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-list-regions-all', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-list-regions-all" onclick="tryItOut('GETapi-v1-list-regions-all');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-list-regions-all" onclick="cancelTryOut('GETapi-v1-list-regions-all');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-list-regions-all" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-green">GET</small>
- <b><code>api/v1/list/regions/all</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="GETapi-v1-list-regions-all" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>api/v1/zones</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/zones"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "success": true,
-    "response": [
-        {
-            "id": 11,
-            "name": "zone 10",
-            "regions": [
-                "moniya"
-            ],
-            "created_at": "2020-11-09 09:37:02",
-            "updated_at": "2020-11-09 09:41:16"
-        },
-        {
-            "id": 10,
-            "name": "zone 2",
-            "regions": [
-                "dugbe",
-                "ogunpa",
-                "aleshinloye",
-                "eleyele",
-                "jericho",
-                "nihort"
-            ],
-            "created_at": "2020-11-04 03:29:22",
-            "updated_at": "2020-11-04 03:29:22"
-        },
-        {
-            "id": 9,
-            "name": "zone 1",
-            "regions": [
-                "bodija",
-                "secretariat",
-                "agodi",
-                "ikolaba",
-                "sango",
-                "u.i",
-                "mokola",
-                "samonda",
-                "apete",
-                "ijokodo",
-                "agbaje",
-                "yemetu",
-                "total garden",
-                "gate",
-                "orita-bashorun"
-            ],
-            "created_at": "2020-11-04 03:28:31",
-            "updated_at": "2020-11-04 03:28:31"
-        }
-    ]
-}</code></pre>
-<div id="execution-results-GETapi-v1-zones" hidden>
-    <blockquote>Received response<span id="execution-response-status-GETapi-v1-zones"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-zones"></code></pre>
-</div>
-<div id="execution-error-GETapi-v1-zones" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-zones"></code></pre>
-</div>
-<form id="form-GETapi-v1-zones" data-method="GET" data-path="api/v1/zones" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-zones', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-zones" onclick="tryItOut('GETapi-v1-zones');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-zones" onclick="cancelTryOut('GETapi-v1-zones');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-zones" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-green">GET</small>
- <b><code>api/v1/zones</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="GETapi-v1-zones" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>Create record</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/zones"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<div id="execution-results-POSTapi-v1-zones" hidden>
-    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones"></code></pre>
-</div>
-<div id="execution-error-POSTapi-v1-zones" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-zones"></code></pre>
-</div>
-<form id="form-POSTapi-v1-zones" data-method="POST" data-path="api/v1/zones" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones" onclick="tryItOut('POSTapi-v1-zones');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones" onclick="cancelTryOut('POSTapi-v1-zones');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-black">POST</small>
- <b><code>api/v1/zones</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>update single record</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/zones/assumenda?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/zones/assumenda"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<div id="execution-results-POSTapi-v1-zones--id-" hidden>
-    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones--id-"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones--id-"></code></pre>
-</div>
-<div id="execution-error-POSTapi-v1-zones--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-zones--id-"></code></pre>
-</div>
-<form id="form-POSTapi-v1-zones--id-" data-method="POST" data-path="api/v1/zones/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones--id-', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones--id-" onclick="tryItOut('POSTapi-v1-zones--id-');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones--id-" onclick="cancelTryOut('POSTapi-v1-zones--id-');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones--id-" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-black">POST</small>
- <b><code>api/v1/zones/{id}</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-<p>
-<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="id" data-endpoint="POSTapi-v1-zones--id-" data-component="url" required  hidden>
-<br>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones--id-" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>update product category record - to add new category</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/zones/regions/delete/quaerat?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/zones/regions/delete/quaerat"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<div id="execution-results-POSTapi-v1-zones-regions-delete--zone_id-" hidden>
-    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones-regions-delete--zone_id-"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones-regions-delete--zone_id-"></code></pre>
-</div>
-<div id="execution-error-POSTapi-v1-zones-regions-delete--zone_id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-zones-regions-delete--zone_id-"></code></pre>
-</div>
-<form id="form-POSTapi-v1-zones-regions-delete--zone_id-" data-method="POST" data-path="api/v1/zones/regions/delete/{zone_id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones-regions-delete--zone_id-', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones-regions-delete--zone_id-" onclick="tryItOut('POSTapi-v1-zones-regions-delete--zone_id-');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones-regions-delete--zone_id-" onclick="cancelTryOut('POSTapi-v1-zones-regions-delete--zone_id-');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones-regions-delete--zone_id-" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-black">POST</small>
- <b><code>api/v1/zones/regions/delete/{zone_id}</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-<p>
-<b><code>zone_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="zone_id" data-endpoint="POSTapi-v1-zones-regions-delete--zone_id-" data-component="url" required  hidden>
-<br>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones-regions-delete--zone_id-" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>delete single record</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/zones/delete/accusamus?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/zones/delete/accusamus"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<div id="execution-results-POSTapi-v1-zones-delete--id-" hidden>
-    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones-delete--id-"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones-delete--id-"></code></pre>
-</div>
-<div id="execution-error-POSTapi-v1-zones-delete--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-zones-delete--id-"></code></pre>
-</div>
-<form id="form-POSTapi-v1-zones-delete--id-" data-method="POST" data-path="api/v1/zones/delete/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones-delete--id-', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones-delete--id-" onclick="tryItOut('POSTapi-v1-zones-delete--id-');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones-delete--id-" onclick="cancelTryOut('POSTapi-v1-zones-delete--id-');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones-delete--id-" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-black">POST</small>
- <b><code>api/v1/zones/delete/{id}</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-<p>
-<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="id" data-endpoint="POSTapi-v1-zones-delete--id-" data-component="url" required  hidden>
-<br>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones-delete--id-" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>api/v1/find/zone/via/region/{region}</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/find/zone/via/region/at?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/find/zone/via/region/at"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "success": true,
-    "response": null
-}</code></pre>
-<div id="execution-results-GETapi-v1-find-zone-via-region--region-" hidden>
-    <blockquote>Received response<span id="execution-response-status-GETapi-v1-find-zone-via-region--region-"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-find-zone-via-region--region-"></code></pre>
-</div>
-<div id="execution-error-GETapi-v1-find-zone-via-region--region-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-find-zone-via-region--region-"></code></pre>
-</div>
-<form id="form-GETapi-v1-find-zone-via-region--region-" data-method="GET" data-path="api/v1/find/zone/via/region/{region}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-find-zone-via-region--region-', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-find-zone-via-region--region-" onclick="tryItOut('GETapi-v1-find-zone-via-region--region-');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-find-zone-via-region--region-" onclick="cancelTryOut('GETapi-v1-find-zone-via-region--region-');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-find-zone-via-region--region-" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-green">GET</small>
- <b><code>api/v1/find/zone/via/region/{region}</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-<p>
-<b><code>region</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="region" data-endpoint="GETapi-v1-find-zone-via-region--region-" data-component="url" required  hidden>
-<br>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="GETapi-v1-find-zone-via-region--region-" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>Calculate Fee</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/calculate/fee?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/calculate/fee"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<div id="execution-results-POSTapi-v1-calculate-fee" hidden>
-    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-calculate-fee"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-calculate-fee"></code></pre>
-</div>
-<div id="execution-error-POSTapi-v1-calculate-fee" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-calculate-fee"></code></pre>
-</div>
-<form id="form-POSTapi-v1-calculate-fee" data-method="POST" data-path="api/v1/calculate/fee" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-calculate-fee', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-calculate-fee" onclick="tryItOut('POSTapi-v1-calculate-fee');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-calculate-fee" onclick="cancelTryOut('POSTapi-v1-calculate-fee');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-calculate-fee" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-black">POST</small>
- <b><code>api/v1/calculate/fee</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="POSTapi-v1-calculate-fee" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>api/v1/orders/dispatch</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/orders/dispatch?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/orders/dispatch"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "success": true,
-    "response": [
-        {
-            "pickup_info": {
-                "zone": "zone1",
-                "location": "apata"
-            },
-            "delivery_info": {
-                "zone": "zone 3",
-                "location": "bodija"
-            }
-        },
-        {
-            "pickup_info": null,
-            "delivery_info": {
-                "zone": "zone 3",
-                "location": "bodija"
-            }
-        }
-    ]
-}</code></pre>
-<div id="execution-results-GETapi-v1-orders-dispatch" hidden>
-    <blockquote>Received response<span id="execution-response-status-GETapi-v1-orders-dispatch"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-orders-dispatch"></code></pre>
-</div>
-<div id="execution-error-GETapi-v1-orders-dispatch" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-orders-dispatch"></code></pre>
-</div>
-<form id="form-GETapi-v1-orders-dispatch" data-method="GET" data-path="api/v1/orders/dispatch" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-orders-dispatch', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-orders-dispatch" onclick="tryItOut('GETapi-v1-orders-dispatch');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-orders-dispatch" onclick="cancelTryOut('GETapi-v1-orders-dispatch');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-orders-dispatch" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-green">GET</small>
- <b><code>api/v1/orders/dispatch</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="GETapi-v1-orders-dispatch" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>Create record</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/orders/dispatch?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/orders/dispatch"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<div id="execution-results-POSTapi-v1-orders-dispatch" hidden>
-    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-orders-dispatch"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-orders-dispatch"></code></pre>
-</div>
-<div id="execution-error-POSTapi-v1-orders-dispatch" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-orders-dispatch"></code></pre>
-</div>
-<form id="form-POSTapi-v1-orders-dispatch" data-method="POST" data-path="api/v1/orders/dispatch" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-orders-dispatch', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-orders-dispatch" onclick="tryItOut('POSTapi-v1-orders-dispatch');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-orders-dispatch" onclick="cancelTryOut('POSTapi-v1-orders-dispatch');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-orders-dispatch" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-black">POST</small>
- <b><code>api/v1/orders/dispatch</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="POSTapi-v1-orders-dispatch" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>Show single record</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/orders/dispatch/error?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/orders/dispatch/error"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "success": false,
-    "response": "record not found"
-}</code></pre>
-<div id="execution-results-GETapi-v1-orders-dispatch--id-" hidden>
-    <blockquote>Received response<span id="execution-response-status-GETapi-v1-orders-dispatch--id-"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-orders-dispatch--id-"></code></pre>
-</div>
-<div id="execution-error-GETapi-v1-orders-dispatch--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-orders-dispatch--id-"></code></pre>
-</div>
-<form id="form-GETapi-v1-orders-dispatch--id-" data-method="GET" data-path="api/v1/orders/dispatch/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-orders-dispatch--id-', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-orders-dispatch--id-" onclick="tryItOut('GETapi-v1-orders-dispatch--id-');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-orders-dispatch--id-" onclick="cancelTryOut('GETapi-v1-orders-dispatch--id-');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-orders-dispatch--id-" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-green">GET</small>
- <b><code>api/v1/orders/dispatch/{id}</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-<p>
-<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="id" data-endpoint="GETapi-v1-orders-dispatch--id-" data-component="url" required  hidden>
-<br>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="GETapi-v1-orders-dispatch--id-" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
 <h2>api/test</h2>
 <p><small class="badge badge-darkred">requires authentication</small></p>
 <blockquote>
@@ -1202,8 +3383,9 @@ fetch(url, {
     "response": [
         {
             "id": 1,
-            "name": "flamez 1",
+            "name": "flamez",
             "api_token": "IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8",
+            "access": "open",
             "created_at": "2020-10-16T10:08:07.000000Z",
             "updated_at": "2020-10-16T10:08:07.000000Z"
         }
@@ -1485,6 +3667,673 @@ fetch(url, {
 <input type="text" name="api_token" data-endpoint="GET-" data-component="query" required  hidden>
 <br>
 Authentication key.</p>
+</form><h1>Pricing</h1>
+<h2>Calculate Fee</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>This endpoint allows you to calculate dispatch order fee.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/calculate/fee?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"pickup_region":"quos","delivery_region":"veniam"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/calculate/fee"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "pickup_region": "quos",
+    "delivery_region": "veniam"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-calculate-fee" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-calculate-fee"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-calculate-fee"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-calculate-fee" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-calculate-fee"></code></pre>
+</div>
+<form id="form-POSTapi-v1-calculate-fee" data-method="POST" data-path="api/v1/calculate/fee" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-calculate-fee', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-calculate-fee" onclick="tryItOut('POSTapi-v1-calculate-fee');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-calculate-fee" onclick="cancelTryOut('POSTapi-v1-calculate-fee');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-calculate-fee" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/calculate/fee</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-calculate-fee" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>pickup_region</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="pickup_region" data-endpoint="POSTapi-v1-calculate-fee" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>delivery_region</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="delivery_region" data-endpoint="POSTapi-v1-calculate-fee" data-component="body" required  hidden>
+<br>
+</p>
+
+</form><h1>Zones</h1>
+<p>APIs for managing zones</p>
+<h2>List all regions</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/list/regions/all?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/list/regions/all"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": [
+        "moniya",
+        "dugbe",
+        "ogunpa",
+        "aleshinloye",
+        "eleyele",
+        "jericho",
+        "nihort",
+        "bodija",
+        "secretariat",
+        "agodi",
+        "ikolaba",
+        "sango",
+        "u.i",
+        "mokola",
+        "samonda",
+        "apete",
+        "ijokodo",
+        "agbaje",
+        "yemetu",
+        "total garden",
+        "gate",
+        "orita-bashorun"
+    ]
+}</code></pre>
+<div id="execution-results-GETapi-v1-list-regions-all" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-list-regions-all"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-list-regions-all"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-list-regions-all" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-list-regions-all"></code></pre>
+</div>
+<form id="form-GETapi-v1-list-regions-all" data-method="GET" data-path="api/v1/list/regions/all" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-list-regions-all', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-list-regions-all" onclick="tryItOut('GETapi-v1-list-regions-all');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-list-regions-all" onclick="cancelTryOut('GETapi-v1-list-regions-all');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-list-regions-all" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/list/regions/all</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-list-regions-all" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>List all zones</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/zones"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": [
+        {
+            "id": 11,
+            "name": "zone 10",
+            "regions": [
+                "moniya"
+            ],
+            "created_at": "2020-11-09 09:37:02",
+            "updated_at": "2020-11-09 09:41:16"
+        },
+        {
+            "id": 10,
+            "name": "zone 2",
+            "regions": [
+                "dugbe",
+                "ogunpa",
+                "aleshinloye",
+                "eleyele",
+                "jericho",
+                "nihort"
+            ],
+            "created_at": "2020-11-04 03:29:22",
+            "updated_at": "2020-11-04 03:29:22"
+        },
+        {
+            "id": 9,
+            "name": "zone 1",
+            "regions": [
+                "bodija",
+                "secretariat",
+                "agodi",
+                "ikolaba",
+                "sango",
+                "u.i",
+                "mokola",
+                "samonda",
+                "apete",
+                "ijokodo",
+                "agbaje",
+                "yemetu",
+                "total garden",
+                "gate",
+                "orita-bashorun"
+            ],
+            "created_at": "2020-11-04 03:28:31",
+            "updated_at": "2020-11-04 03:28:31"
+        }
+    ]
+}</code></pre>
+<div id="execution-results-GETapi-v1-zones" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-zones"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-zones"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-zones" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-zones"></code></pre>
+</div>
+<form id="form-GETapi-v1-zones" data-method="GET" data-path="api/v1/zones" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-zones', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-zones" onclick="tryItOut('GETapi-v1-zones');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-zones" onclick="cancelTryOut('GETapi-v1-zones');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-zones" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/zones</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-zones" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+<h2>Create Zone</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"name":"tempora","regions":"ullam"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/zones"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "name": "tempora",
+    "regions": "ullam"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-zones" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-zones" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-zones"></code></pre>
+</div>
+<form id="form-POSTapi-v1-zones" data-method="POST" data-path="api/v1/zones" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones" onclick="tryItOut('POSTapi-v1-zones');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones" onclick="cancelTryOut('POSTapi-v1-zones');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/zones</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="name" data-endpoint="POSTapi-v1-zones" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>regions</code></b>&nbsp;&nbsp;<small>array</small>  &nbsp;
+<input type="text" name="regions" data-endpoint="POSTapi-v1-zones" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Update zone record</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/zones/vero?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"name":"reprehenderit","regions":"voluptates"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/zones/vero"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "name": "reprehenderit",
+    "regions": "voluptates"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-zones--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones--id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-zones--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-zones--id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-zones--id-" data-method="POST" data-path="api/v1/zones/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones--id-" onclick="tryItOut('POSTapi-v1-zones--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones--id-" onclick="cancelTryOut('POSTapi-v1-zones--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/zones/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-zones--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="name" data-endpoint="POSTapi-v1-zones--id-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>regions</code></b>&nbsp;&nbsp;<small>array</small>  &nbsp;
+<input type="text" name="regions" data-endpoint="POSTapi-v1-zones--id-" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Delete region</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/zones/regions/delete/laboriosam?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"region":"id"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/zones/regions/delete/laboriosam"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "region": "id"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-zones-regions-delete--zone_id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones-regions-delete--zone_id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones-regions-delete--zone_id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-zones-regions-delete--zone_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-zones-regions-delete--zone_id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-zones-regions-delete--zone_id-" data-method="POST" data-path="api/v1/zones/regions/delete/{zone_id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones-regions-delete--zone_id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones-regions-delete--zone_id-" onclick="tryItOut('POSTapi-v1-zones-regions-delete--zone_id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones-regions-delete--zone_id-" onclick="cancelTryOut('POSTapi-v1-zones-regions-delete--zone_id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones-regions-delete--zone_id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/zones/regions/delete/{zone_id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>zone_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="zone_id" data-endpoint="POSTapi-v1-zones-regions-delete--zone_id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones-regions-delete--zone_id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>region</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="region" data-endpoint="POSTapi-v1-zones-regions-delete--zone_id-" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>delete zone</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/v1/zones/delete/et?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"id":"labore"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/zones/delete/et"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "id": "labore"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-v1-zones-delete--id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-zones-delete--id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-zones-delete--id-"></code></pre>
+</div>
+<div id="execution-error-POSTapi-v1-zones-delete--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-zones-delete--id-"></code></pre>
+</div>
+<form id="form-POSTapi-v1-zones-delete--id-" data-method="POST" data-path="api/v1/zones/delete/{id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-zones-delete--id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-zones-delete--id-" onclick="tryItOut('POSTapi-v1-zones-delete--id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-zones-delete--id-" onclick="cancelTryOut('POSTapi-v1-zones-delete--id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-zones-delete--id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/v1/zones/delete/{id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-zones-delete--id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-zones-delete--id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>numeric</small>  &nbsp;
+<input type="text" name="id" data-endpoint="POSTapi-v1-zones-delete--id-" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Find Zone via region name</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/v1/find/zone/via/region/quos?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1" \
+    -d '{"region":"dolorum"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/find/zone/via/region/quos"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+let body = {
+    "region": "dolorum"
+}
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "response": null
+}</code></pre>
+<div id="execution-results-GETapi-v1-find-zone-via-region--region-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-find-zone-via-region--region-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-find-zone-via-region--region-"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-find-zone-via-region--region-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-find-zone-via-region--region-"></code></pre>
+</div>
+<form id="form-GETapi-v1-find-zone-via-region--region-" data-method="GET" data-path="api/v1/find/zone/via/region/{region}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-find-zone-via-region--region-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-find-zone-via-region--region-" onclick="tryItOut('GETapi-v1-find-zone-via-region--region-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-find-zone-via-region--region-" onclick="cancelTryOut('GETapi-v1-find-zone-via-region--region-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-find-zone-via-region--region-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/find/zone/via/region/{region}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>region</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="region" data-endpoint="GETapi-v1-find-zone-via-region--region-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-find-zone-via-region--region-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>region</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="region" data-endpoint="GETapi-v1-find-zone-via-region--region-" data-component="body" required  hidden>
+<br>
+</p>
+
 </form>
     </div>
     <div class="dark-box">

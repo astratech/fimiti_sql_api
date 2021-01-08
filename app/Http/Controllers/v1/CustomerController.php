@@ -145,7 +145,6 @@ class CustomerController extends Controller{
      * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
      * @bodyParam token number required
      *
-     * @responseFile storage/responses/customers.register.post.json
     */
 	public function validate_login(Request $request){
 		$validator = Validator::make($request->all(), [
@@ -455,18 +454,20 @@ class CustomerController extends Controller{
     */
 	public function pay_via_wallet($id, Request $request){
 
-		$request->merge([
-			"order_id"=>Site::fil_num($request->order_id),
-			"total_amount"=>Site::fil_num($request->total_amount),
-			"ref"=>Site::fil_string($request->ref),
-			"payment_mode"=>Site::fil_string($request->payment_mode),
-		]);
+		
 
 		$validator = Validator::make($request->all(), [
 			'order_id' => 'numeric|required',
 			'total_amount' => 'numeric|required',
 			'ref' => 'string|required',
 			'payment_mode' => 'string|required',
+		]);
+
+		$request->merge([
+			"order_id"=>Site::fil_num($request->order_id),
+			"total_amount"=>Site::fil_num($request->total_amount),
+			"ref"=>Site::fil_string($request->ref),
+			"payment_mode"=>Site::fil_string($request->payment_mode),
 		]);
 
 
@@ -480,65 +481,71 @@ class CustomerController extends Controller{
 			$customer = Customers::find($id);
 			$order = DispatchOrders::find($request->order_id);
 
-			$payment_info = Site::convert_db_json_to_array($order->payment_info);
-			if($payment_info['confirmed'] == "true"){
-				return ["success"=>false, "response"=>"already paid for this order"];
-			}
+			if($order){
 
-			if($customer AND $order){
-				
-				$bal_before = $customer->wallet_balance;
-				$bal_after = $customer->wallet_balance - $request->total_amount;
-
-				if($request->total_amount > $bal_before){
-					return ["success"=>false, "response"=>"insufficient balance"];
+				$payment_info = Site::convert_db_json_to_array($order->payment_info);
+				if($payment_info['confirmed'] == "true"){
+					return ["success"=>false, "response"=>"already paid for this order"];
 				}
 
-				try {
-				    \DB::beginTransaction();
+				if($customer){
+					
+					$bal_before = $customer->wallet_balance;
+					$bal_after = $customer->wallet_balance - $request->total_amount;
 
-				    // remove amount from balance
-					$data = [
-						"user_id" => $id,
-						"amount" => $request->total_amount,
-						"payment_mode" => $request->payment_mode,
-						"trans_num" => $request->ref,
-						"bal_before" => $bal_before,
-						"bal_after" => $bal_after,
-						"type" => "debit",
-						"api_token" => Site::get_api_token_user($request->api_token)->name
-					];
+					if($request->total_amount > $bal_before){
+						return ["success"=>false, "response"=>"insufficient balance"];
+					}
 
-				    Wallet::create($data);
+					try {
+					    \DB::beginTransaction();
 
-				    // update order records
-				    // update payment_info
+					    // remove amount from balance
+						$data = [
+							"user_id" => $id,
+							"amount" => $request->total_amount,
+							"payment_mode" => $request->payment_mode,
+							"trans_num" => $request->ref,
+							"bal_before" => $bal_before,
+							"bal_after" => $bal_after,
+							"type" => "debit",
+							"api_token" => Site::get_api_token_user($request->api_token)->name
+						];
 
-				    $payment_info = Site::convert_db_json_to_array($order->payment_info);
-				    $payment_info['confirmed'] = true;
-				    $payment_info['method'] = $request->payment_mode;
-				    $payment_info['date_paid'] = $date;
-				    $payment_info['date_confirmed'] = $date;
+					    Wallet::create($data);
 
-				    $new_payment_info = Site::convert_db_array_to_json($payment_info);
-				    $order->update(["payment_info"=>$new_payment_info]);
+					    // update order records
+					    // update payment_info
+
+					    $payment_info = Site::convert_db_json_to_array($order->payment_info);
+					    $payment_info['confirmed'] = true;
+					    $payment_info['method'] = $request->payment_mode;
+					    $payment_info['date_paid'] = $date;
+					    $payment_info['date_confirmed'] = $date;
+
+					    $new_payment_info = Site::convert_db_array_to_json($payment_info);
+					    $order->update(["payment_info"=>$new_payment_info]);
 
 
-				    // update user balance
-				    $customer->wallet_balance = $bal_after;
-					$customer->save();
+					    // update user balance
+					    $customer->wallet_balance = $bal_after;
+						$customer->save();
 
-				    \DB::commit();
+					    \DB::commit();
 
-				    return ["success"=>false, "response"=>new DispatchOrdersResources($order)];
+					    return ["success"=>true, "response"=>new DispatchOrdersResources($order)];
 
-				} catch (Throwable $e) {
-				    \DB::rollback();
+					} catch (Throwable $e) {
+					    \DB::rollback();
+					}
+					
 				}
-				
+				else{
+					return ["success"=>false, "response"=>"user not found"];
+				}
 			}
 			else{
-				return ["success"=>false, "response"=>"user not found"];
+				return ["success"=>false, "response"=>"order not found"];
 			}
 			
 		}
@@ -550,7 +557,6 @@ class CustomerController extends Controller{
      *
      * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
      *
-     * @responseFile storage/responses/customers.register.post.json
     */
     public function all_customers(Request $request){
 		$r = CustomersResource::collection(Customers::all());

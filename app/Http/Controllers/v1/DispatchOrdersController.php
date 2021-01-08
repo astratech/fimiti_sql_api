@@ -15,19 +15,31 @@ Use App\Site;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\DispatchOrdersResources;
 
+
+/**
+ * @group Dispatch Orders
+ *
+ * APIs
+ */
 class DispatchOrdersController extends Controller{
 
+	/**
+     * All Dispatch Orders List
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     *
+    */
 	public function index(){
-		// $r = DispatchOrders::orderBy("id", "desc")->get();
 		$r = DispatchOrdersResources::collection(DispatchOrders::all());
 		return ["success"=>true, "response"=>$r];
 	}
 
 	/**
-     * Show single record
+     * Single Dispatch Record
      *
-     * @param  int 	$id
-     * @return JSON
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam id number required
+     *
     */
 	public function show($id){
 		$data = DispatchOrders::find($id);
@@ -41,10 +53,11 @@ class DispatchOrdersController extends Controller{
 	}
 
 	/**
-     * delete single record
+     * Delete Dispatch Record
      *
-     * @param  int 	$id
-     * @return JSON
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam id number required
+     *
     */
 	public function delete($id){
 		$record = DispatchOrders::find($id);

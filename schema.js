@@ -82,6 +82,10 @@ var dispatch_orders = {
 		confirmed: true|false,
 		date_paid,
 		date_confirmed
+	},
+	schedule:{
+		type: String ['now', 'later'],
+		date_and_time: String,
 	}
 	updated_at,
 	created_at,

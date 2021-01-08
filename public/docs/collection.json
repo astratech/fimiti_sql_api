@@ -10,14 +10,14 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "725a7adb-7770-488a-8bb6-39c9bd255029",
+        "_postman_id": "fdd4f6c1-97c5-46c2-97ab-f5841819cddc",
         "description": "Fimiti Logistics API",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
         {
             "name": "Customers",
-            "description": "\nAPIs for managing users",
+            "description": "\nAPIs for managing customers",
             "item": [
                 {
                     "name": "Create Customer Record",
@@ -46,9 +46,548 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"placeat\",\n    \"fullname\": \"ea\",\n    \"mobile\": 1323741.40689,\n    \"email\": \"eum\",\n    \"password\": \"qui\"\n}"
+                            "raw": "{\n    \"username\": \"alias\",\n    \"fullname\": \"inventore\",\n    \"mobile\": 465.079168,\n    \"email\": \"provident\",\n    \"password\": \"modi\"\n}"
                         },
                         "description": "This endpoint allows you to create customer"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Customer Login",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"mobile\": 512.207293,\n    \"password\": \"eum\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Customer Validate Login Via Token(JWT)",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/validate_login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/validate_login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"token\": 560092381.83397\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "All Customer List",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/all",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/all"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Change Customer Password",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/update\/password\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/update\/password\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "culpa",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"old_password\": \"est\",\n    \"new_password\": \"beatae\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Change Customer Email",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/update\/email\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/update\/email\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "sed",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"magni\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Change Customer Phone Number",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/update\/mobile\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/update\/mobile\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "fugit",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"mobile\": \"enim\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Credit Customer Wallet",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/wallet\/credit\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/wallet\/credit\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "et",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"amount\": 272598495.2402778,\n    \"payment_mode\": \"sequi\",\n    \"trans_num\": \"vel\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Single Customer Record",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/single\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/single\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quas",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 0.16615\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Record Order",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/place\/order\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/place\/order\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "qui",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"courier\": \"occaecati\",\n    \"pickup_info\": \"suscipit\",\n    \"delivery_info\": \"adipisci\",\n    \"package_info\": \"et\",\n    \"timeline\": \"officiis\",\n    \"pricing\": \"quia\",\n    \"rider_info\": \"quia\",\n    \"payment_info\": \"laboriosam\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Debit Customer Wallet",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/wallet\/debit\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/wallet\/debit\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "accusamus",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"order_id\": 39775378,\n    \"total_amount\": \"dolorum\",\n    \"ref\": \"sit\",\n    \"payment_mode\": \"aliquam\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/v1\/ppp\/decode\/{password}",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/ppp\/decode\/:password",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/ppp\/decode\/:password",
+                            "variable": [
+                                {
+                                    "id": "password",
+                                    "key": "password",
+                                    "value": "rerum",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Dispatch Orders",
+            "description": "\nAPIs",
+            "item": [
+                {
+                    "name": "All Dispatch Orders List",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/orders\/dispatch",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/orders\/dispatch"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Single Dispatch Record",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/orders\/dispatch\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/orders\/dispatch\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "ducimus",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 30694588.979851\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Dispatch Record",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/orders\/dispatch\/delete\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/orders\/dispatch\/delete\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "esse",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 509026104.58308643\n}"
+                        },
+                        "description": ""
                     },
                     "response": []
                 }
@@ -129,376 +668,6 @@
                             "raw": "http:\/\/{{baseUrl}}\/api\/v1\/tokens\/create"
                         },
                         "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "api\/v1\/list\/regions\/all",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/list\/regions\/all",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/list\/regions\/all"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "api\/v1\/zones",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/zones",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/zones"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Create record",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/zones",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/zones"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "update single record",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/zones\/:id",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/zones\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "assumenda",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "update product category record - to add new category",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/zones\/regions\/delete\/:zone_id",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/zones\/regions\/delete\/:zone_id",
-                            "variable": [
-                                {
-                                    "id": "zone_id",
-                                    "key": "zone_id",
-                                    "value": "quaerat",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "delete single record",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/zones\/delete\/:id",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/zones\/delete\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "accusamus",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "api\/v1\/find\/zone\/via\/region\/{region}",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/find\/zone\/via\/region\/:region",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/find\/zone\/via\/region\/:region",
-                            "variable": [
-                                {
-                                    "id": "region",
-                                    "key": "region",
-                                    "value": "at",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Calculate Fee",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/calculate\/fee",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/calculate\/fee"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "api\/v1\/orders\/dispatch",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/orders\/dispatch",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/orders\/dispatch"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Create record",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/orders\/dispatch",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/orders\/dispatch"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Show single record",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/orders\/dispatch\/:id",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/orders\/dispatch\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "error",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "GET",
                         "header": [
                             {
                                 "key": "Content-Type",
@@ -604,6 +773,308 @@
                             }
                         ],
                         "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Pricing",
+            "description": "",
+            "item": [
+                {
+                    "name": "Calculate Fee",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/calculate\/fee",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/calculate\/fee"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"pickup_region\": \"quos\",\n    \"delivery_region\": \"veniam\"\n}"
+                        },
+                        "description": "This endpoint allows you to calculate dispatch order fee."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Zones",
+            "description": "\nAPIs for managing zones",
+            "item": [
+                {
+                    "name": "List all regions",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/list\/regions\/all",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/list\/regions\/all"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List all zones",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/zones",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/zones"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Zone",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/zones",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/zones"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"tempora\",\n    \"regions\": \"ullam\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update zone record",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/zones\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/zones\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "vero",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"reprehenderit\",\n    \"regions\": \"voluptates\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete region",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/zones\/regions\/delete\/:zone_id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/zones\/regions\/delete\/:zone_id",
+                            "variable": [
+                                {
+                                    "id": "zone_id",
+                                    "key": "zone_id",
+                                    "value": "laboriosam",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"region\": \"id\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "delete zone",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/zones\/delete\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/zones\/delete\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "et",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": \"labore\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Find Zone via region name",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/find\/zone\/via\/region\/:region",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/find\/zone\/via\/region\/:region",
+                            "variable": [
+                                {
+                                    "id": "region",
+                                    "key": "region",
+                                    "value": "quos",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"region\": \"dolorum\"\n}"
+                        },
                         "description": ""
                     },
                     "response": []

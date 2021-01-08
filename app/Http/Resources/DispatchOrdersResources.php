@@ -15,6 +15,7 @@ class DispatchOrdersResources extends JsonResource
     public function toArray($request)
     {
         $r = [
+            'id'=>$this->id,
             'ref'=>$this->ref,
             'user_id'=>$this->user_id,
             'courier'=>$this->courier,

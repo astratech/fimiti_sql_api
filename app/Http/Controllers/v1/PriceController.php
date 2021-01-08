@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Zones Controller for Fimiti
+ * Price Controller for Fimiti
  * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
  * @version 1.0
 **/
@@ -16,14 +16,22 @@ Use App\Site;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\ZonesResource;
 
+
+/**
+ * @group Pricing
+ *
+*/
+
 class PriceController extends Controller{
 
 	/**
      * Calculate Fee
      *
-     * @param  string 	$pickup_region
-     * @param  string 	$delivery_region
-     * @return JSON
+     * This endpoint allows you to calculate dispatch order fee.
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam pickup_region string required
+     * @bodyParam delivery_region string required
     */
 	public function calculate_fee(Request $request){
 		$validator = Validator::make($request->all(), [
@@ -71,6 +79,13 @@ class PriceController extends Controller{
 		}
 	}
 
+	/**
+     * Region List
+     *
+     * List all the regions in the system
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+    */
 	public function list_all_regions(){
 		$regions = [];
 		$r = Zones::orderBy("id", "desc")->get();
