@@ -65,8 +65,7 @@ var dispatch_orders = {
 	},
 	timeline: {
 		created: Date;
-		moved: Date;
-		delivered: Date;
+		status: String;
 	},
 	pricing: {
 		price: String,
@@ -87,6 +86,7 @@ var dispatch_orders = {
 		type: String ['now', 'later'],
 		date_and_time: String,
 	}
+	status: ['awaiting payment','payment confirmed', 'filing' 'in-transit', 'picked', 'dispatched', 'completed', 'terminated']
 	updated_at,
 	created_at,
 }

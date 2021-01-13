@@ -26,6 +26,7 @@ class DispatchOrdersResources extends JsonResource
             'pricing'=>json_decode($this->pricing),
             'rider_info'=>json_decode($this->rider_info),
             'payment_info'=>json_decode($this->payment_info),
+            'status' => (string) $this->status,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

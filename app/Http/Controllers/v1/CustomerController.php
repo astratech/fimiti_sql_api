@@ -518,7 +518,7 @@ class CustomerController extends Controller{
 					    // update payment_info
 
 					    $payment_info = Site::convert_db_json_to_array($order->payment_info);
-					    $payment_info['confirmed'] = true;
+					    $payment_info['confirmed'] = "true";
 					    $payment_info['method'] = $request->payment_mode;
 					    $payment_info['date_paid'] = $date;
 					    $payment_info['date_confirmed'] = $date;
@@ -548,6 +548,45 @@ class CustomerController extends Controller{
 				return ["success"=>false, "response"=>"order not found"];
 			}
 			
+		}
+		
+	}
+
+	/**
+     * Customer's unpaid orders
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     *
+    */
+	public function orders_unpaid($user_id, Request $request){
+
+		$date = date("Y-m-d H:i:s");
+
+		$customer = Customers::find($user_id);
+
+		if($customer){
+
+			$ord = DispatchOrders::where("user_id", $user_id)->get();
+			$c = [];
+			if($ord){
+				foreach ($ord as $key => $value) {
+					$p = Site::convert_db_json_to_array($value->payment_info);
+					if(strval($p['confirmed']) == "false"){
+						$r = new DispatchOrdersResources($value);
+						array_push($c, $r);
+					}
+				}
+
+				return ["success"=>true, "response"=>$c];
+
+			}
+			else{
+				return ["success"=>true, "response"=>null];
+			}
+
+		}
+		else{
+			return ["success"=>false, "response"=>"user not found"];
 		}
 		
 	}

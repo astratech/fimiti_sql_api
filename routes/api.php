@@ -45,6 +45,7 @@ Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v
 	Route::post('customers/update/mobile/{id}', 'v1\CustomerController@change_mobile');
 	Route::post('customers/wallet/credit/{id}', 'v1\CustomerController@wallet_credit');
 	Route::get('customers/single/{id}', 'v1\CustomerController@single_customer');
+	Route::get('customers/orders/unpaid/{user_id}', 'v1\CustomerController@orders_unpaid');
 	Route::post('customers/place/order/{id}', 'v1\CustomerController@place_order');
 	Route::post('customers/wallet/debit/{id}', 'v1\CustomerController@pay_via_wallet');
 
