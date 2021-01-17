@@ -11,17 +11,17 @@ This endpoint allows you to calculate dispatch order fee.
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/calculate/fee?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/calculate/fee?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"pickup_region":"quos","delivery_region":"veniam"}'
+    -d '{"pickup_region":"quasi","delivery_region":"illum"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/calculate/fee"
+    "http://localhost/fimiti_sql_api/api/v1/calculate/fee"
 );
 
 let params = {
@@ -37,8 +37,8 @@ let headers = {
 };
 
 let body = {
-    "pickup_region": "quos",
-    "delivery_region": "veniam"
+    "pickup_region": "quasi",
+    "delivery_region": "illum"
 }
 
 fetch(url, {

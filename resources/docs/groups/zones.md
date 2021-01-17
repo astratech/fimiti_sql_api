@@ -12,7 +12,7 @@ APIs for managing zones
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/list/regions/all?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/list/regions/all?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1"
@@ -20,7 +20,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/list/regions/all"
+    "http://localhost/fimiti_sql_api/api/v1/list/regions/all"
 );
 
 let params = {
@@ -112,7 +112,7 @@ Authentication key.</p>
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1"
@@ -120,7 +120,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/zones"
+    "http://localhost/fimiti_sql_api/api/v1/zones"
 );
 
 let params = {
@@ -236,17 +236,17 @@ Authentication key.</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"name":"tempora","regions":"ullam"}'
+    -d '{"name":"veritatis","regions":"recusandae"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/zones"
+    "http://localhost/fimiti_sql_api/api/v1/zones"
 );
 
 let params = {
@@ -262,8 +262,8 @@ let headers = {
 };
 
 let body = {
-    "name": "tempora",
-    "regions": "ullam"
+    "name": "veritatis",
+    "regions": "recusandae"
 }
 
 fetch(url, {
@@ -324,17 +324,17 @@ Authentication key.</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/zones/vero?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/zones/libero?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"name":"reprehenderit","regions":"voluptates"}'
+    -d '{"name":"laborum","regions":"dolorem"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/zones/vero"
+    "http://localhost/fimiti_sql_api/api/v1/zones/libero"
 );
 
 let params = {
@@ -350,8 +350,8 @@ let headers = {
 };
 
 let body = {
-    "name": "reprehenderit",
-    "regions": "voluptates"
+    "name": "laborum",
+    "regions": "dolorem"
 }
 
 fetch(url, {
@@ -418,17 +418,17 @@ Authentication key.</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/zones/regions/delete/laboriosam?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/zones/regions/delete/asperiores?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"region":"id"}'
+    -d '{"region":"illo"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/zones/regions/delete/laboriosam"
+    "http://localhost/fimiti_sql_api/api/v1/zones/regions/delete/asperiores"
 );
 
 let params = {
@@ -444,7 +444,7 @@ let headers = {
 };
 
 let body = {
-    "region": "id"
+    "region": "illo"
 }
 
 fetch(url, {
@@ -506,17 +506,17 @@ Authentication key.</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/zones/delete/et?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/zones/delete/molestiae?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"id":"labore"}'
+    -d '{"id":"ratione"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/zones/delete/et"
+    "http://localhost/fimiti_sql_api/api/v1/zones/delete/molestiae"
 );
 
 let params = {
@@ -532,7 +532,7 @@ let headers = {
 };
 
 let body = {
-    "id": "labore"
+    "id": "ratione"
 }
 
 fetch(url, {
@@ -594,17 +594,17 @@ Authentication key.</p>
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/find/zone/via/region/quos?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/find/zone/via/region/quia?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"region":"dolorum"}'
+    -d '{"region":"a"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/find/zone/via/region/quos"
+    "http://localhost/fimiti_sql_api/api/v1/find/zone/via/region/quia"
 );
 
 let params = {
@@ -620,7 +620,7 @@ let headers = {
 };
 
 let body = {
-    "region": "dolorum"
+    "region": "a"
 }
 
 fetch(url, {

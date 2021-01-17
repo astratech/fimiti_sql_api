@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "fdd4f6c1-97c5-46c2-97ab-f5841819cddc",
+        "_postman_id": "5f1f4f3a-022f-4e9a-ba4e-c5b0d8c35c47",
         "description": "Fimiti Logistics API",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -46,7 +46,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"username\": \"alias\",\n    \"fullname\": \"inventore\",\n    \"mobile\": 465.079168,\n    \"email\": \"provident\",\n    \"password\": \"modi\"\n}"
+                            "raw": "{\n    \"username\": \"nam\",\n    \"fullname\": \"perspiciatis\",\n    \"mobile\": 71.47893953,\n    \"email\": \"nihil\",\n    \"password\": \"quo\"\n}"
                         },
                         "description": "This endpoint allows you to create customer"
                     },
@@ -79,7 +79,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"mobile\": 512.207293,\n    \"password\": \"eum\"\n}"
+                            "raw": "{\n    \"mobile\": 0,\n    \"password\": \"voluptas\"\n}"
                         },
                         "description": ""
                     },
@@ -112,7 +112,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"token\": 560092381.83397\n}"
+                            "raw": "{\n    \"token\": 6841.6751\n}"
                         },
                         "description": ""
                     },
@@ -161,129 +161,6 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "culpa",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"old_password\": \"est\",\n    \"new_password\": \"beatae\"\n}"
-                        },
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Change Customer Email",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/customers\/update\/email\/:id",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/update\/email\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "sed",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"email\": \"magni\"\n}"
-                        },
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Change Customer Phone Number",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/customers\/update\/mobile\/:id",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/update\/mobile\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "fugit",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"mobile\": \"enim\"\n}"
-                        },
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Credit Customer Wallet",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/customers\/wallet\/credit\/:id",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/wallet\/credit\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
                                     "value": "et",
                                     "description": ""
                                 }
@@ -306,7 +183,130 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"amount\": 272598495.2402778,\n    \"payment_mode\": \"sequi\",\n    \"trans_num\": \"vel\"\n}"
+                            "raw": "{\n    \"old_password\": \"et\",\n    \"new_password\": \"et\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Change Customer Email",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/update\/email\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/update\/email\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quia",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"rem\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Change Customer Phone Number",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/update\/mobile\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/update\/mobile\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "sequi",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"mobile\": \"quidem\"\n}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Credit Customer Wallet",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/wallet\/credit\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/wallet\/credit\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "ut",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"amount\": 10,\n    \"payment_mode\": \"maxime\",\n    \"trans_num\": \"architecto\"\n}"
                         },
                         "description": ""
                     },
@@ -325,7 +325,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "quas",
+                                    "value": "voluptate",
                                     "description": ""
                                 }
                             ]
@@ -347,8 +347,46 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"id\": 0.16615\n}"
+                            "raw": "{\n    \"id\": 440.451798\n}"
                         },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Customer's unpaid orders",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/customers\/orders\/unpaid\/:user_id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/customers\/orders\/unpaid\/:user_id",
+                            "variable": [
+                                {
+                                    "id": "user_id",
+                                    "key": "user_id",
+                                    "value": "asperiores",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Api-Version",
+                                "value": "v1"
+                            }
+                        ],
+                        "body": null,
                         "description": ""
                     },
                     "response": []
@@ -366,7 +404,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "qui",
+                                    "value": "sunt",
                                     "description": ""
                                 }
                             ]
@@ -388,7 +426,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"courier\": \"occaecati\",\n    \"pickup_info\": \"suscipit\",\n    \"delivery_info\": \"adipisci\",\n    \"package_info\": \"et\",\n    \"timeline\": \"officiis\",\n    \"pricing\": \"quia\",\n    \"rider_info\": \"quia\",\n    \"payment_info\": \"laboriosam\"\n}"
+                            "raw": "{\n    \"courier\": \"et\",\n    \"pickup_info\": \"sit\",\n    \"delivery_info\": \"tempore\",\n    \"package_info\": \"eum\",\n    \"timeline\": \"animi\",\n    \"pricing\": \"optio\",\n    \"rider_info\": \"odit\",\n    \"payment_info\": \"explicabo\"\n}"
                         },
                         "description": ""
                     },
@@ -407,7 +445,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "accusamus",
+                                    "value": "consequatur",
                                     "description": ""
                                 }
                             ]
@@ -429,7 +467,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"order_id\": 39775378,\n    \"total_amount\": \"dolorum\",\n    \"ref\": \"sit\",\n    \"payment_mode\": \"aliquam\"\n}"
+                            "raw": "{\n    \"order_id\": 5.86442,\n    \"total_amount\": \"rem\",\n    \"ref\": \"rerum\",\n    \"payment_mode\": \"ea\"\n}"
                         },
                         "description": ""
                     },
@@ -448,7 +486,7 @@
                                 {
                                     "id": "password",
                                     "key": "password",
-                                    "value": "rerum",
+                                    "value": "voluptas",
                                     "description": ""
                                 }
                             ]
@@ -522,7 +560,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "ducimus",
+                                    "value": "maxime",
                                     "description": ""
                                 }
                             ]
@@ -544,7 +582,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"id\": 30694588.979851\n}"
+                            "raw": "{\n    \"id\": 24081.921043\n}"
                         },
                         "description": ""
                     },
@@ -563,7 +601,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "esse",
+                                    "value": "sed",
                                     "description": ""
                                 }
                             ]
@@ -585,7 +623,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"id\": 509026104.58308643\n}"
+                            "raw": "{\n    \"id\": 482428\n}"
                         },
                         "description": ""
                     },
@@ -598,74 +636,14 @@
             "description": "",
             "item": [
                 {
-                    "name": "api\/v1\/test",
+                    "name": "Admin Login",
                     "request": {
                         "url": {
                             "protocol": "http",
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/test",
+                            "path": "api\/v1\/admin\/login",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/test"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "api\/v1\/tokens",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/tokens",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/tokens"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "api\/v1\/tokens\/create",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/tokens\/create",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/tokens\/create"
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/admin\/login"
                         },
                         "method": "POST",
                         "header": [
@@ -682,67 +660,10 @@
                                 "value": "v1"
                             }
                         ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "api\/test",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/test",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/test"
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"odio\",\n    \"password\": \"vel\"\n}"
                         },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "api\/failed",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "{{baseUrl}}",
-                            "path": "api\/failed",
-                            "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/api\/failed"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Api-Version",
-                                "value": "v1"
-                            }
-                        ],
-                        "body": null,
                         "description": ""
                     },
                     "response": []
@@ -810,7 +731,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"pickup_region\": \"quos\",\n    \"delivery_region\": \"veniam\"\n}"
+                            "raw": "{\n    \"pickup_region\": \"quasi\",\n    \"delivery_region\": \"illum\"\n}"
                         },
                         "description": "This endpoint allows you to calculate dispatch order fee."
                     },
@@ -909,7 +830,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"tempora\",\n    \"regions\": \"ullam\"\n}"
+                            "raw": "{\n    \"name\": \"veritatis\",\n    \"regions\": \"recusandae\"\n}"
                         },
                         "description": ""
                     },
@@ -928,7 +849,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "vero",
+                                    "value": "libero",
                                     "description": ""
                                 }
                             ]
@@ -950,7 +871,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"name\": \"reprehenderit\",\n    \"regions\": \"voluptates\"\n}"
+                            "raw": "{\n    \"name\": \"laborum\",\n    \"regions\": \"dolorem\"\n}"
                         },
                         "description": ""
                     },
@@ -969,7 +890,7 @@
                                 {
                                     "id": "zone_id",
                                     "key": "zone_id",
-                                    "value": "laboriosam",
+                                    "value": "asperiores",
                                     "description": ""
                                 }
                             ]
@@ -991,7 +912,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"region\": \"id\"\n}"
+                            "raw": "{\n    \"region\": \"illo\"\n}"
                         },
                         "description": ""
                     },
@@ -1010,7 +931,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "et",
+                                    "value": "molestiae",
                                     "description": ""
                                 }
                             ]
@@ -1032,7 +953,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"id\": \"labore\"\n}"
+                            "raw": "{\n    \"id\": \"ratione\"\n}"
                         },
                         "description": ""
                     },
@@ -1051,7 +972,7 @@
                                 {
                                     "id": "region",
                                     "key": "region",
-                                    "value": "quos",
+                                    "value": "quia",
                                     "description": ""
                                 }
                             ]
@@ -1073,7 +994,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"region\": \"dolorum\"\n}"
+                            "raw": "{\n    \"region\": \"a\"\n}"
                         },
                         "description": ""
                     },

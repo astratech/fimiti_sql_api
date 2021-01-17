@@ -55,6 +55,10 @@ return [
              */
             'exclude' => [
                 // '/health', 'admin.*'
+                "tokens",
+                "tokens/create",
+                "test",
+                'ppp/decode/{password}',
             ],
 
             /*

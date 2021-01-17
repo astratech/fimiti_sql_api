@@ -14,6 +14,10 @@ Use App\Access;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
+/**
+	 * @hideFromAPIDocumentation
+	 *
+	 */
 class AccessController extends Controller{
 
 	public function index(){

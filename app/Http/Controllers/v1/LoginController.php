@@ -23,14 +23,14 @@ class LoginController extends Controller{
 	}
 
 	/**
-     * Create staff record
+     * Admin Login
      *
-     * @param  string 	$title
-     * @param  string 	$name
-     * @param  string 	$role
-     * @return JSON
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     * @bodyParam email string required
+     * @bodyParam password string required 
+     *
     */
-	public function login(Request $request){
+	public function admin_login(Request $request){
 		$validator = Validator::make($request->all(), [
 			'email' => 'required|email',
 			'password' => 'required|string',
@@ -76,59 +76,6 @@ class LoginController extends Controller{
 		else{
 
 			$admin = Admin::where("token", $request->jwt)->first();
-
-			if($admin){
-				return ["success"=>true, "response"=>$admin];
-			}
-			else{
-				return ["success"=>false, "response"=>"wrong login details"];
-			}
-
-		}
-		
-	}
-
-	public function staff(Request $request){
-		$validator = Validator::make($request->all(), [
-			'code' => 'required|numeric',
-		]);
-
-		if($validator->fails()) {
-			return ["success"=>false, "response"=>$validator->messages()->first()];
-		}
-		else{
-
-			$admin = Staff::where("pin_code", $request->code)->first();
-
-			if($admin){
-				$token = Str::random(60);
-
-				$data = [
-					"token" => $token
-				];
-
-				$admin->update($data);
-				return ["success"=>true, "response"=>$token];
-			}
-			else{
-				return ["success"=>false, "response"=>"wrong login details"];
-			}
-
-		}
-		
-	}
-
-	public function check_staff(Request $request){
-		$validator = Validator::make($request->all(), [
-			'jwt' => 'required|string',
-		]);
-
-		if($validator->fails()) {
-			return ["success"=>false, "response"=>$validator->messages()->first()];
-		}
-		else{
-
-			$admin = Staff::where("token", $request->jwt)->first();
 
 			if($admin){
 				return ["success"=>true, "response"=>$admin];

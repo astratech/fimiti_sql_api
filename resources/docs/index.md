@@ -32,12 +32,12 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 <script>
-    var baseUrl = "http://localhost";
+    var baseUrl = "http://localhost/fimiti_sql_api";
 </script>
 <script src="js/tryitout-2.4.2.js"></script>
 
 > Base URL
 
 ```yaml
-http://localhost
+http://localhost/fimiti_sql_api
 ```

@@ -44,7 +44,7 @@
                             <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: January 8 2021</li>
+            <li>Last updated: January 17 2021</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -57,14 +57,14 @@
 You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 <script>
-    var baseUrl = "http://localhost";
+    var baseUrl = "http://localhost/fimiti_sql_api";
 </script>
 <script src="js/tryitout-2.4.2.js"></script>
 <blockquote>
 <p>Base URL</p>
 </blockquote>
-<pre><code class="language-yaml">http://localhost</code></pre><h1>Authenticating requests</h1>
-<p>Authenticate requests to this API's endpoints by sending a query parameter <strong><code>api_token</code></strong> in the request.</p>
+<pre><code class="language-yaml">http://localhost/fimiti_sql_api</code></pre><h1>Authenticating requests</h1>
+<p>To authenticate requests, include a query parameter <strong><code>api_token</code></strong> in the request.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p><h1>Customers</h1>
 <p>APIs for managing customers</p>
@@ -75,14 +75,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/customers/register?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/register?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"username":"alias","fullname":"inventore","mobile":465.079168,"email":"provident","password":"modi"}'
+    -d '{"username":"nam","fullname":"perspiciatis","mobile":71.47893953,"email":"nihil","password":"quo"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/customers/register"
+    "http://localhost/fimiti_sql_api/api/v1/customers/register"
 );
 
 let params = {
@@ -98,11 +98,11 @@ let headers = {
 };
 
 let body = {
-    "username": "alias",
-    "fullname": "inventore",
-    "mobile": 465.079168,
-    "email": "provident",
-    "password": "modi"
+    "username": "nam",
+    "fullname": "perspiciatis",
+    "mobile": 71.47893953,
+    "email": "nihil",
+    "password": "quo"
 }
 
 fetch(url, {
@@ -183,14 +183,14 @@ the customer fullname</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/customers/login?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/login?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"mobile":512.207293,"password":"eum"}'
+    -d '{"mobile":0,"password":"voluptas"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/customers/login"
+    "http://localhost/fimiti_sql_api/api/v1/customers/login"
 );
 
 let params = {
@@ -206,8 +206,8 @@ let headers = {
 };
 
 let body = {
-    "mobile": 512.207293,
-    "password": "eum"
+    "mobile": 0,
+    "password": "voluptas"
 }
 
 fetch(url, {
@@ -273,14 +273,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/customers/validate_login?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/validate_login?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"token":560092381.83397}'
+    -d '{"token":6841.6751}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/customers/validate_login"
+    "http://localhost/fimiti_sql_api/api/v1/customers/validate_login"
 );
 
 let params = {
@@ -296,7 +296,7 @@ let headers = {
 };
 
 let body = {
-    "token": 560092381.83397
+    "token": 6841.6751
 }
 
 fetch(url, {
@@ -343,12 +343,12 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/customers/all?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/customers/all?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/customers/all"
+    "http://localhost/fimiti_sql_api/api/v1/customers/all"
 );
 
 let params = {
@@ -427,11 +427,11 @@ fetch(url, {
             "fullname": "soj",
             "email": "soj@gmail.com",
             "mobile": "1",
-            "token": "lGKnWyJw4QACtvcSJe4ZIMhnb6JHE5JRh2L73oHuWIWfpvvYiqcIMBq3Mk0U",
+            "token": "1vUpkbDjs5r0srL5SmssL9bqkF8C3oUOr6M4AcdOy8Un4zwCvPRfpnvcXuxz",
             "avatar": null,
-            "wallet_balance": "27900",
+            "wallet_balance": "27200",
             "created_at": "2020-12-27 17:20:57",
-            "updated_at": "2021-01-07 12:23:14"
+            "updated_at": "2021-01-12 19:13:56"
         }
     ]
 }</code></pre>
@@ -467,14 +467,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/customers/update/password/culpa?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/password/et?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"old_password":"est","new_password":"beatae"}'
+    -d '{"old_password":"et","new_password":"et"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/customers/update/password/culpa"
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/password/et"
 );
 
 let params = {
@@ -490,8 +490,8 @@ let headers = {
 };
 
 let body = {
-    "old_password": "est",
-    "new_password": "beatae"
+    "old_password": "et",
+    "new_password": "et"
 }
 
 fetch(url, {
@@ -549,14 +549,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/customers/update/email/sed?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/email/quia?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"email":"magni"}'
+    -d '{"email":"rem"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/customers/update/email/sed"
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/email/quia"
 );
 
 let params = {
@@ -572,7 +572,7 @@ let headers = {
 };
 
 let body = {
-    "email": "magni"
+    "email": "rem"
 }
 
 fetch(url, {
@@ -625,14 +625,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/customers/update/mobile/fugit?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/mobile/sequi?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"mobile":"enim"}'
+    -d '{"mobile":"quidem"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/customers/update/mobile/fugit"
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/mobile/sequi"
 );
 
 let params = {
@@ -648,7 +648,7 @@ let headers = {
 };
 
 let body = {
-    "mobile": "enim"
+    "mobile": "quidem"
 }
 
 fetch(url, {
@@ -701,14 +701,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/customers/wallet/credit/et?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/wallet/credit/ut?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"amount":272598495.2402778,"payment_mode":"sequi","trans_num":"vel"}'
+    -d '{"amount":10,"payment_mode":"maxime","trans_num":"architecto"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/customers/wallet/credit/et"
+    "http://localhost/fimiti_sql_api/api/v1/customers/wallet/credit/ut"
 );
 
 let params = {
@@ -724,9 +724,9 @@ let headers = {
 };
 
 let body = {
-    "amount": 272598495.2402778,
-    "payment_mode": "sequi",
-    "trans_num": "vel"
+    "amount": 10,
+    "payment_mode": "maxime",
+    "trans_num": "architecto"
 }
 
 fetch(url, {
@@ -789,14 +789,14 @@ either ('cash','transfer','atm', 'wallet')</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/customers/single/quas?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/customers/single/voluptate?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"id":0.16615}'
+    -d '{"id":440.451798}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/customers/single/quas"
+    "http://localhost/fimiti_sql_api/api/v1/customers/single/voluptate"
 );
 
 let params = {
@@ -812,7 +812,7 @@ let headers = {
 };
 
 let body = {
-    "id": 0.16615
+    "id": 440.451798
 }
 
 fetch(url, {
@@ -866,20 +866,89 @@ Authentication key.</p>
 customer_id</p>
 
 </form>
+<h2>Customer&#039;s unpaid orders</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/fimiti_sql_api/api/v1/customers/orders/unpaid/asperiores?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/fimiti_sql_api/api/v1/customers/orders/unpaid/asperiores"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "response": "user not found"
+}</code></pre>
+<div id="execution-results-GETapi-v1-customers-orders-unpaid--user_id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-customers-orders-unpaid--user_id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-customers-orders-unpaid--user_id-"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-customers-orders-unpaid--user_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-customers-orders-unpaid--user_id-"></code></pre>
+</div>
+<form id="form-GETapi-v1-customers-orders-unpaid--user_id-" data-method="GET" data-path="api/v1/customers/orders/unpaid/{user_id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-customers-orders-unpaid--user_id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-customers-orders-unpaid--user_id-" onclick="tryItOut('GETapi-v1-customers-orders-unpaid--user_id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-customers-orders-unpaid--user_id-" onclick="cancelTryOut('GETapi-v1-customers-orders-unpaid--user_id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-customers-orders-unpaid--user_id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/customers/orders/unpaid/{user_id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>user_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="user_id" data-endpoint="GETapi-v1-customers-orders-unpaid--user_id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-customers-orders-unpaid--user_id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
 <h2>Record Order</h2>
 <p><small class="badge badge-darkred">requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/customers/place/order/qui?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/place/order/sunt?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"courier":"occaecati","pickup_info":"suscipit","delivery_info":"adipisci","package_info":"et","timeline":"officiis","pricing":"quia","rider_info":"quia","payment_info":"laboriosam"}'
+    -d '{"courier":"et","pickup_info":"sit","delivery_info":"tempore","package_info":"eum","timeline":"animi","pricing":"optio","rider_info":"odit","payment_info":"explicabo"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/customers/place/order/qui"
+    "http://localhost/fimiti_sql_api/api/v1/customers/place/order/sunt"
 );
 
 let params = {
@@ -895,14 +964,14 @@ let headers = {
 };
 
 let body = {
-    "courier": "occaecati",
-    "pickup_info": "suscipit",
-    "delivery_info": "adipisci",
-    "package_info": "et",
-    "timeline": "officiis",
-    "pricing": "quia",
-    "rider_info": "quia",
-    "payment_info": "laboriosam"
+    "courier": "et",
+    "pickup_info": "sit",
+    "delivery_info": "tempore",
+    "package_info": "eum",
+    "timeline": "animi",
+    "pricing": "optio",
+    "rider_info": "odit",
+    "payment_info": "explicabo"
 }
 
 fetch(url, {
@@ -990,14 +1059,14 @@ refer to order json for full details</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/customers/wallet/debit/accusamus?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/wallet/debit/consequatur?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"order_id":39775378,"total_amount":"dolorum","ref":"sit","payment_mode":"aliquam"}'
+    -d '{"order_id":5.86442,"total_amount":"rem","ref":"rerum","payment_mode":"ea"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/customers/wallet/debit/accusamus"
+    "http://localhost/fimiti_sql_api/api/v1/customers/wallet/debit/consequatur"
 );
 
 let params = {
@@ -1013,10 +1082,10 @@ let headers = {
 };
 
 let body = {
-    "order_id": 39775378,
-    "total_amount": "dolorum",
-    "ref": "sit",
-    "payment_mode": "aliquam"
+    "order_id": 5.86442,
+    "total_amount": "rem",
+    "ref": "rerum",
+    "payment_mode": "ea"
 }
 
 fetch(url, {
@@ -1084,12 +1153,12 @@ default "wallet"</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/ppp/decode/rerum?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/ppp/decode/voluptas?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/ppp/decode/rerum"
+    "http://localhost/fimiti_sql_api/api/v1/ppp/decode/voluptas"
 );
 
 let params = {
@@ -1154,12 +1223,12 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/orders/dispatch?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/orders/dispatch?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/orders/dispatch"
+    "http://localhost/fimiti_sql_api/api/v1/orders/dispatch"
 );
 
 let params = {
@@ -1209,6 +1278,7 @@ fetch(url, {
                 "date_paid": "2021-01-01 16:29:13",
                 "date_confirmed": "2021-01-01 16:29:13"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-01 16:16:44",
             "updated_at": "2021-01-01 16:29:13"
         },
@@ -1234,6 +1304,7 @@ fetch(url, {
             "payment_info": {
                 "confirmed": "false"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-01 16:34:09",
             "updated_at": "2021-01-01 16:34:09"
         },
@@ -1264,6 +1335,7 @@ fetch(url, {
                 "date_paid": "2021-01-01 20:41:45",
                 "date_confirmed": "2021-01-01 20:41:45"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-01 19:45:39",
             "updated_at": "2021-01-01 20:41:45"
         },
@@ -1291,6 +1363,7 @@ fetch(url, {
             "payment_info": {
                 "confirmed": "false"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-01 20:21:51",
             "updated_at": "2021-01-01 20:21:51"
         },
@@ -1321,6 +1394,7 @@ fetch(url, {
                 "date_paid": "2021-01-01 20:42:03",
                 "date_confirmed": "2021-01-01 20:42:03"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-01 20:26:32",
             "updated_at": "2021-01-01 20:42:03"
         },
@@ -1348,6 +1422,7 @@ fetch(url, {
             "payment_info": {
                 "confirmed": "false"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:03:45",
             "updated_at": "2021-01-02 01:03:45"
         },
@@ -1378,6 +1453,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:37:47",
                 "date_confirmed": "2021-01-02 01:37:47"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:37:27",
             "updated_at": "2021-01-02 01:37:47"
         },
@@ -1408,6 +1484,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:54:59",
                 "date_confirmed": "2021-01-02 01:54:59"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:54:58",
             "updated_at": "2021-01-02 01:54:59"
         },
@@ -1438,6 +1515,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:57:02",
                 "date_confirmed": "2021-01-02 01:57:02"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:57:00",
             "updated_at": "2021-01-02 01:57:02"
         },
@@ -1468,6 +1546,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:57:58",
                 "date_confirmed": "2021-01-02 01:57:58"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:57:56",
             "updated_at": "2021-01-02 01:57:58"
         },
@@ -1498,6 +1577,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:58:51",
                 "date_confirmed": "2021-01-02 01:58:51"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:58:49",
             "updated_at": "2021-01-02 01:58:51"
         },
@@ -1528,6 +1608,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:59:28",
                 "date_confirmed": "2021-01-02 01:59:28"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:59:26",
             "updated_at": "2021-01-02 01:59:28"
         },
@@ -1558,6 +1639,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 02:01:40",
                 "date_confirmed": "2021-01-02 02:01:40"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 02:01:39",
             "updated_at": "2021-01-02 02:01:40"
         },
@@ -1588,6 +1670,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 08:06:09",
                 "date_confirmed": "2021-01-03 08:06:09"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 08:06:07",
             "updated_at": "2021-01-03 08:06:09"
         },
@@ -1618,6 +1701,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 08:27:39",
                 "date_confirmed": "2021-01-03 08:27:39"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 08:27:35",
             "updated_at": "2021-01-03 08:27:39"
         },
@@ -1648,6 +1732,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 08:30:05",
                 "date_confirmed": "2021-01-03 08:30:05"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 08:30:00",
             "updated_at": "2021-01-03 08:30:05"
         },
@@ -1678,6 +1763,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:01:02",
                 "date_confirmed": "2021-01-03 20:01:02"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 08:50:38",
             "updated_at": "2021-01-03 20:01:02"
         },
@@ -1708,6 +1794,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:01:20",
                 "date_confirmed": "2021-01-03 20:01:20"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:01:17",
             "updated_at": "2021-01-03 20:01:20"
         },
@@ -1738,6 +1825,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:01:56",
                 "date_confirmed": "2021-01-03 20:01:56"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:01:52",
             "updated_at": "2021-01-03 20:01:56"
         },
@@ -1768,6 +1856,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:18:05",
                 "date_confirmed": "2021-01-03 20:18:05"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:18:01",
             "updated_at": "2021-01-03 20:18:05"
         },
@@ -1798,6 +1887,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:20:33",
                 "date_confirmed": "2021-01-03 20:20:33"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:20:30",
             "updated_at": "2021-01-03 20:20:33"
         },
@@ -1828,6 +1918,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:26:29",
                 "date_confirmed": "2021-01-03 20:26:29"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:26:26",
             "updated_at": "2021-01-03 20:26:29"
         },
@@ -1858,6 +1949,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:37:20",
                 "date_confirmed": "2021-01-03 20:37:20"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:37:18",
             "updated_at": "2021-01-03 20:37:20"
         },
@@ -1888,6 +1980,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:41:16",
                 "date_confirmed": "2021-01-03 20:41:16"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:41:12",
             "updated_at": "2021-01-03 20:41:16"
         },
@@ -1918,6 +2011,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:43:47",
                 "date_confirmed": "2021-01-03 20:43:47"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:41:24",
             "updated_at": "2021-01-03 20:43:47"
         },
@@ -1948,6 +2042,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:48:21",
                 "date_confirmed": "2021-01-03 20:48:21"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:47:49",
             "updated_at": "2021-01-03 20:48:21"
         },
@@ -1978,6 +2073,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:49:27",
                 "date_confirmed": "2021-01-03 20:49:27"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:49:25",
             "updated_at": "2021-01-03 20:49:27"
         },
@@ -2008,6 +2104,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:49:50",
                 "date_confirmed": "2021-01-03 20:49:50"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:49:48",
             "updated_at": "2021-01-03 20:49:50"
         },
@@ -2038,6 +2135,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:50:15",
                 "date_confirmed": "2021-01-03 20:50:15"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:50:13",
             "updated_at": "2021-01-03 20:50:15"
         },
@@ -2068,6 +2166,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:51:01",
                 "date_confirmed": "2021-01-03 20:51:01"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:50:59",
             "updated_at": "2021-01-03 20:51:01"
         },
@@ -2098,6 +2197,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:51:27",
                 "date_confirmed": "2021-01-03 20:51:27"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:51:25",
             "updated_at": "2021-01-03 20:51:27"
         },
@@ -2128,6 +2228,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:54:15",
                 "date_confirmed": "2021-01-03 20:54:15"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:54:12",
             "updated_at": "2021-01-03 20:54:15"
         },
@@ -2158,6 +2259,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:54:51",
                 "date_confirmed": "2021-01-03 20:54:51"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:54:49",
             "updated_at": "2021-01-03 20:54:51"
         },
@@ -2188,6 +2290,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:55:07",
                 "date_confirmed": "2021-01-03 20:55:07"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:55:05",
             "updated_at": "2021-01-03 20:55:07"
         },
@@ -2218,6 +2321,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:24:39",
                 "date_confirmed": "2021-01-04 08:24:39"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:23:17",
             "updated_at": "2021-01-04 08:24:39"
         },
@@ -2248,6 +2352,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:25:43",
                 "date_confirmed": "2021-01-04 08:25:43"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:25:40",
             "updated_at": "2021-01-04 08:25:43"
         },
@@ -2278,6 +2383,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:26:05",
                 "date_confirmed": "2021-01-04 08:26:05"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:26:03",
             "updated_at": "2021-01-04 08:26:05"
         },
@@ -2308,6 +2414,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:26:37",
                 "date_confirmed": "2021-01-04 08:26:37"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:26:33",
             "updated_at": "2021-01-04 08:26:37"
         },
@@ -2338,6 +2445,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:27:48",
                 "date_confirmed": "2021-01-04 08:27:48"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:27:46",
             "updated_at": "2021-01-04 08:27:48"
         },
@@ -2368,6 +2476,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:28:15",
                 "date_confirmed": "2021-01-04 08:28:15"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:28:12",
             "updated_at": "2021-01-04 08:28:15"
         },
@@ -2395,6 +2504,7 @@ fetch(url, {
             "payment_info": {
                 "confirmed": "false"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:29:19",
             "updated_at": "2021-01-04 08:29:19"
         },
@@ -2425,6 +2535,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:29:29",
                 "date_confirmed": "2021-01-04 08:29:29"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:29:27",
             "updated_at": "2021-01-04 08:29:29"
         },
@@ -2455,6 +2566,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:30:31",
                 "date_confirmed": "2021-01-04 08:30:31"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:30:27",
             "updated_at": "2021-01-04 08:30:31"
         },
@@ -2485,6 +2597,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:31:48",
                 "date_confirmed": "2021-01-04 08:31:48"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:31:45",
             "updated_at": "2021-01-04 08:31:48"
         },
@@ -2515,6 +2628,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:37:39",
                 "date_confirmed": "2021-01-04 08:37:39"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:37:10",
             "updated_at": "2021-01-04 08:37:39"
         },
@@ -2545,6 +2659,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:45:39",
                 "date_confirmed": "2021-01-04 08:45:39"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:45:37",
             "updated_at": "2021-01-04 08:45:39"
         },
@@ -2575,6 +2690,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:48:03",
                 "date_confirmed": "2021-01-04 08:48:03"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:48:01",
             "updated_at": "2021-01-04 08:48:03"
         },
@@ -2605,6 +2721,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:49:43",
                 "date_confirmed": "2021-01-04 08:49:43"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:49:40",
             "updated_at": "2021-01-04 08:49:43"
         },
@@ -2635,6 +2752,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:50:44",
                 "date_confirmed": "2021-01-04 08:50:44"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:50:42",
             "updated_at": "2021-01-04 08:50:44"
         },
@@ -2665,6 +2783,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:51:30",
                 "date_confirmed": "2021-01-04 08:51:30"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:51:26",
             "updated_at": "2021-01-04 08:51:30"
         },
@@ -2695,6 +2814,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:51:54",
                 "date_confirmed": "2021-01-04 08:51:54"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:51:52",
             "updated_at": "2021-01-04 08:51:54"
         },
@@ -2725,6 +2845,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:52:08",
                 "date_confirmed": "2021-01-04 08:52:08"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:52:06",
             "updated_at": "2021-01-04 08:52:08"
         },
@@ -2755,6 +2876,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:52:22",
                 "date_confirmed": "2021-01-04 08:52:22"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:52:17",
             "updated_at": "2021-01-04 08:52:22"
         },
@@ -2785,6 +2907,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:53:39",
                 "date_confirmed": "2021-01-04 08:53:39"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:53:37",
             "updated_at": "2021-01-04 08:53:39"
         },
@@ -2815,6 +2938,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:54:16",
                 "date_confirmed": "2021-01-04 08:54:16"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:54:13",
             "updated_at": "2021-01-04 08:54:16"
         },
@@ -2845,6 +2969,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:54:51",
                 "date_confirmed": "2021-01-04 08:54:51"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:54:49",
             "updated_at": "2021-01-04 08:54:51"
         },
@@ -2875,6 +3000,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 15:19:36",
                 "date_confirmed": "2021-01-04 15:19:36"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 15:19:21",
             "updated_at": "2021-01-04 15:19:36"
         },
@@ -2905,6 +3031,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 17:33:40",
                 "date_confirmed": "2021-01-04 17:33:40"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 17:32:43",
             "updated_at": "2021-01-04 17:33:40"
         },
@@ -2935,8 +3062,99 @@ fetch(url, {
                 "date_paid": "2021-01-07 12:20:50",
                 "date_confirmed": "2021-01-07 12:20:50"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-07 12:20:47",
             "updated_at": "2021-01-07 12:20:50"
+        },
+        {
+            "id": 63,
+            "ref": "FMT230065",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-11 11:26:37",
+                "date_confirmed": "2021-01-11 11:26:37"
+            },
+            "status": "awaiting payment",
+            "created_at": "2021-01-11 11:26:32",
+            "updated_at": "2021-01-11 11:26:37"
+        },
+        {
+            "id": 64,
+            "ref": "FMT465642",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-12 19:13:56",
+                "date_confirmed": "2021-01-12 19:13:56"
+            },
+            "status": "awaiting payment",
+            "created_at": "2021-01-12 19:13:39",
+            "updated_at": "2021-01-12 19:13:56"
+        },
+        {
+            "id": 65,
+            "ref": "FMT778590",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": false
+            },
+            "status": "awaiting payment",
+            "created_at": "2021-01-13 03:59:56",
+            "updated_at": "2021-01-13 03:59:56"
         }
     ]
 }</code></pre>
@@ -2972,14 +3190,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/orders/dispatch/ducimus?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/orders/dispatch/maxime?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"id":30694588.979851}'
+    -d '{"id":24081.921043}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/orders/dispatch/ducimus"
+    "http://localhost/fimiti_sql_api/api/v1/orders/dispatch/maxime"
 );
 
 let params = {
@@ -2995,7 +3213,7 @@ let headers = {
 };
 
 let body = {
-    "id": 30694588.979851
+    "id": 24081.921043
 }
 
 fetch(url, {
@@ -3055,14 +3273,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/orders/dispatch/delete/esse?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/orders/dispatch/delete/sed?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"id":509026104.58308643}'
+    -d '{"id":482428}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/orders/dispatch/delete/esse"
+    "http://localhost/fimiti_sql_api/api/v1/orders/dispatch/delete/sed"
 );
 
 let params = {
@@ -3078,7 +3296,7 @@ let headers = {
 };
 
 let body = {
-    "id": 509026104.58308643
+    "id": 482428
 }
 
 fetch(url, {
@@ -3125,182 +3343,20 @@ Authentication key.</p>
 </p>
 
 </form><h1>Endpoints</h1>
-<h2>api/v1/test</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/test?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/test"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "success": true,
-    "response": [
-        {
-            "id": 1,
-            "name": "flamez",
-            "api_token": "IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8",
-            "access": "open",
-            "created_at": "2020-10-16T10:08:07.000000Z",
-            "updated_at": "2020-10-16T10:08:07.000000Z"
-        }
-    ]
-}</code></pre>
-<div id="execution-results-GETapi-v1-test" hidden>
-    <blockquote>Received response<span id="execution-response-status-GETapi-v1-test"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-test"></code></pre>
-</div>
-<div id="execution-error-GETapi-v1-test" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-test"></code></pre>
-</div>
-<form id="form-GETapi-v1-test" data-method="GET" data-path="api/v1/test" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-test', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-test" onclick="tryItOut('GETapi-v1-test');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-test" onclick="cancelTryOut('GETapi-v1-test');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-test" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-green">GET</small>
- <b><code>api/v1/test</code></b>
-</p>
-<p>
-<small class="badge badge-black">POST</small>
- <b><code>api/v1/test</code></b>
-</p>
-<p>
-<small class="badge badge-darkblue">PUT</small>
- <b><code>api/v1/test</code></b>
-</p>
-<p>
-<small class="badge badge-purple">PATCH</small>
- <b><code>api/v1/test</code></b>
-</p>
-<p>
-<small class="badge badge-red">DELETE</small>
- <b><code>api/v1/test</code></b>
-</p>
-<p>
-<small class="badge badge-grey">OPTIONS</small>
- <b><code>api/v1/test</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="GETapi-v1-test" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>api/v1/tokens</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/tokens?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/tokens"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "success": true,
-    "response": [
-        {
-            "id": 1,
-            "name": "flamez",
-            "api_token": "IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8",
-            "access": "open",
-            "created_at": "2020-10-16T10:08:07.000000Z",
-            "updated_at": "2020-10-16T10:08:07.000000Z"
-        }
-    ]
-}</code></pre>
-<div id="execution-results-GETapi-v1-tokens" hidden>
-    <blockquote>Received response<span id="execution-response-status-GETapi-v1-tokens"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-tokens"></code></pre>
-</div>
-<div id="execution-error-GETapi-v1-tokens" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-tokens"></code></pre>
-</div>
-<form id="form-GETapi-v1-tokens" data-method="GET" data-path="api/v1/tokens" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-tokens', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-tokens" onclick="tryItOut('GETapi-v1-tokens');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-tokens" onclick="cancelTryOut('GETapi-v1-tokens');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-tokens" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-green">GET</small>
- <b><code>api/v1/tokens</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="GETapi-v1-tokens" data-component="query" required  hidden>
-<br>
-Authentication key.</p>
-</form>
-<h2>api/v1/tokens/create</h2>
+<h2>Admin Login</h2>
 <p><small class="badge badge-darkred">requires authentication</small></p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/tokens/create?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/admin/login?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
+    -H "Api-Version: v1" \
+    -d '{"email":"odio","password":"vel"}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/tokens/create"
+    "http://localhost/fimiti_sql_api/api/v1/admin/login"
 );
 
 let params = {
@@ -3314,211 +3370,54 @@ let headers = {
     "Accept": "application/json",
     "Api-Version": "v1",
 };
+
+let body = {
+    "email": "odio",
+    "password": "vel"
+}
 
 fetch(url, {
     method: "POST",
     headers,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre>
-<div id="execution-results-POSTapi-v1-tokens-create" hidden>
-    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-tokens-create"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-tokens-create"></code></pre>
+<div id="execution-results-POSTapi-v1-admin-login" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-v1-admin-login"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-admin-login"></code></pre>
 </div>
-<div id="execution-error-POSTapi-v1-tokens-create" hidden>
+<div id="execution-error-POSTapi-v1-admin-login" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-tokens-create"></code></pre>
+    <pre><code id="execution-error-message-POSTapi-v1-admin-login"></code></pre>
 </div>
-<form id="form-POSTapi-v1-tokens-create" data-method="POST" data-path="api/v1/tokens/create" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-tokens-create', this);">
+<form id="form-POSTapi-v1-admin-login" data-method="POST" data-path="api/v1/admin/login" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-admin-login', this);">
 <h3>
     Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-tokens-create" onclick="tryItOut('POSTapi-v1-tokens-create');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-tokens-create" onclick="cancelTryOut('POSTapi-v1-tokens-create');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-tokens-create" hidden>Send Request 💥</button>
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-v1-admin-login" onclick="tryItOut('POSTapi-v1-admin-login');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-v1-admin-login" onclick="cancelTryOut('POSTapi-v1-admin-login');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-v1-admin-login" hidden>Send Request 💥</button>
     </h3>
 <p>
 <small class="badge badge-black">POST</small>
- <b><code>api/v1/tokens/create</code></b>
+ <b><code>api/v1/admin/login</code></b>
 </p>
 <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
 <p>
 <b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="POSTapi-v1-tokens-create" data-component="query" required  hidden>
+<input type="text" name="api_token" data-endpoint="POSTapi-v1-admin-login" data-component="query" required  hidden>
 <br>
 Authentication key.</p>
-</form>
-<h2>api/test</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/test?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/test"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "success": true,
-    "response": [
-        {
-            "id": 1,
-            "name": "flamez",
-            "api_token": "IsIwnQR3Fm7qGyGN8D8wDjj4I9ZA5eCr1GnIpZCKqIKetfMofwyUOASv1KM8",
-            "access": "open",
-            "created_at": "2020-10-16T10:08:07.000000Z",
-            "updated_at": "2020-10-16T10:08:07.000000Z"
-        }
-    ]
-}</code></pre>
-<div id="execution-results-GETapi-test" hidden>
-    <blockquote>Received response<span id="execution-response-status-GETapi-test"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-test"></code></pre>
-</div>
-<div id="execution-error-GETapi-test" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-test"></code></pre>
-</div>
-<form id="form-GETapi-test" data-method="GET" data-path="api/test" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-test', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-test" onclick="tryItOut('GETapi-test');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-test" onclick="cancelTryOut('GETapi-test');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-test" hidden>Send Request 💥</button>
-    </h3>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
 <p>
-<small class="badge badge-green">GET</small>
- <b><code>api/test</code></b>
-</p>
-<p>
-<small class="badge badge-black">POST</small>
- <b><code>api/test</code></b>
-</p>
-<p>
-<small class="badge badge-darkblue">PUT</small>
- <b><code>api/test</code></b>
-</p>
-<p>
-<small class="badge badge-purple">PATCH</small>
- <b><code>api/test</code></b>
-</p>
-<p>
-<small class="badge badge-red">DELETE</small>
- <b><code>api/test</code></b>
-</p>
-<p>
-<small class="badge badge-grey">OPTIONS</small>
- <b><code>api/test</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="GETapi-test" data-component="query" required  hidden>
+<b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="email" data-endpoint="POSTapi-v1-admin-login" data-component="body" required  hidden>
 <br>
-Authentication key.</p>
-</form>
-<h2>api/failed</h2>
-<p><small class="badge badge-darkred">requires authentication</small></p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/failed?api_token=%7BYOUR_AUTH_KEY%7D" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "Api-Version: v1"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/failed"
-);
-
-let params = {
-    "api_token": "{YOUR_AUTH_KEY}",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "Api-Version": "v1",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "success": false,
-    "response": "API Authentication Failed"
-}</code></pre>
-<div id="execution-results-GETapi-failed" hidden>
-    <blockquote>Received response<span id="execution-response-status-GETapi-failed"></span>:</blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-failed"></code></pre>
-</div>
-<div id="execution-error-GETapi-failed" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-failed"></code></pre>
-</div>
-<form id="form-GETapi-failed" data-method="GET" data-path="api/failed" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-failed', this);">
-<h3>
-    Request&nbsp;&nbsp;&nbsp;
-        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-failed" onclick="tryItOut('GETapi-failed');">Try it out ⚡</button>
-    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-failed" onclick="cancelTryOut('GETapi-failed');" hidden>Cancel</button>&nbsp;&nbsp;
-    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-failed" hidden>Send Request 💥</button>
-    </h3>
-<p>
-<small class="badge badge-green">GET</small>
- <b><code>api/failed</code></b>
 </p>
 <p>
-<small class="badge badge-black">POST</small>
- <b><code>api/failed</code></b>
-</p>
-<p>
-<small class="badge badge-darkblue">PUT</small>
- <b><code>api/failed</code></b>
-</p>
-<p>
-<small class="badge badge-purple">PATCH</small>
- <b><code>api/failed</code></b>
-</p>
-<p>
-<small class="badge badge-red">DELETE</small>
- <b><code>api/failed</code></b>
-</p>
-<p>
-<small class="badge badge-grey">OPTIONS</small>
- <b><code>api/failed</code></b>
-</p>
-<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-<p>
-<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-<input type="text" name="api_token" data-endpoint="GETapi-failed" data-component="query" required  hidden>
+<b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="password" data-endpoint="POSTapi-v1-admin-login" data-component="body" required  hidden>
 <br>
-Authentication key.</p>
+</p>
+
 </form>
 <h2>/</h2>
 <p><small class="badge badge-darkred">requires authentication</small></p>
@@ -3526,12 +3425,12 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/"
+    "http://localhost/fimiti_sql_api/"
 );
 
 let params = {
@@ -3675,14 +3574,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/calculate/fee?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/calculate/fee?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"pickup_region":"quos","delivery_region":"veniam"}'
+    -d '{"pickup_region":"quasi","delivery_region":"illum"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/calculate/fee"
+    "http://localhost/fimiti_sql_api/api/v1/calculate/fee"
 );
 
 let params = {
@@ -3698,8 +3597,8 @@ let headers = {
 };
 
 let body = {
-    "pickup_region": "quos",
-    "delivery_region": "veniam"
+    "pickup_region": "quasi",
+    "delivery_region": "illum"
 }
 
 fetch(url, {
@@ -3752,12 +3651,12 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/list/regions/all?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/list/regions/all?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/list/regions/all"
+    "http://localhost/fimiti_sql_api/api/v1/list/regions/all"
 );
 
 let params = {
@@ -3838,12 +3737,12 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/zones"
+    "http://localhost/fimiti_sql_api/api/v1/zones"
 );
 
 let params = {
@@ -3948,14 +3847,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/zones?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"name":"tempora","regions":"ullam"}'
+    -d '{"name":"veritatis","regions":"recusandae"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/zones"
+    "http://localhost/fimiti_sql_api/api/v1/zones"
 );
 
 let params = {
@@ -3971,8 +3870,8 @@ let headers = {
 };
 
 let body = {
-    "name": "tempora",
-    "regions": "ullam"
+    "name": "veritatis",
+    "regions": "recusandae"
 }
 
 fetch(url, {
@@ -4024,14 +3923,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/zones/vero?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/zones/libero?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"name":"reprehenderit","regions":"voluptates"}'
+    -d '{"name":"laborum","regions":"dolorem"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/zones/vero"
+    "http://localhost/fimiti_sql_api/api/v1/zones/libero"
 );
 
 let params = {
@@ -4047,8 +3946,8 @@ let headers = {
 };
 
 let body = {
-    "name": "reprehenderit",
-    "regions": "voluptates"
+    "name": "laborum",
+    "regions": "dolorem"
 }
 
 fetch(url, {
@@ -4106,14 +4005,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/zones/regions/delete/laboriosam?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/zones/regions/delete/asperiores?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"region":"id"}'
+    -d '{"region":"illo"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/zones/regions/delete/laboriosam"
+    "http://localhost/fimiti_sql_api/api/v1/zones/regions/delete/asperiores"
 );
 
 let params = {
@@ -4129,7 +4028,7 @@ let headers = {
 };
 
 let body = {
-    "region": "id"
+    "region": "illo"
 }
 
 fetch(url, {
@@ -4182,14 +4081,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://localhost/api/v1/zones/delete/et?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/zones/delete/molestiae?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"id":"labore"}'
+    -d '{"id":"ratione"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/zones/delete/et"
+    "http://localhost/fimiti_sql_api/api/v1/zones/delete/molestiae"
 );
 
 let params = {
@@ -4205,7 +4104,7 @@ let headers = {
 };
 
 let body = {
-    "id": "labore"
+    "id": "ratione"
 }
 
 fetch(url, {
@@ -4258,14 +4157,14 @@ Authentication key.</p>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/api/v1/find/zone/via/region/quos?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/find/zone/via/region/quia?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"region":"dolorum"}'
+    -d '{"region":"a"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/find/zone/via/region/quos"
+    "http://localhost/fimiti_sql_api/api/v1/find/zone/via/region/quia"
 );
 
 let params = {
@@ -4281,7 +4180,7 @@ let headers = {
 };
 
 let body = {
-    "region": "dolorum"
+    "region": "a"
 }
 
 fetch(url, {

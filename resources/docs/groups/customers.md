@@ -12,17 +12,17 @@ This endpoint allows you to create customer
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/customers/register?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/register?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"username":"alias","fullname":"inventore","mobile":465.079168,"email":"provident","password":"modi"}'
+    -d '{"username":"nam","fullname":"perspiciatis","mobile":71.47893953,"email":"nihil","password":"quo"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/customers/register"
+    "http://localhost/fimiti_sql_api/api/v1/customers/register"
 );
 
 let params = {
@@ -38,11 +38,11 @@ let headers = {
 };
 
 let body = {
-    "username": "alias",
-    "fullname": "inventore",
-    "mobile": 465.079168,
-    "email": "provident",
-    "password": "modi"
+    "username": "nam",
+    "fullname": "perspiciatis",
+    "mobile": 71.47893953,
+    "email": "nihil",
+    "password": "quo"
 }
 
 fetch(url, {
@@ -133,17 +133,17 @@ the customer fullname</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/customers/login?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/login?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"mobile":512.207293,"password":"eum"}'
+    -d '{"mobile":0,"password":"voluptas"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/customers/login"
+    "http://localhost/fimiti_sql_api/api/v1/customers/login"
 );
 
 let params = {
@@ -159,8 +159,8 @@ let headers = {
 };
 
 let body = {
-    "mobile": 512.207293,
-    "password": "eum"
+    "mobile": 0,
+    "password": "voluptas"
 }
 
 fetch(url, {
@@ -236,17 +236,17 @@ Authentication key.</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/customers/validate_login?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/validate_login?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"token":560092381.83397}'
+    -d '{"token":6841.6751}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/customers/validate_login"
+    "http://localhost/fimiti_sql_api/api/v1/customers/validate_login"
 );
 
 let params = {
@@ -262,7 +262,7 @@ let headers = {
 };
 
 let body = {
-    "token": 560092381.83397
+    "token": 6841.6751
 }
 
 fetch(url, {
@@ -318,7 +318,7 @@ Authentication key.</p>
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/customers/all?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/customers/all?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1"
@@ -326,7 +326,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/customers/all"
+    "http://localhost/fimiti_sql_api/api/v1/customers/all"
 );
 
 let params = {
@@ -409,11 +409,11 @@ fetch(url, {
             "fullname": "soj",
             "email": "soj@gmail.com",
             "mobile": "1",
-            "token": "lGKnWyJw4QACtvcSJe4ZIMhnb6JHE5JRh2L73oHuWIWfpvvYiqcIMBq3Mk0U",
+            "token": "1vUpkbDjs5r0srL5SmssL9bqkF8C3oUOr6M4AcdOy8Un4zwCvPRfpnvcXuxz",
             "avatar": null,
-            "wallet_balance": "27900",
+            "wallet_balance": "27200",
             "created_at": "2020-12-27 17:20:57",
-            "updated_at": "2021-01-07 12:23:14"
+            "updated_at": "2021-01-12 19:13:56"
         }
     ]
 }
@@ -456,17 +456,17 @@ Authentication key.</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/customers/update/password/culpa?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/password/et?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"old_password":"est","new_password":"beatae"}'
+    -d '{"old_password":"et","new_password":"et"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/customers/update/password/culpa"
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/password/et"
 );
 
 let params = {
@@ -482,8 +482,8 @@ let headers = {
 };
 
 let body = {
-    "old_password": "est",
-    "new_password": "beatae"
+    "old_password": "et",
+    "new_password": "et"
 }
 
 fetch(url, {
@@ -550,17 +550,17 @@ Authentication key.</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/customers/update/email/sed?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/email/quia?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"email":"magni"}'
+    -d '{"email":"rem"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/customers/update/email/sed"
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/email/quia"
 );
 
 let params = {
@@ -576,7 +576,7 @@ let headers = {
 };
 
 let body = {
-    "email": "magni"
+    "email": "rem"
 }
 
 fetch(url, {
@@ -638,17 +638,17 @@ Authentication key.</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/customers/update/mobile/fugit?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/mobile/sequi?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"mobile":"enim"}'
+    -d '{"mobile":"quidem"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/customers/update/mobile/fugit"
+    "http://localhost/fimiti_sql_api/api/v1/customers/update/mobile/sequi"
 );
 
 let params = {
@@ -664,7 +664,7 @@ let headers = {
 };
 
 let body = {
-    "mobile": "enim"
+    "mobile": "quidem"
 }
 
 fetch(url, {
@@ -726,17 +726,17 @@ Authentication key.</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/customers/wallet/credit/et?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/wallet/credit/ut?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"amount":272598495.2402778,"payment_mode":"sequi","trans_num":"vel"}'
+    -d '{"amount":10,"payment_mode":"maxime","trans_num":"architecto"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/customers/wallet/credit/et"
+    "http://localhost/fimiti_sql_api/api/v1/customers/wallet/credit/ut"
 );
 
 let params = {
@@ -752,9 +752,9 @@ let headers = {
 };
 
 let body = {
-    "amount": 272598495.2402778,
-    "payment_mode": "sequi",
-    "trans_num": "vel"
+    "amount": 10,
+    "payment_mode": "maxime",
+    "trans_num": "architecto"
 }
 
 fetch(url, {
@@ -826,17 +826,17 @@ either ('cash','transfer','atm', 'wallet')</p>
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/customers/single/quas?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/customers/single/voluptate?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"id":0.16615}'
+    -d '{"id":440.451798}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/customers/single/quas"
+    "http://localhost/fimiti_sql_api/api/v1/customers/single/voluptate"
 );
 
 let params = {
@@ -852,7 +852,7 @@ let headers = {
 };
 
 let body = {
-    "id": 0.16615
+    "id": 440.451798
 }
 
 fetch(url, {
@@ -912,6 +912,89 @@ customer_id</p>
 </form>
 
 
+## Customer&#039;s unpaid orders
+
+<small class="badge badge-darkred">requires authentication</small>
+
+
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/fimiti_sql_api/api/v1/customers/orders/unpaid/asperiores?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Api-Version: v1"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/fimiti_sql_api/api/v1/customers/orders/unpaid/asperiores"
+);
+
+let params = {
+    "api_token": "{YOUR_AUTH_KEY}",
+};
+Object.keys(params)
+    .forEach(key => url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Api-Version": "v1",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response => response.json());
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": false,
+    "response": "user not found"
+}
+```
+<div id="execution-results-GETapi-v1-customers-orders-unpaid--user_id-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-v1-customers-orders-unpaid--user_id-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-customers-orders-unpaid--user_id-"></code></pre>
+</div>
+<div id="execution-error-GETapi-v1-customers-orders-unpaid--user_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-customers-orders-unpaid--user_id-"></code></pre>
+</div>
+<form id="form-GETapi-v1-customers-orders-unpaid--user_id-" data-method="GET" data-path="api/v1/customers/orders/unpaid/{user_id}" data-authed="1" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Api-Version":"v1"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-customers-orders-unpaid--user_id-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-v1-customers-orders-unpaid--user_id-" onclick="tryItOut('GETapi-v1-customers-orders-unpaid--user_id-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-v1-customers-orders-unpaid--user_id-" onclick="cancelTryOut('GETapi-v1-customers-orders-unpaid--user_id-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-v1-customers-orders-unpaid--user_id-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/v1/customers/orders/unpaid/{user_id}</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>user_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="user_id" data-endpoint="GETapi-v1-customers-orders-unpaid--user_id-" data-component="url" required  hidden>
+<br>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>api_token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="api_token" data-endpoint="GETapi-v1-customers-orders-unpaid--user_id-" data-component="query" required  hidden>
+<br>
+Authentication key.</p>
+</form>
+
+
 ## Record Order
 
 <small class="badge badge-darkred">requires authentication</small>
@@ -922,17 +1005,17 @@ customer_id</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/customers/place/order/qui?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/place/order/sunt?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"courier":"occaecati","pickup_info":"suscipit","delivery_info":"adipisci","package_info":"et","timeline":"officiis","pricing":"quia","rider_info":"quia","payment_info":"laboriosam"}'
+    -d '{"courier":"et","pickup_info":"sit","delivery_info":"tempore","package_info":"eum","timeline":"animi","pricing":"optio","rider_info":"odit","payment_info":"explicabo"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/customers/place/order/qui"
+    "http://localhost/fimiti_sql_api/api/v1/customers/place/order/sunt"
 );
 
 let params = {
@@ -948,14 +1031,14 @@ let headers = {
 };
 
 let body = {
-    "courier": "occaecati",
-    "pickup_info": "suscipit",
-    "delivery_info": "adipisci",
-    "package_info": "et",
-    "timeline": "officiis",
-    "pricing": "quia",
-    "rider_info": "quia",
-    "payment_info": "laboriosam"
+    "courier": "et",
+    "pickup_info": "sit",
+    "delivery_info": "tempore",
+    "package_info": "eum",
+    "timeline": "animi",
+    "pricing": "optio",
+    "rider_info": "odit",
+    "payment_info": "explicabo"
 }
 
 fetch(url, {
@@ -1052,17 +1135,17 @@ refer to order json for full details</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/customers/wallet/debit/accusamus?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/customers/wallet/debit/consequatur?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"order_id":39775378,"total_amount":"dolorum","ref":"sit","payment_mode":"aliquam"}'
+    -d '{"order_id":5.86442,"total_amount":"rem","ref":"rerum","payment_mode":"ea"}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/customers/wallet/debit/accusamus"
+    "http://localhost/fimiti_sql_api/api/v1/customers/wallet/debit/consequatur"
 );
 
 let params = {
@@ -1078,10 +1161,10 @@ let headers = {
 };
 
 let body = {
-    "order_id": 39775378,
-    "total_amount": "dolorum",
-    "ref": "sit",
-    "payment_mode": "aliquam"
+    "order_id": 5.86442,
+    "total_amount": "rem",
+    "ref": "rerum",
+    "payment_mode": "ea"
 }
 
 fetch(url, {
@@ -1158,7 +1241,7 @@ default "wallet"</p>
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/ppp/decode/rerum?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/ppp/decode/voluptas?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1"
@@ -1166,7 +1249,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/ppp/decode/rerum"
+    "http://localhost/fimiti_sql_api/api/v1/ppp/decode/voluptas"
 );
 
 let params = {

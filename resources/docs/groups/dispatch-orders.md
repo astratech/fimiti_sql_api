@@ -12,7 +12,7 @@ APIs
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/orders/dispatch?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/orders/dispatch?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1"
@@ -20,7 +20,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/orders/dispatch"
+    "http://localhost/fimiti_sql_api/api/v1/orders/dispatch"
 );
 
 let params = {
@@ -74,6 +74,7 @@ fetch(url, {
                 "date_paid": "2021-01-01 16:29:13",
                 "date_confirmed": "2021-01-01 16:29:13"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-01 16:16:44",
             "updated_at": "2021-01-01 16:29:13"
         },
@@ -99,6 +100,7 @@ fetch(url, {
             "payment_info": {
                 "confirmed": "false"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-01 16:34:09",
             "updated_at": "2021-01-01 16:34:09"
         },
@@ -129,6 +131,7 @@ fetch(url, {
                 "date_paid": "2021-01-01 20:41:45",
                 "date_confirmed": "2021-01-01 20:41:45"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-01 19:45:39",
             "updated_at": "2021-01-01 20:41:45"
         },
@@ -156,6 +159,7 @@ fetch(url, {
             "payment_info": {
                 "confirmed": "false"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-01 20:21:51",
             "updated_at": "2021-01-01 20:21:51"
         },
@@ -186,6 +190,7 @@ fetch(url, {
                 "date_paid": "2021-01-01 20:42:03",
                 "date_confirmed": "2021-01-01 20:42:03"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-01 20:26:32",
             "updated_at": "2021-01-01 20:42:03"
         },
@@ -213,6 +218,7 @@ fetch(url, {
             "payment_info": {
                 "confirmed": "false"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:03:45",
             "updated_at": "2021-01-02 01:03:45"
         },
@@ -243,6 +249,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:37:47",
                 "date_confirmed": "2021-01-02 01:37:47"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:37:27",
             "updated_at": "2021-01-02 01:37:47"
         },
@@ -273,6 +280,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:54:59",
                 "date_confirmed": "2021-01-02 01:54:59"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:54:58",
             "updated_at": "2021-01-02 01:54:59"
         },
@@ -303,6 +311,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:57:02",
                 "date_confirmed": "2021-01-02 01:57:02"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:57:00",
             "updated_at": "2021-01-02 01:57:02"
         },
@@ -333,6 +342,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:57:58",
                 "date_confirmed": "2021-01-02 01:57:58"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:57:56",
             "updated_at": "2021-01-02 01:57:58"
         },
@@ -363,6 +373,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:58:51",
                 "date_confirmed": "2021-01-02 01:58:51"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:58:49",
             "updated_at": "2021-01-02 01:58:51"
         },
@@ -393,6 +404,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 01:59:28",
                 "date_confirmed": "2021-01-02 01:59:28"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 01:59:26",
             "updated_at": "2021-01-02 01:59:28"
         },
@@ -423,6 +435,7 @@ fetch(url, {
                 "date_paid": "2021-01-02 02:01:40",
                 "date_confirmed": "2021-01-02 02:01:40"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-02 02:01:39",
             "updated_at": "2021-01-02 02:01:40"
         },
@@ -453,6 +466,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 08:06:09",
                 "date_confirmed": "2021-01-03 08:06:09"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 08:06:07",
             "updated_at": "2021-01-03 08:06:09"
         },
@@ -483,6 +497,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 08:27:39",
                 "date_confirmed": "2021-01-03 08:27:39"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 08:27:35",
             "updated_at": "2021-01-03 08:27:39"
         },
@@ -513,6 +528,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 08:30:05",
                 "date_confirmed": "2021-01-03 08:30:05"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 08:30:00",
             "updated_at": "2021-01-03 08:30:05"
         },
@@ -543,6 +559,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:01:02",
                 "date_confirmed": "2021-01-03 20:01:02"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 08:50:38",
             "updated_at": "2021-01-03 20:01:02"
         },
@@ -573,6 +590,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:01:20",
                 "date_confirmed": "2021-01-03 20:01:20"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:01:17",
             "updated_at": "2021-01-03 20:01:20"
         },
@@ -603,6 +621,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:01:56",
                 "date_confirmed": "2021-01-03 20:01:56"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:01:52",
             "updated_at": "2021-01-03 20:01:56"
         },
@@ -633,6 +652,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:18:05",
                 "date_confirmed": "2021-01-03 20:18:05"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:18:01",
             "updated_at": "2021-01-03 20:18:05"
         },
@@ -663,6 +683,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:20:33",
                 "date_confirmed": "2021-01-03 20:20:33"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:20:30",
             "updated_at": "2021-01-03 20:20:33"
         },
@@ -693,6 +714,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:26:29",
                 "date_confirmed": "2021-01-03 20:26:29"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:26:26",
             "updated_at": "2021-01-03 20:26:29"
         },
@@ -723,6 +745,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:37:20",
                 "date_confirmed": "2021-01-03 20:37:20"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:37:18",
             "updated_at": "2021-01-03 20:37:20"
         },
@@ -753,6 +776,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:41:16",
                 "date_confirmed": "2021-01-03 20:41:16"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:41:12",
             "updated_at": "2021-01-03 20:41:16"
         },
@@ -783,6 +807,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:43:47",
                 "date_confirmed": "2021-01-03 20:43:47"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:41:24",
             "updated_at": "2021-01-03 20:43:47"
         },
@@ -813,6 +838,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:48:21",
                 "date_confirmed": "2021-01-03 20:48:21"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:47:49",
             "updated_at": "2021-01-03 20:48:21"
         },
@@ -843,6 +869,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:49:27",
                 "date_confirmed": "2021-01-03 20:49:27"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:49:25",
             "updated_at": "2021-01-03 20:49:27"
         },
@@ -873,6 +900,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:49:50",
                 "date_confirmed": "2021-01-03 20:49:50"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:49:48",
             "updated_at": "2021-01-03 20:49:50"
         },
@@ -903,6 +931,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:50:15",
                 "date_confirmed": "2021-01-03 20:50:15"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:50:13",
             "updated_at": "2021-01-03 20:50:15"
         },
@@ -933,6 +962,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:51:01",
                 "date_confirmed": "2021-01-03 20:51:01"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:50:59",
             "updated_at": "2021-01-03 20:51:01"
         },
@@ -963,6 +993,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:51:27",
                 "date_confirmed": "2021-01-03 20:51:27"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:51:25",
             "updated_at": "2021-01-03 20:51:27"
         },
@@ -993,6 +1024,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:54:15",
                 "date_confirmed": "2021-01-03 20:54:15"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:54:12",
             "updated_at": "2021-01-03 20:54:15"
         },
@@ -1023,6 +1055,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:54:51",
                 "date_confirmed": "2021-01-03 20:54:51"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:54:49",
             "updated_at": "2021-01-03 20:54:51"
         },
@@ -1053,6 +1086,7 @@ fetch(url, {
                 "date_paid": "2021-01-03 20:55:07",
                 "date_confirmed": "2021-01-03 20:55:07"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-03 20:55:05",
             "updated_at": "2021-01-03 20:55:07"
         },
@@ -1083,6 +1117,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:24:39",
                 "date_confirmed": "2021-01-04 08:24:39"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:23:17",
             "updated_at": "2021-01-04 08:24:39"
         },
@@ -1113,6 +1148,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:25:43",
                 "date_confirmed": "2021-01-04 08:25:43"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:25:40",
             "updated_at": "2021-01-04 08:25:43"
         },
@@ -1143,6 +1179,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:26:05",
                 "date_confirmed": "2021-01-04 08:26:05"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:26:03",
             "updated_at": "2021-01-04 08:26:05"
         },
@@ -1173,6 +1210,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:26:37",
                 "date_confirmed": "2021-01-04 08:26:37"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:26:33",
             "updated_at": "2021-01-04 08:26:37"
         },
@@ -1203,6 +1241,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:27:48",
                 "date_confirmed": "2021-01-04 08:27:48"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:27:46",
             "updated_at": "2021-01-04 08:27:48"
         },
@@ -1233,6 +1272,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:28:15",
                 "date_confirmed": "2021-01-04 08:28:15"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:28:12",
             "updated_at": "2021-01-04 08:28:15"
         },
@@ -1260,6 +1300,7 @@ fetch(url, {
             "payment_info": {
                 "confirmed": "false"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:29:19",
             "updated_at": "2021-01-04 08:29:19"
         },
@@ -1290,6 +1331,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:29:29",
                 "date_confirmed": "2021-01-04 08:29:29"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:29:27",
             "updated_at": "2021-01-04 08:29:29"
         },
@@ -1320,6 +1362,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:30:31",
                 "date_confirmed": "2021-01-04 08:30:31"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:30:27",
             "updated_at": "2021-01-04 08:30:31"
         },
@@ -1350,6 +1393,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:31:48",
                 "date_confirmed": "2021-01-04 08:31:48"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:31:45",
             "updated_at": "2021-01-04 08:31:48"
         },
@@ -1380,6 +1424,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:37:39",
                 "date_confirmed": "2021-01-04 08:37:39"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:37:10",
             "updated_at": "2021-01-04 08:37:39"
         },
@@ -1410,6 +1455,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:45:39",
                 "date_confirmed": "2021-01-04 08:45:39"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:45:37",
             "updated_at": "2021-01-04 08:45:39"
         },
@@ -1440,6 +1486,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:48:03",
                 "date_confirmed": "2021-01-04 08:48:03"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:48:01",
             "updated_at": "2021-01-04 08:48:03"
         },
@@ -1470,6 +1517,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:49:43",
                 "date_confirmed": "2021-01-04 08:49:43"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:49:40",
             "updated_at": "2021-01-04 08:49:43"
         },
@@ -1500,6 +1548,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:50:44",
                 "date_confirmed": "2021-01-04 08:50:44"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:50:42",
             "updated_at": "2021-01-04 08:50:44"
         },
@@ -1530,6 +1579,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:51:30",
                 "date_confirmed": "2021-01-04 08:51:30"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:51:26",
             "updated_at": "2021-01-04 08:51:30"
         },
@@ -1560,6 +1610,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:51:54",
                 "date_confirmed": "2021-01-04 08:51:54"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:51:52",
             "updated_at": "2021-01-04 08:51:54"
         },
@@ -1590,6 +1641,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:52:08",
                 "date_confirmed": "2021-01-04 08:52:08"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:52:06",
             "updated_at": "2021-01-04 08:52:08"
         },
@@ -1620,6 +1672,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:52:22",
                 "date_confirmed": "2021-01-04 08:52:22"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:52:17",
             "updated_at": "2021-01-04 08:52:22"
         },
@@ -1650,6 +1703,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:53:39",
                 "date_confirmed": "2021-01-04 08:53:39"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:53:37",
             "updated_at": "2021-01-04 08:53:39"
         },
@@ -1680,6 +1734,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:54:16",
                 "date_confirmed": "2021-01-04 08:54:16"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:54:13",
             "updated_at": "2021-01-04 08:54:16"
         },
@@ -1710,6 +1765,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 08:54:51",
                 "date_confirmed": "2021-01-04 08:54:51"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 08:54:49",
             "updated_at": "2021-01-04 08:54:51"
         },
@@ -1740,6 +1796,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 15:19:36",
                 "date_confirmed": "2021-01-04 15:19:36"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 15:19:21",
             "updated_at": "2021-01-04 15:19:36"
         },
@@ -1770,6 +1827,7 @@ fetch(url, {
                 "date_paid": "2021-01-04 17:33:40",
                 "date_confirmed": "2021-01-04 17:33:40"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-04 17:32:43",
             "updated_at": "2021-01-04 17:33:40"
         },
@@ -1800,8 +1858,99 @@ fetch(url, {
                 "date_paid": "2021-01-07 12:20:50",
                 "date_confirmed": "2021-01-07 12:20:50"
             },
+            "status": "awaiting payment",
             "created_at": "2021-01-07 12:20:47",
             "updated_at": "2021-01-07 12:20:50"
+        },
+        {
+            "id": 63,
+            "ref": "FMT230065",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "aleshinloye",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-11 11:26:37",
+                "date_confirmed": "2021-01-11 11:26:37"
+            },
+            "status": "awaiting payment",
+            "created_at": "2021-01-11 11:26:32",
+            "updated_at": "2021-01-11 11:26:37"
+        },
+        {
+            "id": 64,
+            "ref": "FMT465642",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": true,
+                "method": "wallet",
+                "date_paid": "2021-01-12 19:13:56",
+                "date_confirmed": "2021-01-12 19:13:56"
+            },
+            "status": "awaiting payment",
+            "created_at": "2021-01-12 19:13:39",
+            "updated_at": "2021-01-12 19:13:56"
+        },
+        {
+            "id": 65,
+            "ref": "FMT778590",
+            "user_id": 21,
+            "courier": "bike",
+            "pickup_info": {
+                "region": "dugbe",
+                "zone": "zone 2"
+            },
+            "delivery_info": {
+                "region": "ogunpa",
+                "zone": "zone 2"
+            },
+            "package_info": null,
+            "timeline": null,
+            "pricing": {
+                "price": "350",
+                "promo_code": null,
+                "promo_amount": "0"
+            },
+            "rider_info": null,
+            "payment_info": {
+                "confirmed": false
+            },
+            "status": "awaiting payment",
+            "created_at": "2021-01-13 03:59:56",
+            "updated_at": "2021-01-13 03:59:56"
         }
     ]
 }
@@ -1844,17 +1993,17 @@ Authentication key.</p>
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/v1/orders/dispatch/ducimus?api_token=%7BYOUR_AUTH_KEY%7D" \
+    -G "http://localhost/fimiti_sql_api/api/v1/orders/dispatch/maxime?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"id":30694588.979851}'
+    -d '{"id":24081.921043}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/orders/dispatch/ducimus"
+    "http://localhost/fimiti_sql_api/api/v1/orders/dispatch/maxime"
 );
 
 let params = {
@@ -1870,7 +2019,7 @@ let headers = {
 };
 
 let body = {
-    "id": 30694588.979851
+    "id": 24081.921043
 }
 
 fetch(url, {
@@ -1940,17 +2089,17 @@ Authentication key.</p>
 
 ```bash
 curl -X POST \
-    "http://localhost/api/v1/orders/dispatch/delete/esse?api_token=%7BYOUR_AUTH_KEY%7D" \
+    "http://localhost/fimiti_sql_api/api/v1/orders/dispatch/delete/sed?api_token=%7BYOUR_AUTH_KEY%7D" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Api-Version: v1" \
-    -d '{"id":509026104.58308643}'
+    -d '{"id":482428}'
 
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/v1/orders/dispatch/delete/esse"
+    "http://localhost/fimiti_sql_api/api/v1/orders/dispatch/delete/sed"
 );
 
 let params = {
@@ -1966,7 +2115,7 @@ let headers = {
 };
 
 let body = {
-    "id": 509026104.58308643
+    "id": 482428
 }
 
 fetch(url, {
