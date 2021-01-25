@@ -566,17 +566,92 @@ class CustomerController extends Controller{
 
 		if($customer){
 
-			$ord = DispatchOrders::where("user_id", $user_id)->get();
+			$ord = DispatchOrders::where("user_id", $user_id)->orderBy("created_at", "desc")->get();
 			$c = [];
 			if($ord){
 				foreach ($ord as $key => $value) {
 					$p = Site::convert_db_json_to_array($value->payment_info);
-					if(strval($p['confirmed']) == "false"){
+					if($p['confirmed'] == "false"){
 						$r = new DispatchOrdersResources($value);
 						array_push($c, $r);
 					}
 				}
 
+				return ["success"=>true, "response"=>$c];
+
+			}
+			else{
+				return ["success"=>true, "response"=>null];
+			}
+
+		}
+		else{
+			return ["success"=>false, "response"=>"user not found"];
+		}
+		
+	}
+
+	/**
+     * All Orders
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     *
+    */
+	public function all_orders($user_id, Request $request){
+
+		$date = date("Y-m-d H:i:s");
+
+		$customer = Customers::find($user_id);
+
+		if($customer){
+
+			$ord = DispatchOrders::where("user_id", $user_id)->orderBy("created_at", "desc")->get();
+			$c = [];
+			if($ord){
+				foreach ($ord as $key => $value) {
+					$r = new DispatchOrdersResources($value);
+					array_push($c, $r);
+				}
+				
+
+				return ["success"=>true, "response"=>$c];
+
+			}
+			else{
+				return ["success"=>true, "response"=>null];
+			}
+
+		}
+		else{
+			return ["success"=>false, "response"=>"user not found"];
+		}
+		
+	}
+
+	/**
+     * All Undelivered orders
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     *
+    */
+	public function undelivered_orders($user_id, Request $request){
+
+		$date = date("Y-m-d H:i:s");
+
+		$customer = Customers::find($user_id);
+
+		if($customer){
+
+			$ord = DispatchOrders::where("user_id",$user_id)->orderBy("created_at", "desc")->get();
+			$c = [];
+			if($ord){
+				foreach ($ord as $key => $value) {
+					if($value->status != "completed" AND $value->status != "awaiting payment"){
+						$r = new DispatchOrdersResources($value);
+						array_push($c, $r);
+					}
+				}
+				
 				return ["success"=>true, "response"=>$c];
 
 			}
