@@ -404,7 +404,7 @@ class CustomerController extends Controller{
 			'courier' => 'string|required',
 			'pickup_info' => 'json|required',
 			'delivery_info' => 'json|required',
-			'package_info' => 'json',
+			'package_info' => 'string',
 			'timeline' => 'json',
 			'pricing' => 'json|required',
 			'rider_info' => 'json',
@@ -524,7 +524,10 @@ class CustomerController extends Controller{
 					    $payment_info['date_confirmed'] = $date;
 
 					    $new_payment_info = Site::convert_db_array_to_json($payment_info);
-					    $order->update(["payment_info"=>$new_payment_info]);
+					    $order->update([
+					    	"payment_info"=>$new_payment_info,
+					    	"status"=>"payment confirmed"
+					    ]);
 
 
 					    // update user balance

@@ -67,6 +67,7 @@ Route::group(['middleware' => 'cors', 'middleware' => 'auth:api', 'prefix' => 'v
 
 	Route::get('orders/dispatch', 'v1\DispatchOrdersController@index');
 	Route::get('orders/dispatch/{id}', 'v1\DispatchOrdersController@show');
+	Route::post('orders/finalize/{id}', 'v1\DispatchOrdersController@finalize');
 	Route::post('orders/dispatch/delete/{id}', 'v1\DispatchOrdersController@delete');
 	
 });

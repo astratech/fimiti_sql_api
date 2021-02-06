@@ -58,11 +58,7 @@ var dispatch_orders = {
 		mobile: String,
 		email: String,
 	},
-	package_info: {
-		type: String,
-		dimension: String,
-		quantity: String,
-	},
+	package_info: String,
 	timeline: {
 		created: Date;
 		status: String;
@@ -84,9 +80,9 @@ var dispatch_orders = {
 	},
 	schedule:{
 		type: String ['now', 'later'],
-		date_and_time: String,
+		time: String,
 	}
-	status: ['awaiting payment','payment confirmed', 'filing' 'in-transit', 'picked', 'dispatched', 'completed', 'terminated']
+	status: ['awaiting payment','payment confirmed', 'awaiting rider' 'in-transit', 'picked', 'dispatched', 'completed', 'terminated']
 	updated_at,
 	created_at,
 }

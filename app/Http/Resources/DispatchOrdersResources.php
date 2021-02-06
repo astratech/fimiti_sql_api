@@ -21,7 +21,7 @@ class DispatchOrdersResources extends JsonResource
             'courier'=>$this->courier,
             'pickup_info'=>json_decode($this->pickup_info),
             'delivery_info'=>json_decode($this->delivery_info),
-            'package_info'=>json_decode($this->package_info),
+            'package_info'=>$this->package_info,
             'timeline'=>json_decode($this->timeline),
             'pricing'=>json_decode($this->pricing),
             'rider_info'=>json_decode($this->rider_info),
