@@ -13,4 +13,7 @@ class DispatchOrders extends Model{
     
     public $incrementing = true;
 
+
+    
+
 }

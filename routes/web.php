@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::any("/", "FrontController@index");
+
+Route::group(['middleware' => 'auth:manager', 'prefix' => 'manager'], function(){
+	Route::any('/dashboard', 'Web\ManagerController@index')->name("manager.dashboard");
 });

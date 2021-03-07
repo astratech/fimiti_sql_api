@@ -679,5 +679,37 @@ class CustomerController extends Controller{
 		$r = CustomersResource::collection(Customers::all());
 		return ["success"=>true, "response"=>$r];
 	}
+
+	/**
+     * Customer Wallet History
+     *
+     * @author Sangosanya Segun - Flamezbaba <flamezbaba@gmail.com>
+     *
+    */
+	public function wallet_history($user_id, Request $request){
+
+		$date = date("Y-m-d H:i:s");
+
+		$customer = Customers::find($user_id);
+
+		if($customer){
+
+			$w = Wallet::where("user_id", $user_id)->orderBy("created_at", "desc")->get();
+			if($w){
+				
+
+				return ["success"=>true, "response"=>$w];
+
+			}
+			else{
+				return ["success"=>true, "response"=>null];
+			}
+
+		}
+		else{
+			return ["success"=>false, "response"=>"user not found"];
+		}
+		
+	}
 	
 }
